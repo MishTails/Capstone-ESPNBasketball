@@ -13,18 +13,18 @@ def get_all_leagues():
   Query for all leagues and return them in a list of league dictionaries
   """
   leagues = League.query.all()
-  return [leagues.to_dict() for league in leagues]
+  return [league.to_dict() for league in leagues]
 
 @league_routes.route('/<int:id>')
 @login_required
-def get_one_league():
+def get_one_league(id):
   """
   Query for one league and return it as a dictionary
   """
-  league = League.uery.get(id)
+  league = League.query.get(id)
   return league.to_dict()
 
-@league_routes.route('')
+@league_routes.route('', methods=["POST"])
 @login_required
 def create_one_league():
   """

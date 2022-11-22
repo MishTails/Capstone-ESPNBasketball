@@ -35,15 +35,15 @@ const cleanTeams = () => ({
 })
 
 export const thunkGetAllTeamss = (id) => async (dispatch) => {
-  const response = await fetch(`/api/leagues/${id}/teams`);
+  const response = await fetch(`/api/teams/${id}`);
   if (response.ok) {
     const teams= await response.json();
     dispatch(getAllTeams(normalizeArr(teams)))
   }
 }
 
-export const thunkGetOneTeam = (leagueId, teamId) => async (dispatch) => {
-  const response = await fetch(`/api/league/${leagueId}/teams/${teamId}`);
+export const thunkGetOneTeam = (teamId) => async (dispatch) => {
+  const response = await fetch(`/api/teams/${teamId}`);
   if (response.ok) {
     const team = await response.json();
     dispatch(getOneTeam(team))
@@ -51,7 +51,7 @@ export const thunkGetOneTeam = (leagueId, teamId) => async (dispatch) => {
 }
 
 export const thunkPostTeam = (data) => async (dispatch) => {
-  const response = await fetch(`/api/leagues/${data.league_id}/teams`, {
+  const response = await fetch(`/api/teams`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json'
@@ -66,7 +66,7 @@ export const thunkPostTeam = (data) => async (dispatch) => {
 }
 
 export const thunkUpdateTeam = (data) = async (dispatch) => {
-  const response = await fetch(`/api/leagues/${data.league_id}/teams/${data.id}`, {
+  const response = await fetch(`/api/teams/${data.id}`, {
     method: 'put',
     headers: {
       "Content-Type": 'application/json'
@@ -81,7 +81,7 @@ export const thunkUpdateTeam = (data) = async (dispatch) => {
 }
 
 export const thunkDeleteTeam = (team) => async (dispatch) => {
-  const response = await fetch(`/api/leagues/teams/${team.id}`, {
+  const response = await fetch(`/api/teams/${team.id}`, {
     method: 'delete'
   });
   if (response.ok) {
