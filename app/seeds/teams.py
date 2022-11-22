@@ -5,17 +5,17 @@ from app.models import db, Team, environment, SCHEMA
 def seed_teams():
     t1 = Team(
         name='Do it for Christian',
-        logo="https://media.istockphoto.com/id/1013903776/vector/vector-realistic-3d-orange-brown-classic-basketball-icon-closeup-isolated-on-transparency.jpg?s=612x612&w=0&k=20&c=6hqIb4j1YLvqbpB_jOQf7EKOQfJzaLxKLHFMpo_0o7A=",
+        logo="https://t3.ftcdn.net/jpg/00/00/71/10/360_F_711081_WvnJyU9WBLUegBLVfghDN2YZjFuQ5b.jpg",
         user_id=2,
         league_id=1)
     t2 = Team(
         name='icebird',
-        logo="https://media.istockphoto.com/id/1013903776/vector/vector-realistic-3d-orange-brown-classic-basketball-icon-closeup-isolated-on-transparency.jpg?s=612x612&w=0&k=20&c=6hqIb4j1YLvqbpB_jOQf7EKOQfJzaLxKLHFMpo_0o7A=",
+        logo="https://t3.ftcdn.net/jpg/00/00/71/10/360_F_711081_WvnJyU9WBLUegBLVfghDN2YZjFuQ5b.jpg",
         user_id=3,
         league_id=1)
     t3 = Team(
         name='Curry/Ja/Vanvleet',
-        logo="https://media.istockphoto.com/id/1013903776/vector/vector-realistic-3d-orange-brown-classic-basketball-icon-closeup-isolated-on-transparency.jpg?s=612x612&w=0&k=20&c=6hqIb4j1YLvqbpB_jOQf7EKOQfJzaLxKLHFMpo_0o7A=",
+        logo="https://t3.ftcdn.net/jpg/00/00/71/10/360_F_711081_WvnJyU9WBLUegBLVfghDN2YZjFuQ5b.jpg",
         user_id=1,
         league_id=1)
     db.session.add(t1)

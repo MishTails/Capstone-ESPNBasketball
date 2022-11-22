@@ -11,5 +11,5 @@ class League(db.Model):
     size = db.Column(db.Integer, nullable=False)
     occupancy =  db.Column(db.Integer)
     description = db.Column(db.String(1000), nullable=False)
-    draft_date = db.Column(db.DateTime, nullable=False)
+    draft_date = db.Column(db.String, nullable=False)
     draft_timer = db.Column(db.Integer, nullable= False)

@@ -15,13 +15,15 @@ def seed_leagues():
         size=8,
         occupancy=5,
         description="Casual Crew",
-        draft_date="5/20/2023")
+        draft_date="5/20/2023",
+        draft_timer=30)
     l3 = League(
         league_name='Grand Showdown Association',
         size=10,
         occupancy=3,
         description="The crew",
-        draft_date="4/20/2023")
+        draft_date="4/20/2023",
+        draft_timer=30)
     db.session.add(l1)
     db.session.add(l2)
     db.session.add(l3)
