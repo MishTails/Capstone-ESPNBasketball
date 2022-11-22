@@ -9,6 +9,5 @@ class Team(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(40), nullable=False, unique=True)
     logo = db.Column(db.String(1000))
-    team_size db.Column(db.Integer, nullable=False)
     user_id db.Column(db.Integer, nullable=False)
     league_id db.Column(db.Integer, nullable=False)

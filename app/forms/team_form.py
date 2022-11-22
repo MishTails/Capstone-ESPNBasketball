@@ -6,5 +6,3 @@ from app.models import User
 class TeamForm(FlaskForm):
     name = StringField('name', validators=[DataRequired()])
     logo = StringField('logo', validators=[DataRequired()])
-    team_size = IntegerField('team_size', validators=[DataRequired()])
-
