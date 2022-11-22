@@ -1,18 +1,30 @@
-from app.models import db, User, environment, SCHEMA
+from app.models import db, League, environment, SCHEMA
 
 
 # Adds seeded league data
 def seed_leagues():
-    demo = User(
-        username='Demo', email='demo@aa.io', password='password')
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
-
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    l1 = League(
+        league_name='Dream League',
+        size=12,
+        occupancy=3,
+        description="A league for all those who are aiming for the top",
+        draft_date="3/20/2023",
+        draft_timer=30)
+    l2 = League(
+        league_name='Discord Draft League',
+        size=8,
+        occupancy=5,
+        description="Casual Crew",
+        draft_date="5/20/2023")
+    l3 = League(
+        league_name='Grand Showdown Association',
+        size=10,
+        occupancy=3,
+        description="The crew",
+        draft_date="4/20/2023")
+    db.session.add(l1)
+    db.session.add(l2)
+    db.session.add(l3)
     db.session.commit()
 
 
@@ -22,10 +34,10 @@ def seed_leagues():
 # incrementing primary key, CASCADE deletes any dependent entities.  With
 # sqlite3 in development you need to instead use DELETE to remove all data and
 # it will reset the primary keys for you as well.
-def undo_users():
+def undo_leagues():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.leagues RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute("DELETE FROM users")
+        db.session.execute("DELETE FROM leagues")
 
     db.session.commit()
