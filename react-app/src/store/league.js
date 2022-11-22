@@ -86,10 +86,13 @@ export const thunkDeleteLeague = (id) => async (dispatch) => {
   });
   if (response.ok) {
     const watchlist = await response.json();
-    dispatch(deleteLeague())
+    dispatch(deleteLeague(id))
   }
 }
 
+export const thunkCleanLeague = () => async (dispatch) => {
+  dispatch(cleanLeague())
+}
 
 const initialState = {};
 
