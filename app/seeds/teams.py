@@ -6,12 +6,12 @@ def seed_teams():
     t1 = Team(
         name='Do it for Christian',
         logo="https://media.istockphoto.com/id/1013903776/vector/vector-realistic-3d-orange-brown-classic-basketball-icon-closeup-isolated-on-transparency.jpg?s=612x612&w=0&k=20&c=6hqIb4j1YLvqbpB_jOQf7EKOQfJzaLxKLHFMpo_0o7A=",
-        user_id=1,
+        user_id=2,
         league_id=1)
     t2 = Team(
         name='icebird',
         logo="https://media.istockphoto.com/id/1013903776/vector/vector-realistic-3d-orange-brown-classic-basketball-icon-closeup-isolated-on-transparency.jpg?s=612x612&w=0&k=20&c=6hqIb4j1YLvqbpB_jOQf7EKOQfJzaLxKLHFMpo_0o7A=",
-        user_id=1,
+        user_id=3,
         league_id=1)
     t3 = Team(
         name='Curry/Ja/Vanvleet',
