@@ -2,7 +2,7 @@ const GET_ALL_LEAGUES = "leagues/GET_ALL_LEAGUES"
 const GET_ONE_LEAGUE = "leagues/GET_ONE_LEAGUE"
 const POST_LEAGUE = "leagues/POST_LEAGUES"
 const UPDATE_LEAGUE = "leagues/UPDATE_LEAGUES"
-const DELETE_WATCHLIST = "leagues/DELETE_LEAGUES"
+const DELETE_LEAGUE = "leagues/DELETE_LEAGUES"
 const CLEAN_UP_LEAGUES = "leagues/CLEAN_UP_LEAGUES"
 
 const getAllLeagues = (payload) => ({
@@ -26,7 +26,7 @@ const updateLeague = (payload) => ({
 })
 
 const deleteLeague = (id) => ({
-  type: DELETE_WATCHLIST,
+  type: DELETE_LEAGUE,
   id
 })
 
@@ -34,6 +34,61 @@ const cleanLeague = () => ({
   type: CLEAN_UP_LEAGUES
 })
 
+export const thunkGetAllLeagues = () => async (dispatch) => {
+  const response = await fetch('/api/leagues');
+  if (response.ok) {
+    const leagues = await response.json();
+    dispatch(getAllLeagues(normalizeArr(leagues)))
+  }
+}
+
+export const thunkGetOneLeague = (id) => async (dispatch) => {
+  const response = await fetch(`/api/leagues/${id}`);
+  if (response.ok){
+    const league = await response.json();
+    dispatch(getOneLeague)
+  }
+}
+
+export const thunkPostLeague = (data) => async (dispatch) => {
+  const response = await fetch(` /api/leagues`, {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+  if (response.ok) {
+    const league = await response.json();
+    dispatch(postLeague(league));
+    return league
+  }
+}
+
+export const thunkUpdateLeague = (data) = async (dispatch) => {
+  const response = await fetch(`/api/leagues/${data.leagueId}`, {
+    method: 'put',
+    headers: {
+      "Content-Type": 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  if (response.ok) {
+    const league = await response.json();
+    dispatch(updateLeague(league))
+    return league
+  }
+}
+
+export const thunkDeleteLeague = (id) => async (dispatch) => {
+  const response = await fetch(`/api/leagues/${id}`, {
+    method: 'delete'
+  });
+  if (response.ok) {
+    const watchlist = await response.json();
+    dispatch(deleteLeague())
+  }
+}
 
 
 const initialState = {};
@@ -57,7 +112,7 @@ export default function leagues(state = initialState, action) {
       let newStateUpdate = {...state}
       newStateUpdate[action.paylaod.id] = action.payload
       return newStateUpdate;
-    case DELETE_WATCHLIST:
+    case DELETE_LEAGUE:
       let newStateDelete = {...state}
       delete newStateDelete[action.id]
       return newStateDelete
