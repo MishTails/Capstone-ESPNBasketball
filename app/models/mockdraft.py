@@ -8,4 +8,5 @@ class MockDraft(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     team_id = db.Column(db.Integer, nullable=False)
+    name = db.Column(db.String(40), nullable=False)
     draft_pick = db.Column(db.Integer, nullable=False)
