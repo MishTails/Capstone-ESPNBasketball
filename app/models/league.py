@@ -13,3 +13,14 @@ class League(db.Model):
     description = db.Column(db.String(1000), nullable=False)
     draft_date = db.Column(db.String, nullable=False)
     draft_timer = db.Column(db.Integer, nullable= False)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'league_name': self.league_name,
+            'size': self.size,
+            'occupancy': self.occupancy
+            'description': self.description
+            'draft_date': self.draft_date
+            'draft_timer': self.draft_timer
+        }

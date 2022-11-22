@@ -10,3 +10,11 @@ class MockDraft(db.Model):
     team_id = db.Column(db.Integer, nullable=False)
     name = db.Column(db.String(40), nullable=False)
     draft_pick = db.Column(db.Integer, nullable=False)
+
+    def to_dict(self):
+        return {
+            "id": self.id
+            'team_id': self.team_id
+            'name': self.name
+            'draft_pick': self.draft_pick
+        }

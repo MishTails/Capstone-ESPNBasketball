@@ -11,3 +11,12 @@ class Team(db.Model):
     logo = db.Column(db.String(1000))
     user_id = db.Column(db.Integer, nullable=False)
     league_id = db.Column(db.Integer, nullable=False)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'logo': self.logo,
+            'user_id': self.user_id
+            'league_id': self.league_id
+        }
