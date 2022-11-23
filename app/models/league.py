@@ -1,4 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from datetime import datetime
+
 
 class League(db.Model):
     __tablename__ = 'leagues'
@@ -11,5 +13,16 @@ class League(db.Model):
     size = db.Column(db.Integer, nullable=False)
     occupancy =  db.Column(db.Integer)
     description = db.Column(db.String(1000), nullable=False)
-    draft_date = db.Column(db.DateTime, nullable=False)
+    draft_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     draft_timer = db.Column(db.Integer, nullable= False)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'league_name': self.league_name,
+            'size': self.size,
+            'occupancy': self.occupancy
+            'description': self.description
+            'draft_date': self.draft_date
+            'draft_timer': self.draft_timer
+        }

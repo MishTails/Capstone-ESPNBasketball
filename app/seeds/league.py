@@ -8,20 +8,19 @@ def seed_leagues():
         size=12,
         occupancy=3,
         description="A league for all those who are aiming for the top",
-        draft_date="3/20/2023",
         draft_timer=30)
     l2 = League(
         league_name='Discord Draft League',
         size=8,
         occupancy=5,
         description="Casual Crew",
-        draft_date="5/20/2023")
+        draft_timer=30)
     l3 = League(
         league_name='Grand Showdown Association',
         size=10,
         occupancy=3,
         description="The crew",
-        draft_date="4/20/2023")
+        draft_timer=30)
     db.session.add(l1)
     db.session.add(l2)
     db.session.add(l3)

@@ -3,16 +3,28 @@ from app.models import db, User, environment, SCHEMA
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
-    demo = User(
-        username='Demo', email='demo@aa.io', password='password')
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+    u1 = User(
+        username='Demo',
+        email='demo@aa.io',
+        password='password',
+        profile_pic="https://static.vecteezy.com/system/resources/previews/007/557/861/original/hacker-mascot-illustration-for-sports-and-esports-logo-free-vector.jpg")
 
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    u2 = User(
+        username='Tails',
+        email='tails@gmail.com',
+        password='password',
+        profile_pic="https://static.vecteezy.com/system/resources/previews/007/557/861/original/hacker-mascot-illustration-for-sports-and-esports-logo-free-vector.jpg")
+
+    u3 = User(
+        username='icebird',
+        email='icebird@gmail.com',
+        password='password',
+        profile_pic="https://static.vecteezy.com/system/resources/previews/007/557/861/original/hacker-mascot-illustration-for-sports-and-esports-logo-free-vector.jpg")
+
+
+    db.session.add(u1)
+    db.session.add(u2)
+    db.session.add(u3)
     db.session.commit()
 
 
