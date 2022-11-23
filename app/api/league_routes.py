@@ -1,7 +1,5 @@
 from flask import Blueprint, render_template, request
 from flask_login import login_required
-from app.models import League
-
 from app.forms import LeagueForm
 
 league_routes = Blueprint('leagues', __name__)

@@ -19,3 +19,20 @@ class Players(db.Model):
   turnovers = db.Column(db.Float)
   steals  = db.Column(db.Float)
   blocks  = db.Column(db.Float)
+
+  def to_dict(self):
+    return {
+      'id': self.id,
+      'name': self.name,
+      'team': self.team,
+      'minutes': self.minutes,
+      'points': self.points,
+      'field_goal_percent': self.field_goal_percent,
+      'threes': self.threes,
+      'free_throw_percent': self.free_throw_percent,
+      'rebounds': self.rebounds,
+      'assists': self.assists,
+      'turnovers': self.turnovers,
+      'steals': self.steals,
+      'blocks': self.blocks
+    }
