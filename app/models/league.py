@@ -21,8 +21,8 @@ class League(db.Model):
             'id': self.id,
             'league_name': self.league_name,
             'size': self.size,
-            'occupancy': self.occupancy
-            'description': self.description
-            'draft_date': self.draft_date
+            'occupancy': self.occupancy,
+            'description': self.description,
+            'draft_date': self.draft_date,
             'draft_timer': self.draft_timer
         }

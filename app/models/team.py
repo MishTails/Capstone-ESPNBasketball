@@ -17,6 +17,6 @@ class Team(db.Model):
             'id': self.id,
             'name': self.name,
             'logo': self.logo,
-            'user_id': self.user_id
+            'user_id': self.user_id,
             'league_id': self.league_id
         }

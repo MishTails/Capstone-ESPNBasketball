@@ -15,7 +15,7 @@ def get_all_teams():
   teams = Team.query.all()
   return [team.to_dict() for team in teams]
 
-@league_routes.route('/<int:id>')
+@team_routes.route('/<int:id>')
 @login_required
 def get_one_team(id):
   """
@@ -24,7 +24,7 @@ def get_one_team(id):
   team = Team.query.get(id)
   return team.to_dict()
 
-@league_routes.route('', methods=["POST"])
+@team_routes.route('', methods=["POST"])
 @login_required
 def create_one_team():
   """

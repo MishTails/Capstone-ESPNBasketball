@@ -13,8 +13,8 @@ class MockDraft(db.Model):
 
     def to_dict(self):
         return {
-            "id": self.id
-            'team_id': self.team_id
-            'name': self.name
+            "id": self.id,
+            'team_id': self.team_id,
+            'name': self.name,
             'draft_pick': self.draft_pick
         }

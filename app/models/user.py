@@ -15,6 +15,10 @@ class User(db.Model, UserMixin):
     profile_pic = db.Column(db.String(1000), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
 
+    # #relationship attributes
+    # teams = db.relationship("Teams", backpopulates="user")
+
+
     @property
     def password(self):
         return self.hashed_password
