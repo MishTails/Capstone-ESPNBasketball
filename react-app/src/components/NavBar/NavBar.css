@@ -1,0 +1,93 @@
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgb(75, 92, 92);
+  width: 100%;
+}
+
+.nav-bar-tools {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-logo {
+  width: 175px;
+  height: 50px;
+}
+
+.nav-login, .nav-signup, .nav-logout .nav-users {
+  padding: 10px;
+  margin: 5px;
+  color: silver;
+  text-decoration: none;
+}
+
+.nav-login {
+  background-color: rgb(75, 92, 92);
+  border: none;
+  color: white;
+  font-weight: 600;
+}
+
+.nav-signup, .nav-logout {
+  background-color: rgb(75, 92, 92);
+  color: rgb(255, 255, 255);
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.nav-signup:hover, .nav-logout:hover {
+  background-color: white;
+  color: rgb(75, 92, 92);
+}
+
+.nav-logout {
+  padding: 10px;
+  margin: 5px;
+}
+
+.login-form-full {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 25px;
+  background-color: rgb(39,41,43);
+  border-radius: 5px;
+  padding: 15px;
+
+}
+
+.login-form-label {
+  color: rgb(6,149,106);
+  font-size: 13px;
+}
+
+.login-form-email, .login-form-password {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form-input {
+  background-color: black;
+  color: white;
+  border: 1px solid rgb(6,149,106);
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+.login-form-submit {
+  display: flex;
+  background-color: rgb(43,133,212);
+  width: 100px;
+  border-radius: 5px;
+  padding: 5px 0px;
+  font-weight: 600;
+  margin-top: 3px;
+  justify-content: center;
+}
+
+.login-form-submit-holder {
+  display: flex;
+  justify-content: flex-end;
+}

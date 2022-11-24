@@ -65,7 +65,7 @@ export const thunkPostLeague = (data) => async (dispatch) => {
   }
 }
 
-export const thunkUpdateLeague = (data) = async (dispatch) => {
+export const thunkUpdateLeague = (data) => async (dispatch) => {
   const response = await fetch(`/api/leagues/${data.id}`, {
     method: 'put',
     headers: {

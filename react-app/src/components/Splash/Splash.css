@@ -1,0 +1,54 @@
+.splash-main {
+  background-image: url(https://stadiumjourney.com/wp-content/uploads/2018/12/IMG_3362.jpg);
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px;
+  width: 100%;
+  height: 450px;
+  opacity: 55%;
+}
+
+.splash-center {
+  display: flex;
+  flex-direction: column;
+  align-items:  center;
+  padding: 20px;
+}
+
+.splash-logo-subtext{
+  display: flex;
+  flex-direction: center ;
+  align-items: center;
+  color: rgb(180, 133, 133);
+  font-size: 24px;
+  font-weight: 900;
+  margin-top: 20px;
+  padding: 5px;
+  width: 400px;
+}
+
+.splash-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: absolute;
+  bottom: 0px;
+  background-color: rgb(75, 92, 92);
+  color: black;
+  width: 100%
+}
+
+.splash-footer-bold {
+  font-weight: 800;
+  font-size: 16px;
+  color: rgb(20, 19, 19)
+}
+
+.splash-footer-light {
+  font-weight: 300;
+  font-size: 14px;
+  color: rgb(20, 19, 19);
+  opacity: 70%;
+}

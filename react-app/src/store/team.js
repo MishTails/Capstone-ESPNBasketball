@@ -65,7 +65,7 @@ export const thunkPostTeam = (data) => async (dispatch) => {
   }
 }
 
-export const thunkUpdateTeam = (data) = async (dispatch) => {
+export const thunkUpdateTeam = (data) => async (dispatch) => {
   const response = await fetch(`/api/teams/${data.id}`, {
     method: 'put',
     headers: {

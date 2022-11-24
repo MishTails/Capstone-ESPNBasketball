@@ -29,7 +29,7 @@ export const thunkGetOnePlayer = (name) => async (dispatch) => {
   const response = await fetch(`/api/players/${name}`);
   if (response.ok){
     const player = await response.json();
-    dispatch(getOneLeague(player))
+    dispatch(getOnePlayer(player))
   }
 }
 
