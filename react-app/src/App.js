@@ -19,7 +19,7 @@ function App() {
       await dispatch(authenticate());
       setLoaded(true);
     })();
-  }, [dispatch, loaded]);
+  }, [dispatch]);
 
   if (!loaded) {
     return null;
@@ -38,7 +38,7 @@ function App() {
           <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
+          <User/>
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <Splash/>

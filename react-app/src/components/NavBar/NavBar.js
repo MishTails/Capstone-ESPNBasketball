@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const NavBar = () => {
   const dispatch = useDispatch()
   const [loginOpen, setLoginOpen] = useState(false)
+  const [leagueOpen, setLeagueOpen] = useState(false)
   const user = useSelector((state) => state?.session?.user?.id)
 
   useEffect(
@@ -20,18 +21,52 @@ const NavBar = () => {
 	);
   return (
       <div className='nav-bar'>
-        <div>
+        <div className='nav-bar-left'>
           <NavLink to='/' exact={true} activeClassName='active'>
             <img className='nav-logo' src={logo}></img>
           </NavLink>
+          <div>
+            <button className='nav-leagues' onClick={() => leagueOpen == false ? setLeagueOpen(true): setLeagueOpen(false)}>
+               My Leagues
+            </button>
+            {leagueOpen && <div className='my-leagues-bubble'>
+                <div className='my-leagues-heading'>
+                  <div className='my-leagues-title'>
+                    NBA Commissioner
+                  </div>
+                  <div>
+                    bball
+                  </div>
+                </div>
+                <div className='my-leagues-card'>
+                  <div className='my-leagues-logo'>
+                    Logo
+                  </div>
+                  <div className='my-leagues-card-text'>
+                    <div className='my-leagues-card-team'>
+                      Team Name
+                    </div>
+                    <div className='my-leagues-card-league'>
+                      League Name
+                    </div>
+                  </div>
+                </div>
+
+              </div>}
+          </div>
         </div>
-        <div className='nav-bar-tools'>
+        <div className='nav-bar-right'>
+          {user &&<div>
+            <NavLink to={`/users/${user}`} exact={true} activeClassName='active'>
+              <button className='nav-profile'> Profile</button>
+            </NavLink>
+          </div>}
           {!user && <div className='nav-bar-login-holder'>
-          {/* onClick={loginOpen==false? setLoginOpen(true): setLoginOpen(false)} */}
-             <button className='nav-login' > LOGIN </button>
-            <div className='nav-bar-login-form-bubble'>
+
+             <button className='nav-login' onClick={() => loginOpen==false? setLoginOpen(true): setLoginOpen(false)} > LOGIN </button>
+            {loginOpen && <div className='nav-bar-login-form-bubble'>
               <LoginForm/>
-            </div>
+            </div>}
           </div>}
           {!user && <div>
             <NavLink to='/sign-up' exact={true} activeClassName='active'>

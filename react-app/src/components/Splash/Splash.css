@@ -1,13 +1,10 @@
 .splash-main {
-  background-image: url(https://stadiumjourney.com/wp-content/uploads/2018/12/IMG_3362.jpg);
-  background-color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0px;
   width: 100%;
   height: 450px;
-  opacity: 55%;
 }
 
 .splash-center {
@@ -35,9 +32,9 @@
   justify-content: space-around;
   position: absolute;
   bottom: 0px;
-  background-color: rgb(75, 92, 92);
+  background-color: rgba(75, 92, 92, .9);
   color: black;
-  width: 100%
+  width: 100%;
 }
 
 .splash-footer-bold {
@@ -49,6 +46,6 @@
 .splash-footer-light {
   font-weight: 300;
   font-size: 14px;
-  color: rgb(20, 19, 19);
-  opacity: 70%;
+  color: rgb(9, 8, 8);
+  opacity: 80%;
 }

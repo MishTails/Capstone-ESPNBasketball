@@ -2,11 +2,12 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: rgb(75, 92, 92);
+  background-color: rgba(75, 92, 92, .96);
+  height: 100px;
   width: 100%;
 }
 
-.nav-bar-tools {
+.nav-bar-right, .nav-bar-left {
   display: flex;
   flex-direction: row;
 }
@@ -16,21 +17,21 @@
   height: 50px;
 }
 
-.nav-login, .nav-signup, .nav-logout .nav-users {
+.nav-login, .nav-signup, .nav-logout, .nav-profile, .nav-leagues, .nav-users {
   padding: 10px;
   margin: 5px;
   color: silver;
   text-decoration: none;
 }
 
-.nav-login {
+.nav-login , .nav-leagues {
   background-color: rgb(75, 92, 92);
   border: none;
   color: white;
   font-weight: 600;
 }
 
-.nav-signup, .nav-logout {
+.nav-signup, .nav-logout, .nav-profile {
   background-color: rgb(75, 92, 92);
   color: rgb(255, 255, 255);
   border: 1px solid white;
@@ -39,7 +40,7 @@
 
 .nav-signup:hover, .nav-logout:hover {
   background-color: white;
-  color: rgb(75, 92, 92);
+  color: rgba(75, 92, 92, .96);
 }
 
 .nav-logout {
@@ -71,6 +72,7 @@
 .login-form-input {
   background-color: black;
   color: white;
+  outline: rgb(8,143,103);
   border: 1px solid rgb(6,149,106);
   border-radius: 5px;
   padding: 10px 20px;
@@ -90,4 +92,34 @@
 .login-form-submit-holder {
   display: flex;
   justify-content: flex-end;
+}
+
+
+.my-leagues-bubble {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: rgb(39,41,43);
+  border-radius: 5px;
+  padding: 15px;
+  left: 40px
+}
+
+.my-leagues-heading{
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  font-size: 24px;
+  font-weight: 800;
+  color: rgb(252,101,0);
+}
+
+.my-leagues-title {
+  padding-right: 50px;
+}
+
+.my-leagues-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
