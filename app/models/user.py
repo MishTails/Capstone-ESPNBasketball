@@ -16,7 +16,8 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     # #relationship attributes
-    # teams = db.relationship("Teams", backpopulates="user")
+    teams = db.relationship("Team", back_populates="users")
+    leagues = db.relationship("League", secondary=user_leagues, back_populates="users")
 
 
     @property

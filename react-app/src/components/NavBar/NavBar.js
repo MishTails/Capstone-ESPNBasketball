@@ -7,6 +7,7 @@ import logo from '../../assets/halfcourtLogo-PhotoRoom.png'
 import "./NavBar.css"
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { thunkGetAllLeagues } from '../../store/league';
 
 const NavBar = () => {
   const dispatch = useDispatch()
@@ -16,8 +17,9 @@ const NavBar = () => {
 
   useEffect(
 		() => {
+      dispatch(thunkGetAllLeagues(user))
 		},
-		[dispatch, loginOpen],
+		[dispatch],
 	);
   return (
       <div className='nav-bar'>
