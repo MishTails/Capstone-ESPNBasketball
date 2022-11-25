@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import NavBar from './NavBar/NavBar';
+import Footer from './Footer/Footer';
 import './User.css'
 
 function User() {
@@ -57,51 +58,7 @@ function User() {
           </div>
         </div>
       </div>
-      <div className='splash-footer'>
-        <div className='splash-footer-company'>
-          <div className='splash-footer-bold'>
-            Company
-          </div>
-          <div className='splash-footer-light'>
-            App Academy
-          </div>
-        </div>
-        <div className='splash-footer-developer'>
-          <div className='splash-footer-bold'>
-            Developer
-          </div>
-          <div className='splash-footer-light'>
-            Jarrod Mishima
-          </div>
-        </div>
-        <div className='splash-footer-features'>
-          <div className='splash-footer-bold'>
-            Features
-          </div>
-          <div className='splash-footer-light'>
-            Fantasy Basketball
-          </div>
-        </div>
-        <div className='splash-footer-other'>
-          <div className='splash-footer-language'>
-            <div className='splash-footer-bold'>
-              Language
-            </div>
-            <div className='splash-footer-light'>
-              English
-           </div>
-          </div>
-          <div className='splash-footer-country'>
-            <div className='splash-footer-bold'>
-              Country
-            </div>
-            <div className='splash-footer-light'>
-              United States
-            </div>
-
-          </div>
-        </div>
-      </div>
+      <Footer/>
     </div>
 
   );
