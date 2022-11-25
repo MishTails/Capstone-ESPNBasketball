@@ -28,7 +28,7 @@ const NavBar = () => {
             <img className='nav-logo' src={logo}></img>
           </NavLink>
           <div>
-            <button className='nav-leagues' onClick={() => leagueOpen == false ? setLeagueOpen(true): setLeagueOpen(false)}>
+            <button className='nav-my-leagues' onClick={() => leagueOpen == false ? setLeagueOpen(true): setLeagueOpen(false)}>
                My Leagues
             </button>
             {leagueOpen && <div className='my-leagues-bubble'>
@@ -55,6 +55,16 @@ const NavBar = () => {
                 </div>
 
               </div>}
+          </div>
+          <div>
+              <NavLink to={'/leagues'}>
+                <button className='nav-leagues'>Fantasy Leagues</button>
+              </NavLink>
+          </div>
+          <div>
+              <NavLink to={'/players'}>
+                <button className='nav-players'>Players</button>
+              </NavLink>
           </div>
         </div>
         <div className='nav-bar-right'>

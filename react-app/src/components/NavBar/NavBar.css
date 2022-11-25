@@ -17,14 +17,14 @@
   height: 50px;
 }
 
-.nav-login, .nav-signup, .nav-logout, .nav-profile, .nav-leagues, .nav-users {
+.nav-login, .nav-signup, .nav-logout, .nav-profile, .nav-my-leagues, .nav-leagues, .nav-users, .nav-players {
   padding: 10px;
   margin: 5px;
   color: silver;
   text-decoration: none;
 }
 
-.nav-login , .nav-leagues {
+.nav-login , .nav-my-leagues, .nav-leagues, .nav-players {
   background-color: rgb(75, 92, 92);
   border: none;
   color: white;
