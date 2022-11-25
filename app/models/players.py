@@ -1,14 +1,14 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
-class Players(db.Model):
+class Player(db.Model):
   __tablename__ = 'players'
 
   if environment == "production":
     __table_args__ = {'schema': SCHEMA}
 
   id = db.Column(db.Integer, primary_key=True)
-  name = db.Column(db.String(60), nullable = False)
-  team = db.Column(db.String(50), nullable = False)
+  name = db.Column(db.String, nullable = False)
+  team = db.Column(db.String, nullable = False)
   minutes = db.Column(db.Float)
   points  = db.Column(db.Float)
   field_goal_percent  = db.Column(db.Float)
@@ -21,7 +21,7 @@ class Players(db.Model):
   blocks  = db.Column(db.Float)
 
   #relationships
-  team = db.relationship("Team", secondary=rosters, back_populates="players")
+  # team = db.relationship("Team", secondary="rosters", back_populates="player")
 
   def to_dict(self):
     return {

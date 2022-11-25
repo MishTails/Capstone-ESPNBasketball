@@ -1,6 +1,6 @@
 nbaPlayersStats = {
 'Luka Doncic': {
-  'name': 'Luka Doncic',
+  'name': 'Luka Doncic' ,
   'team': 'DAL',
   'minutes': 36.9,
   'points': 33.5,

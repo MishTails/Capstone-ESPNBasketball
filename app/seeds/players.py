@@ -1,12 +1,11 @@
-from app.models import db, Players, environment, SCHEMA
+from app.models import db, Player, environment, SCHEMA
 from app.data import nbaPlayersStats
 
 # Adds seeded league data
 def seed_players():
 
   for player in nbaPlayersStats:
-    print(player)
-    db.session.add(Players(
+    db.session.add(Player(
       name = nbaPlayersStats[player]['name'],
       team = nbaPlayersStats[player]['team'],
       minutes = nbaPlayersStats[player]['minutes'],

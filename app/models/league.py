@@ -17,8 +17,8 @@ class League(db.Model):
     draft_timer = db.Column(db.Integer, nullable= False)
 
     #relationships
-    team = db.relationship("Team", back_populates="leagues")
-    users = db.relationship("User", secondary=user_leagues, back_populates="leagues")
+    team = db.relationship("Team", back_populates="league")
+    user = db.relationship("User", secondary="user_leagues", back_populates="league")
 
     def to_dict(self):
         return {

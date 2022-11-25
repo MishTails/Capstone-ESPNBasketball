@@ -2,7 +2,6 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
-
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -16,8 +15,8 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     # #relationship attributes
-    teams = db.relationship("Team", back_populates="users")
-    leagues = db.relationship("League", secondary=user_leagues, back_populates="users")
+    team = db.relationship("Team", back_populates="user")
+    league = db.relationship("League", secondary="user_leagues", back_populates="user")
 
 
     @property
