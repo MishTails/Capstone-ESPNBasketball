@@ -5,3 +5,38 @@
   background-color: rgba(22,23,24,.96);
   margin-top: 200px;
 }
+
+.create-league-form-label {
+  color: rgb(6,149,106);
+  font-size: 13px;
+}
+
+.create-league-form-email, .create-league-form-password {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-league-form-input {
+  background-color: black;
+  color: white;
+  outline: rgb(8,143,103);
+  border: 1px solid rgb(6,149,106);
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+.create-league-form-submit {
+  display: flex;
+  background-color: rgb(43,133,212);
+  width: 100px;
+  border-radius: 5px;
+  padding: 5px 0px;
+  font-weight: 600;
+  margin-top: 3px;
+  justify-content: center;
+}
+
+.create-league-form-submit-holder {
+  display: flex;
+  justify-content: flex-end;
+}
