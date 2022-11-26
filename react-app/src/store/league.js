@@ -35,10 +35,11 @@ const cleanLeague = () => ({
 })
 
 export const thunkGetAllLeagues = () => async (dispatch) => {
+  console.log('i got here!')
   const response = await fetch('/api/leagues');
   if (response.ok) {
     const leagues = await response.json();
-    dispatch(getAllLeagues(normalizeArr(leagues)))
+    dispatch(getAllLeagues(normalizeArr(leagues.leagues)))
   }
 }
 
@@ -51,7 +52,8 @@ export const thunkGetOneLeague = (id) => async (dispatch) => {
 }
 
 export const thunkPostLeague = (data) => async (dispatch) => {
-  const response = await fetch(` /api/leagues`, {
+  console.log("mydata", data)
+  const response = await fetch(`/api/leagues`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json'
@@ -108,6 +110,7 @@ export default function leagues(state = initialState, action) {
       return newStateGetOne
     case POST_LEAGUE:
       let newStateCreate = {...state}
+      console.log("tacos")
       let id = action.payload.id;
       newStateCreate.allLeagues[id] = action.payload
       return newStateCreate

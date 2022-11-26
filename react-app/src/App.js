@@ -5,6 +5,7 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar/NavBar';
 import CreateLeague from './components/CreateLeague/CreateLeague';
+import Leagues from './components/Leagues/Leagues';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Splash from './components/Splash/Splash';
 import UsersList from './components/UsersList';
@@ -34,6 +35,9 @@ function App() {
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path="/leagues" exact={true}>
+          <Leagues/>
         </Route>
         <Route path='/leagues/create' exact={true}>
           <CreateLeague/>

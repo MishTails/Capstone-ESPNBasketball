@@ -37,7 +37,7 @@ const NavBar = () => {
                     NBA Commissioner
                   </div>
                   <div>
-                    bball
+                    <i class="fas fa-basketball-ball"></i>
                   </div>
                 </div>
                 <div className='my-leagues-card'>

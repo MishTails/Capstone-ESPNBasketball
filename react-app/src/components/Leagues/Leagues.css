@@ -1,0 +1,89 @@
+.leagues-full-body {
+  background-color: rgb(32, 44, 44);
+  padding: 30px;
+  height: 100%;
+}
+
+.leagues-full-table {
+  background-color: rgb(87, 84, 84);
+  border-radius: 5px;
+  margin: 20px;
+  width: 850px;
+}
+
+.leagues-title {
+  display: flex;
+  font-size: 36px;
+  position: relative;
+  /* right: 120px; */
+  min-width: 250px;
+  padding: 15px 6px 0px 25px;
+}
+
+.leagues-table-headings {
+  display: flex;
+  flex-direction: row;
+  /* border-radius: 15px; */
+
+}
+
+.leagues-listed-leagues {
+  font-size: 20px;
+  padding: 6px;
+}
+
+.leagues-table-head {
+  padding: 5px;
+  background-color:rgb(90,117,144) ;
+}
+
+.leagues-table-body {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(47, 44, 39);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.leagues-table-data {
+  padding: 5px;
+}
+
+#ltOne {
+  width: 7%;
+  min-width: 50px;
+}
+
+#ltTwo {
+  width: 15%;
+  min-width: 100px;
+}
+
+#ltThree {
+  width: 15%;
+  min-width: 100px;
+}
+
+#ltFour {
+  width: 7%;
+  min-width: 50px;
+}
+
+#ltFive {
+  width: 12%;
+  min-width: 70px;
+}
+
+#ltSix {
+  width: 12%;
+  min-width: 70px;
+}
+
+#ltSeven {
+  width: 15%;
+  min-width: 100px;
+}
+
+#ltEight {
+  width: 500px;
+}

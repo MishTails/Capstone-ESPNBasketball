@@ -5,18 +5,21 @@ from app.models import db, League, environment, SCHEMA
 def seed_leagues():
     l1 = League(
         league_name='Dream League',
+        commissioner_id=1,
         size=12,
         occupancy=3,
         description="A league for all those who are aiming for the top",
         draft_timer=30)
     l2 = League(
         league_name='Discord Draft League',
+        commissioner_id=2,
         size=8,
         occupancy=5,
         description="Casual Crew",
         draft_timer=30)
     l3 = League(
         league_name='Grand Showdown Association',
+        commissioner_id=3,
         size=10,
         occupancy=3,
         description="The crew",
