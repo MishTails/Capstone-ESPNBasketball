@@ -3,6 +3,7 @@ from .users import seed_users, undo_users
 from .league import seed_leagues, undo_leagues
 from .mockdraft import seed_mockdraft, undo_mockdraft
 from .teams import seed_teams, undo_teams
+from .players import seed_players, undo_players
 
 from app.models.db import db, environment, SCHEMA
 
@@ -23,10 +24,12 @@ def seed():
         undo_leagues()
         undo_mockdraft()
         undo_teams()
+        undo_players()
     seed_users()
     seed_leagues()
     seed_mockdraft()
     seed_teams()
+    seed_players()
     # Add other seed functions here
 
 
@@ -37,4 +40,5 @@ def undo():
     undo_leagues()
     undo_mockdraft()
     undo_teams()
+    undo_players()
     # Add other undo functions here

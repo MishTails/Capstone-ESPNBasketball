@@ -3,8 +3,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
+import NavBar from './components/NavBar/NavBar';
+import CreateLeague from './components/CreateLeague/CreateLeague';
+import Leagues from './components/Leagues/Leagues';
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import Splash from './components/Splash/Splash';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
@@ -26,7 +29,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -34,14 +36,20 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+        <Route path="/leagues" exact={true}>
+          <Leagues/>
+        </Route>
+        <Route path='/leagues/create' exact={true}>
+          <CreateLeague/>
+        </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
+          <User/>
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <Splash/>
         </Route>
       </Switch>
     </BrowserRouter>

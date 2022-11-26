@@ -1,0 +1,24 @@
+
+.splash-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: absolute;
+  bottom: 0px;
+  background-color: rgba(75, 92, 92, .9);
+  color: black;
+  width: 100%;
+}
+
+.splash-footer-bold {
+  font-weight: 800;
+  font-size: 16px;
+  color: rgb(20, 19, 19)
+}
+
+.splash-footer-light {
+  font-weight: 300;
+  font-size: 14px;
+  color: rgb(9, 8, 8);
+  opacity: 80%;
+}

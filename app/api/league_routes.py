@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template, request
 from flask_login import login_required
-from app.models import League
-
+from app.models import League, db
 from app.forms import LeagueForm
 
 league_routes = Blueprint('leagues', __name__)
@@ -13,7 +12,7 @@ def get_all_leagues():
   Query for all leagues and return them in a list of league dictionaries
   """
   leagues = League.query.all()
-  return [league.to_dict() for league in leagues]
+  return {'leagues': [league.to_dict() for league in leagues]}
 
 @league_routes.route('/<int:id>')
 @login_required
@@ -30,20 +29,25 @@ def create_one_league():
   """
   Query to create one league and add it to the database
   """
-  allLeagues = Leagues.query.all()
+  print("ONEEEE")
+  allLeagues = League.query.all()
+  print("TWOOOO")
   form = LeagueForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     new_league = League(
       league_name = form.data['league_name'],
+      commissioner_id= form.data['commissioner_id'],
       size = form.data['size'],
-      occupancy = 1,
+      occupancy = 0,
       description = form.data['description'],
       draft_date = form.data['draft_date'],
       draft_timer = form.data['draft_timer']
     )
+    print("ONNNN")
     db.session.add(new_league)
     db.session.commit()
+    print('POKE')
     return new_league.to_dict()
 
 @league_routes.route('/<int:id>', methods=["PUT"])
