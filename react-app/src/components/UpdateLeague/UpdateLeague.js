@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './UpdateLeague.css';
 import NavBar from '../NavBar/NavBar';
@@ -16,6 +16,7 @@ function UpdateLeague() {
   const [leagueSize, setLeagueSize] = useState('8')
   const [leagueDraftDate, setLeagueDraftDate] = useState('')
   const [leagueDraftTimer, setLeagueDraftTimer] = useState(30)
+  const leagueId = useParams()
 
   const user = useSelector(state => state?.session?.user?.id);
   const league = useSelector(state => state.leagues.allLeagues)
@@ -46,6 +47,7 @@ function UpdateLeague() {
   const onSubmit = async (e) => {
     e.preventDefault()
     let leagueData = {
+      id: parseInt(leagueId.leagueId),
       league_name: leagueName,
       commissioner_id: parseInt(user),
       size: leagueSize,

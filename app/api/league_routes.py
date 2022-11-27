@@ -58,7 +58,7 @@ def update_league(id):
   """
   data = request.get_json()
   league = League.query.get(id)
-  league.league_name = data['name']
+  league.league_name = data['league_name']
   league.size = data['size']
   league.description = data['description']
   league.draft_date = data['draft_date']

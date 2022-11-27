@@ -70,7 +70,6 @@ function PlayersBody(player) {
         {player.player.blocks}
       </div>
     </div>
-
   )
 
 }
