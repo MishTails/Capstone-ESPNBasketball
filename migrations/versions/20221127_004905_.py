@@ -1,4 +1,4 @@
-from app.models import db, Portfolio, environment, SCHEMA
+from app.models import db, environment, SCHEMA
 """empty message
 
 Revision ID: c1219de140fe
