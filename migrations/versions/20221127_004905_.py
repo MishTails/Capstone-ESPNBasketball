@@ -84,8 +84,8 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name')
     )
-    # if environment == "production":
-    #     op.execute(f"ALTER TABLE teams SET SCHEMA {SCHEMA};")
+    if environment == "production":
+        op.execute(f"ALTER TABLE teams SET SCHEMA {SCHEMA};")
     # op.create_table('user_leagues',
     # sa.Column('user_id', sa.Integer(), nullable=False),
     # sa.Column('league_id', sa.Integer(), nullable=True),
