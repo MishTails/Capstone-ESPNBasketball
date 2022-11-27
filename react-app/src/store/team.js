@@ -51,6 +51,7 @@ export const thunkGetOneTeam = (teamId) => async (dispatch) => {
 }
 
 export const thunkPostTeam = (data) => async (dispatch) => {
+  console.log('hi')
   const response = await fetch(`/api/teams`, {
     method: 'post',
     headers: {
@@ -59,6 +60,7 @@ export const thunkPostTeam = (data) => async (dispatch) => {
     body: JSON.stringify(data)
   });
   if (response.ok) {
+    console.log('hi2')
     const team = await response.json();
     dispatch(postTeam(team));
     return team

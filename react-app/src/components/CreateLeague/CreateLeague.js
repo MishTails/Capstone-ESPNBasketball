@@ -62,12 +62,13 @@ function CreateLeague() {
     e.preventDefault()
     let leagueData = {
       league_name: leagueName,
-      commissioner_id: 1,
+      commissioner_id: parseInt(user),
       size: leagueSize,
       description: leagueDesc,
       draft_date: leagueDraftDate,
       draft_timer: leagueDraftTimer
     }
+    console.log("PIZZA")
     await dispatch(thunkPostLeague(leagueData))
     history.push('/leagues')
   }

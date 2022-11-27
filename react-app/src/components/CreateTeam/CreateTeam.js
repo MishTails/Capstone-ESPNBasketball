@@ -3,11 +3,9 @@ import { useState } from 'react';
 import { useHistory, NavLink , useParams} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './CreateTeam.css';
-import logo from '../../assets/halfcourtLogo-PhotoRoom.png'
 import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
-import { thunkGetAllLeagues, thunkPostLeague } from '../../store/league';
-import thunkPostTeam from '../../store/team'
+import { thunkPostTeam } from '../../store/team';
 
 function CreateTeam() {
   const dispatch = useDispatch()
@@ -38,20 +36,18 @@ function CreateTeam() {
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    let leagueData = {
+    console.log(teamName, teamLogo, user, parseInt(id.leagueId))
+    let teamData = {
       name: teamName,
       logo: teamLogo,
       user_id: user,
-      league_id: id.leagueId
-
+      league_id: parseInt(id.leagueId)
     }
-    await dispatch(thunkPostTeam(leagueData))
+    await dispatch(thunkPostTeam(teamData))
     history.push('/leagues')
   }
   return (
     <div>
-      {console.log("leagueId",id.leagueId)}
-      {console.log(user)}
       <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
       <NavBar/>
       <form className='create-team-form-full' onSubmit={onSubmit}>

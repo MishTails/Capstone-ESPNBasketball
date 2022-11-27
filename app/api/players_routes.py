@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request
 from flask_login import login_required
-from app.models import Player
+from app.models import Player, db
 
 player_routes = Blueprint('players', __name__)
 

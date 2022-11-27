@@ -3,9 +3,7 @@ import { useState } from 'react';
 import { useHistory, NavLink , useParams} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './Players.css';
-import logo from '../../assets/halfcourtLogo-PhotoRoom.png'
-import NavBar from '../NavBar/NavBar';
-import Footer from '../Footer/Footer';
+import PlayerLogo from './PlayerLogoSwitch';
 import { thunkGetAllLeagues, thunkPostLeague } from '../../store/league';
 // import {thunkGetAllPlayers} from '../../store/players'
 import thunkPostTeam from '../../store/team'
@@ -23,6 +21,7 @@ function PlayersBody(player) {
   const user = useSelector(state => state?.session?.user?.id);
   const players = useSelector(state => state.players?.allPlayers);
   let allPlayers
+  let teamPlayer = player.player.team
 
   // useEffect(() => {
   //   dispatch(thunkGetAllPlayers())
@@ -54,7 +53,7 @@ function PlayersBody(player) {
         </NavLink>
       </div>
       <div className='players-body-stat'>
-        {player.player.team}
+        {PlayerLogo(teamPlayer)}
       </div>
       <div className='players-body-stat'>
         {player.player.id}

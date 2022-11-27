@@ -79,7 +79,12 @@ function LeagueDetail() {
                       <button>{team.name}</button>
                     </NavLink>
                   </div>
-                 { user ==team.user_id && <button> X </button>}
+                 { user ==team.user_id &&
+                 <NavLink to={`/teams/${team.id}/delete`}>
+                  <button> X </button>
+                 </NavLink>
+
+                 }
                 </div>
               }
             })}
@@ -90,12 +95,12 @@ function LeagueDetail() {
           <div className='league-detail-rules-full'>
             <div className='league-detail-rules-header'>
               Rules
-            <NavLink to={`/leagues/${leagueId}/update`}>
+            {oneLeague && user == oneLeague.commissioner_id && <NavLink to={`/leagues/${leagueId}/update`}>
               <button className='league-detail-rules-button'>Update League Rules</button>
-            </NavLink>
-            <NavLink to={`/leagues/${leagueId}/delete`}>
+            </NavLink>}
+            {oneLeague && user == oneLeague.commissioner_id && <NavLink to={`/leagues/${leagueId}/delete`}>
               <button className='league-detail-rules-button'>Delete League</button>
-            </NavLink>
+            </NavLink>}
 
             </div>
 
