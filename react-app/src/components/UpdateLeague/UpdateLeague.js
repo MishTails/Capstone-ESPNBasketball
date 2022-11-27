@@ -2,12 +2,12 @@ import React from 'react';
 import { useState } from 'react';
 import { useHistory, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import './CreateLeague.css';
+import './UpdateLeague.css';
 import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
-import { thunkGetAllLeagues, thunkPostLeague } from '../../store/league';
+import {thunkUpdateLeague } from '../../store/league';
 
-function CreateLeague() {
+function UpdateLeague() {
   const dispatch = useDispatch()
   const history = useHistory()
   const [errors, setErrors] = useState([]);
@@ -16,24 +16,14 @@ function CreateLeague() {
   const [leagueSize, setLeagueSize] = useState('8')
   const [leagueDraftDate, setLeagueDraftDate] = useState('')
   const [leagueDraftTimer, setLeagueDraftTimer] = useState(30)
-  const [teamName, setTeamName] = useState('')
-  const [teamLogo, setTeamLogo] = useState('')
-
 
   const user = useSelector(state => state?.session?.user?.id);
   const league = useSelector(state => state.leagues.allLeagues)
-  // const dispatch = useDispatch();
 
   const updateLeagueName = (e) => {
     setLeagueName(e.target.value);
   };
 
-  const updateTeamName = (e) => {
-    setTeamName(e.target.value);
-  };
-  const updateTeamLogo = (e) => {
-    setTeamLogo(e.target.value);
-  };
 
   const updateLeagueDesc = (e) => {
     setLeagueDesc(e.target.value);
@@ -64,24 +54,24 @@ function CreateLeague() {
       draft_timer: leagueDraftTimer
     }
     console.log("PIZZA")
-    await dispatch(thunkPostLeague(leagueData))
+    await dispatch(thunkUpdateLeague(leagueData))
     history.push('/leagues')
   }
   return (
     <div>
       <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
       <NavBar/>
-      <form className='create-league-form-full' onSubmit={onSubmit}>
-        <div className='create-league-heading'>
-          Create League
+      <form className='update-league-form-full' onSubmit={onSubmit}>
+        <div className='update-league-heading'>
+          Edit League
         </div>
 
-        <div className='create-league-form-instructions-bubble'>
-          <div className='create-league-form-lightbulb'>
+        <div className='update-league-form-instructions-bubble'>
+          <div className='update-league-form-lightbulb'>
             <i class="fa fa-solid fa-lightbulb"></i>
           </div>
-          <div className='create-league-form-instructions'>
-            Fill out this form for simple and easy league creation!
+          <div className='update-league-form-instructions'>
+            Change the settings of your League!
           </div>
         </div>
         <div>
@@ -89,11 +79,11 @@ function CreateLeague() {
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div className='create-league-form-label-input'>
-          <div className="create-league-form-league-name">
-            <label className='create-league-form-label' htmlFor='email'>League Name</label>
+        <div className='update-league-form-label-input'>
+          <div className="update-league-form-league-name">
+            <label className='update-league-form-label' htmlFor='email'>League Name</label>
               <input
-                className='create-league-form-input'
+                className='update-league-form-input'
                 name='leagueName'
                 type='text'
                 placeholder='League Name'
@@ -101,10 +91,10 @@ function CreateLeague() {
                 onChange={updateLeagueName}
               />
           </div>
-          <div className='create-league-form-league-desc'>
-          <label className='create-league-form-label' htmlFor='email'>League Size</label>
+          <div className='update-league-form-league-desc'>
+          <label className='update-league-form-label' htmlFor='email'>League Size</label>
               <input
-                className='create-league-form-input'
+                className='update-league-form-input'
                 name='leagueSize'
                 type='number'
                 placeholder='League Size'
@@ -112,20 +102,20 @@ function CreateLeague() {
                 onChange={updateLeagueSize}
               />
           </div>
-          <div className='create-league-form-league-desc'>
-          <label className='create-league-form-label' htmlFor='email'>League Draft Date</label>
+          <div className='update-league-form-league-desc'>
+          <label className='update-league-form-label' htmlFor='email'>League Draft Date</label>
               <input
-                className='create-league-form-input'
+                className='update-league-form-input'
                 name='leagueDraftDate'
                 type='date'
                 value={leagueDraftDate}
                 onChange={updateLeagueDraftDate}
               />
           </div>
-          <div className='create-league-form-league-desc'>
-          <label className='create-league-form-label' htmlFor='email'>League Draft Timer (Seconds)</label>
+          <div className='update-league-form-league-desc'>
+          <label className='update-league-form-label' htmlFor='email'>League Draft Timer (Seconds)</label>
               <input
-                className='create-league-form-input'
+                className='update-league-form-input'
                 name='leagueDesc'
                 type='number'
                 placeholder='League Description'
@@ -133,10 +123,10 @@ function CreateLeague() {
                 onChange={updateLeagueDraftTimer}
               />
           </div>
-          <div className='create-league-form-league-desc'>
-          <label className='create-league-form-label' htmlFor='email'>League Description</label>
+          <div className='update-league-form-league-desc'>
+          <label className='update-league-form-label' htmlFor='email'>League Description</label>
               <input
-                className='create-league-form-input'
+                className='update-league-form-input'
                 name='leagueDesc'
                 type='textbox'
                 placeholder='League Description'
@@ -145,8 +135,8 @@ function CreateLeague() {
               />
           </div>
         </div>
-        <div className='create-league-form-submit-holder'>
-          <button className='create-league-form-submit' type='submit'>SUBMIT</button>
+        <div className='update-league-form-submit-holder'>
+          <button className='update-league-form-submit' type='submit'>SUBMIT</button>
         </div>
       </form>
       <Footer/>
@@ -157,4 +147,4 @@ function CreateLeague() {
 }
 
 
-export default CreateLeague
+export default UpdateLeague

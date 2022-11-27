@@ -10,6 +10,7 @@ import LeagueDetail from './components/LeagueDetail/LeagueDetail';
 import Players from './components/Players/Players';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Splash from './components/Splash/Splash';
+import UpdateLeague from './components/UpdateLeague/UpdateLeague';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
@@ -45,7 +46,7 @@ function App() {
           <CreateLeague/>
         </Route>
         <Route path='/leagues/:leagueId/update'>
-          Update Page
+          <UpdateLeague/>
         </Route>
         <Route path='/leagues/:leagueId/delete'>
           Delete Page
