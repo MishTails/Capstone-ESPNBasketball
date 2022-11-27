@@ -12,11 +12,6 @@ function CreateTeam() {
   const history = useHistory()
   const id = useParams()
   const [errors, setErrors] = useState([]);
-  const [leagueName, setLeagueName] = useState('')
-  const [leagueDesc, setLeagueDesc] = useState('')
-  const [leagueSize, setLeagueSize] = useState('8')
-  const [leagueDraftDate, setLeagueDraftDate] = useState('')
-  const [leagueDraftTimer, setLeagueDraftTimer] = useState(30)
 
   const [teamName, setTeamName] = useState('')
   const [teamLogo, setTeamLogo] = useState('')

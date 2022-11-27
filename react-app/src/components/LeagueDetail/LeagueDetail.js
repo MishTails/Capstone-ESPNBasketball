@@ -1,13 +1,10 @@
 import React, { useEffect } from 'react';
-import { useState } from 'react';
 import { useHistory, NavLink , useParams} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './LeagueDetail.css';
-import logo from '../../assets/halfcourtLogo-PhotoRoom.png'
 import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
-import { thunkGetAllLeagues, thunkGetOneLeague, thunkPostLeague } from '../../store/league';
-import {thunkGetAllPlayers} from '../../store/players'
+import { thunkGetOneLeague} from '../../store/league';
 import { thunkGetAllTeams } from '../../store/team'
 
 function LeagueDetail() {

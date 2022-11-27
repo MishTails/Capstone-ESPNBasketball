@@ -1,23 +1,14 @@
 import React, { useEffect } from 'react';
-import { useState } from 'react';
-import { useHistory, NavLink , useParams} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './Players.css';
 import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
 import PlayersBody from './PlayersBody';
 import {thunkGetAllPlayers} from '../../store/players'
-import thunkPostTeam from '../../store/team'
+
 
 function Players() {
   const dispatch = useDispatch()
-  const history = useHistory()
-  const id = useParams()
-  const [errors, setErrors] = useState([]);
-
-  const [teamName, setTeamName] = useState('')
-  const [teamLogo, setTeamLogo] = useState('')
-
 
   const user = useSelector(state => state?.session?.user?.id);
   const players = useSelector(state => state.players);
@@ -30,20 +21,6 @@ function Players() {
 
   if (players?.allPlayers) {
     allPlayers = Object.values(players.allPlayers)
-  }
-
-
-  const onSubmit = async (e) => {
-    e.preventDefault()
-    let leagueData = {
-      name: teamName,
-      logo: teamLogo,
-      user_id: user,
-      league_id: id.leagueId
-
-    }
-    await dispatch(thunkPostTeam(leagueData))
-    history.push('/leagues')
   }
   return (
     <div>

@@ -1,10 +1,6 @@
 import React, { useEffect } from 'react';
-import { useState } from 'react';
-import { useHistory, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Leagues.css'
-import logo from '../../assets/halfcourtLogo-PhotoRoom.png'
-import NavBar from '../NavBar/NavBar';
-import Footer from '../Footer/Footer';
 import { thunkGetAllLeagues, thunkPostLeague } from '../../store/league';
 import { useDispatch, useSelector } from 'react-redux';
 

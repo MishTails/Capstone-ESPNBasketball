@@ -4,8 +4,6 @@ import { useHistory, NavLink , useParams} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './Players.css';
 import PlayerLogo from './PlayerLogoSwitch';
-import { thunkGetAllLeagues, thunkPostLeague } from '../../store/league';
-// import {thunkGetAllPlayers} from '../../store/players'
 import thunkPostTeam from '../../store/team'
 
 function PlayersBody(player) {
@@ -23,28 +21,11 @@ function PlayersBody(player) {
   let allPlayers
   let teamPlayer = player.player.team
 
-  // useEffect(() => {
-  //   dispatch(thunkGetAllPlayers())
-  // },[dispatch])
-
-
   if (players?.allPlayers) {
     allPlayers = Object.values(players.allPlayers)
   }
 
 
-  const onSubmit = async (e) => {
-    e.preventDefault()
-    let leagueData = {
-      name: teamName,
-      logo: teamLogo,
-      user_id: user,
-      league_id: id.leagueId
-
-    }
-    await dispatch(thunkPostTeam(leagueData))
-    history.push('/leagues')
-  }
   return (
     <div className='players-body-full'>
       <div className='players-body-name'>
