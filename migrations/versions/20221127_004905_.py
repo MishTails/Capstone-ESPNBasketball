@@ -86,24 +86,24 @@ def upgrade():
     )
     if environment == "production":
         op.execute(f"ALTER TABLE teams SET SCHEMA {SCHEMA};")
-    # op.create_table('user_leagues',
-    # sa.Column('user_id', sa.Integer(), nullable=False),
-    # sa.Column('league_id', sa.Integer(), nullable=True),
-    # sa.ForeignKeyConstraint(['league_id'], ['leagues.id'], ),
-    # sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-    # sa.PrimaryKeyConstraint('user_id')
-    # )
-    # if environment == "production":
-    #     op.execute(f"ALTER TABLE user_leagues SET SCHEMA {SCHEMA};")
-    # op.create_table('rosters',
-    # sa.Column('player_id', sa.Integer(), nullable=False),
-    # sa.Column('team_id', sa.Integer(), nullable=False),
-    # sa.ForeignKeyConstraint(['player_id'], ['players.id'], ),
-    # sa.ForeignKeyConstraint(['team_id'], ['teams.id'], ),
-    # sa.PrimaryKeyConstraint('player_id', 'team_id')
-    # )
-    # if environment == "production":
-    #     op.execute(f"ALTER TABLE rosters SET SCHEMA {SCHEMA};")
+    op.create_table('user_leagues',
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('league_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['league_id'], ['leagues.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('user_id')
+    )
+    if environment == "production":
+        op.execute(f"ALTER TABLE user_leagues SET SCHEMA {SCHEMA};")
+    op.create_table('rosters',
+    sa.Column('player_id', sa.Integer(), nullable=False),
+    sa.Column('team_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['player_id'], ['players.id'], ),
+    sa.ForeignKeyConstraint(['team_id'], ['teams.id'], ),
+    sa.PrimaryKeyConstraint('player_id', 'team_id')
+    )
+    if environment == "production":
+        op.execute(f"ALTER TABLE rosters SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
