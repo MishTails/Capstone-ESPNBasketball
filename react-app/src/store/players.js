@@ -21,7 +21,7 @@ export const thunkGetAllPlayers = () => async (dispatch) => {
   const response = await fetch(`/api/players`)
   if (response.ok) {
     const players = await response.json();
-    dispatch(getAllPlayers(normalizeArr(players)))
+    dispatch(getAllPlayers(normalizeArr(players.players)))
   }
 }
 
@@ -40,6 +40,7 @@ export default function players(state = initialState, action) {
     case GET_ALL_PLAYERS:
       let newStateGetAll = {...state}
       newStateGetAll.allPlayers = {...action.payload}
+      return newStateGetAll
     case GET_ONE_PLAYER:
       let newStateGetOne = {...state}
       newStateGetOne.onePlayer = {...action.payload}

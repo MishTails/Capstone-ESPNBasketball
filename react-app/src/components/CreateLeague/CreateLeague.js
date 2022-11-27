@@ -1,16 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
-import { useHistory, NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './CreateLeague.css';
-import logo from '../../assets/halfcourtLogo-PhotoRoom.png'
 import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
-import { thunkGetAllLeagues, thunkPostLeague } from '../../store/league';
-import thunkPostTeam from '../../store/team'
-<link
-  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
-  rel="stylesheet"  type='text/css'></link>
+import { thunkPostLeague } from '../../store/league';
 
 function CreateLeague() {
   const dispatch = useDispatch()
@@ -21,8 +16,6 @@ function CreateLeague() {
   const [leagueSize, setLeagueSize] = useState('8')
   const [leagueDraftDate, setLeagueDraftDate] = useState('')
   const [leagueDraftTimer, setLeagueDraftTimer] = useState(30)
-  const [teamName, setTeamName] = useState('')
-  const [teamLogo, setTeamLogo] = useState('')
 
 
   const user = useSelector(state => state?.session?.user?.id);
@@ -31,13 +24,6 @@ function CreateLeague() {
 
   const updateLeagueName = (e) => {
     setLeagueName(e.target.value);
-  };
-
-  const updateTeamName = (e) => {
-    setTeamName(e.target.value);
-  };
-  const updateTeamLogo = (e) => {
-    setTeamLogo(e.target.value);
   };
 
   const updateLeagueDesc = (e) => {
@@ -62,12 +48,13 @@ function CreateLeague() {
     e.preventDefault()
     let leagueData = {
       league_name: leagueName,
-      commissioner_id: 1,
+      commissioner_id: parseInt(user),
       size: leagueSize,
       description: leagueDesc,
       draft_date: leagueDraftDate,
       draft_timer: leagueDraftTimer
     }
+    console.log("PIZZA")
     await dispatch(thunkPostLeague(leagueData))
     history.push('/leagues')
   }
@@ -150,7 +137,7 @@ function CreateLeague() {
           </div>
         </div>
         <div className='create-league-form-submit-holder'>
-          <button className='create-league-form-submit' type='submit'>LOG IN</button>
+          <button className='create-league-form-submit' type='submit'>SUBMIT</button>
         </div>
       </form>
       <Footer/>

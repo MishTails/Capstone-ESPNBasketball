@@ -1,0 +1,103 @@
+.create-team-form-full {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(22,23,24,.96);
+  margin-top: 200px;
+  position: absolute;
+  width: 100%;
+  bottom: 67px;
+}
+
+.create-team-form-label {
+  display: flex;
+  color: rgb(6,149,106);
+  font-size: 13px;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.create-team-form-email, .create-team-form-password {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-team-form-input {
+  background-color: black;
+  color: white;
+  outline: rgb(8,143,103);
+  border: 1px solid rgb(6,149,106);
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+.create-team-form-submit {
+  display: flex;
+  background-color: rgb(43,133,212);
+  width: 100px;
+  border-radius: 5px;
+  padding: 5px 0px;
+  font-weight: 600;
+  margin-top: 3px;
+  justify-content: center;
+}
+
+.create-team-form-submit-holder {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.create-team-form-label-input {
+  display: flex;
+  flex-direction: column;
+  max-width: 20%;
+  min-width: 215px;
+  /* justify-content: space-between; */
+}
+
+.create-team-form-league-name,
+.create-team-form-team-name,
+.create-team-form-team-logo,
+.create-team-form-league-type,
+.create-team-form-draft-type,
+.create-team-form-league-desc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create-team-heading {
+  display: flex;;
+  justify-content: center;
+  font-size: 36px;
+  width: 25%;
+  position: relative;
+  right: 120px;
+  min-width: 250px;
+  padding: 15px 0px 25px;
+}
+
+.create-team-form-instructions-bubble {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(25,39,51);
+  /* padding: 10px; */
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.create-team-form-lightbulb {
+  background-color: rgba(55, 105, 149, .3) ;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.create-team-form-instructions {
+  padding: 10px;
+}
+
+.fa-lightbulb {
+  font-size: 24px;
+  padding: 5px;
+}

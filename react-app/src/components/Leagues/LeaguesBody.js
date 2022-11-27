@@ -1,10 +1,6 @@
 import React, { useEffect } from 'react';
-import { useState } from 'react';
-import { useHistory, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Leagues.css'
-import logo from '../../assets/halfcourtLogo-PhotoRoom.png'
-import NavBar from '../NavBar/NavBar';
-import Footer from '../Footer/Footer';
 import { thunkGetAllLeagues, thunkPostLeague } from '../../store/league';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -35,7 +31,9 @@ function LeagueBody(single) {
 
         </div>
         <div className='leagues-table-data' id='ltTwo'>
-          {myLeague.league_name}
+          <NavLink to={`/leagues/${myLeague.id}`}>
+              <button>{myLeague.league_name}</button>
+            </NavLink>
         </div>
         <div className='leagues-table-data' id='ltThree'>
           temp commish

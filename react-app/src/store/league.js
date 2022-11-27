@@ -68,6 +68,7 @@ export const thunkPostLeague = (data) => async (dispatch) => {
 }
 
 export const thunkUpdateLeague = (data) => async (dispatch) => {
+  console.log('wings', data)
   const response = await fetch(`/api/leagues/${data.id}`, {
     method: 'put',
     headers: {
@@ -83,6 +84,7 @@ export const thunkUpdateLeague = (data) => async (dispatch) => {
 }
 
 export const thunkDeleteLeague = (id) => async (dispatch) => {
+  console.log("Starburst")
   const response = await fetch(`/api/leagues/${id}`, {
     method: 'delete'
   });
@@ -106,7 +108,7 @@ export default function leagues(state = initialState, action) {
       return newStateGetAll
     case GET_ONE_LEAGUE:
       let newStateGetOne = {...state};
-      newStateGetOne.oneTeam = {...action.payload}
+      newStateGetOne.oneLeague = {...action.payload}
       return newStateGetOne
     case POST_LEAGUE:
       let newStateCreate = {...state}
@@ -116,7 +118,7 @@ export default function leagues(state = initialState, action) {
       return newStateCreate
     case UPDATE_LEAGUE:
       let newStateUpdate = {...state}
-      newStateUpdate[action.paylaod.id] = action.payload
+      newStateUpdate[action?.paylaod?.id] = action.payload
       return newStateUpdate;
     case DELETE_LEAGUE:
       let newStateDelete = {...state}

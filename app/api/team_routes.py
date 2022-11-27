@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request
 from flask_login import login_required
-from app.models import League, Team
+from app.models import League, Team, db
 
 from app.forms import TeamForm
 
@@ -13,7 +13,7 @@ def get_all_teams():
   Query for all teams and return them in a list of league dictionaries
   """
   teams = Team.query.all()
-  return [team.to_dict() for team in teams]
+  return {'teams': [team.to_dict() for team in teams]}
 
 @team_routes.route('/<int:id>')
 @login_required
@@ -30,7 +30,7 @@ def create_one_team():
   """
   Query to create one team and add it to the database
   """
-  allTeams = Teams.query.all()
+  allTeams = Team.query.all()
   form = TeamForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
@@ -38,7 +38,7 @@ def create_one_team():
       name = form.data['name'],
       logo = form.data['logo'],
       league_id = form.data['league_id'],
-      user_id = form.data['ser_id']
+      user_id = form.data['user_id']
     )
     db.session.add(new_team)
     db.session.commit()
@@ -66,4 +66,4 @@ def delete_team(id):
   team = Team.query.get(id)
   db.session.delete(team)
   db.session.commit()
-  return dict(message= "Deleted a team")
+  return dict(message="Deleted")

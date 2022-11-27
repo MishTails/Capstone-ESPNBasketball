@@ -1,9 +1,6 @@
 import React from 'react';
-import { useState } from 'react';
-import { useHistory, NavLink } from 'react-router-dom';
 import './Footer.css';
-import logo from '../../assets/halfcourtLogo-PhotoRoom.png'
-import NavBar from '../NavBar/NavBar';
+
 
 
 function Footer() {

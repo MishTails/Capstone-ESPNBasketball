@@ -34,11 +34,11 @@ const cleanTeams = () => ({
   type: CLEAN_UP_TEAMS
 })
 
-export const thunkGetAllTeamss = (id) => async (dispatch) => {
-  const response = await fetch(`/api/teams/${id}`);
+export const thunkGetAllTeams = () => async (dispatch) => {
+  const response = await fetch(`/api/teams`);
   if (response.ok) {
     const teams= await response.json();
-    dispatch(getAllTeams(normalizeArr(teams)))
+    dispatch(getAllTeams(normalizeArr(teams.teams)))
   }
 }
 
@@ -51,6 +51,7 @@ export const thunkGetOneTeam = (teamId) => async (dispatch) => {
 }
 
 export const thunkPostTeam = (data) => async (dispatch) => {
+  console.log('hi')
   const response = await fetch(`/api/teams`, {
     method: 'post',
     headers: {
@@ -59,6 +60,7 @@ export const thunkPostTeam = (data) => async (dispatch) => {
     body: JSON.stringify(data)
   });
   if (response.ok) {
+    console.log('hi2')
     const team = await response.json();
     dispatch(postTeam(team));
     return team
