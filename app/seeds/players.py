@@ -30,7 +30,7 @@ def seed_players():
 # it will reset the primary keys for you as well.
 def undo_players():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}[player]s RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}[player] RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM mockdrafts")
     db.session.commit()

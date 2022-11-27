@@ -13,7 +13,7 @@ def get_all_teams():
   Query for all teams and return them in a list of league dictionaries
   """
   teams = Team.query.all()
-  return [team.to_dict() for team in teams]
+  return {'teams': [team.to_dict() for team in teams]}
 
 @team_routes.route('/<int:id>')
 @login_required
@@ -66,4 +66,4 @@ def delete_team(id):
   team = Team.query.get(id)
   db.session.delete(team)
   db.session.commit()
-  return dict(message= "Deleted a team")
+  return dict(message="Deleted")

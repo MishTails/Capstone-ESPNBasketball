@@ -3,9 +3,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar/NavBar';
 import CreateLeague from './components/CreateLeague/CreateLeague';
+import CreateTeam from './components/CreateTeam/CreateTeam';
 import Leagues from './components/Leagues/Leagues';
+import LeagueDetail from './components/LeagueDetail/LeagueDetail';
+import Players from './components/Players/Players';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Splash from './components/Splash/Splash';
 import UsersList from './components/UsersList';
@@ -41,6 +43,24 @@ function App() {
         </Route>
         <Route path='/leagues/create' exact={true}>
           <CreateLeague/>
+        </Route>
+        <Route path='/leagues/:leagueId/update'>
+          Update Page
+        </Route>
+        <Route path='/leagues/:leagueId/delete'>
+          Delete Page
+        </Route>
+        <Route path='/leagues/:leagueId/join'>
+          <CreateTeam/>
+        </Route>
+        <Route path='/leagues/:leagueId'>
+          <LeagueDetail/>
+        </Route>
+        <Route path='/players/:playerId'>
+          Player Detail Page
+        </Route>
+        <Route path='/players'>
+          <Players/>
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>

@@ -150,7 +150,7 @@ function CreateLeague() {
           </div>
         </div>
         <div className='create-league-form-submit-holder'>
-          <button className='create-league-form-submit' type='submit'>LOG IN</button>
+          <button className='create-league-form-submit' type='submit'>SUBMIT</button>
         </div>
       </form>
       <Footer/>

@@ -9,7 +9,7 @@ class League(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    commissioner_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    commissioner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     league_name = db.Column(db.String(40), nullable=False, unique=True)
     size = db.Column(db.Integer, nullable=False)
     occupancy =  db.Column(db.Integer)
@@ -19,8 +19,9 @@ class League(db.Model):
 
     #relationships
     team = db.relationship("Team", back_populates="league")
-    commissioner = db.relationship("User", back_populates="league")
-    user = db.relationship("User", secondary="user_leagues", back_populates="league")
+    user = db.relationship("User", secondary="user_leagues",  back_populates="league")
+    commishLeague = db.relationship("User", back_populates= "commishUser")
+
 
     def to_dict(self):
         return {

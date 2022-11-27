@@ -34,11 +34,11 @@ const cleanTeams = () => ({
   type: CLEAN_UP_TEAMS
 })
 
-export const thunkGetAllTeamss = (id) => async (dispatch) => {
-  const response = await fetch(`/api/teams/${id}`);
+export const thunkGetAllTeams = () => async (dispatch) => {
+  const response = await fetch(`/api/teams`);
   if (response.ok) {
     const teams= await response.json();
-    dispatch(getAllTeams(normalizeArr(teams)))
+    dispatch(getAllTeams(normalizeArr(teams.teams)))
   }
 }
 

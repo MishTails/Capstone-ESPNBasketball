@@ -106,7 +106,7 @@ export default function leagues(state = initialState, action) {
       return newStateGetAll
     case GET_ONE_LEAGUE:
       let newStateGetOne = {...state};
-      newStateGetOne.oneTeam = {...action.payload}
+      newStateGetOne.oneLeague = {...action.payload}
       return newStateGetOne
     case POST_LEAGUE:
       let newStateCreate = {...state}

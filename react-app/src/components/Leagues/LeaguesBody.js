@@ -35,7 +35,9 @@ function LeagueBody(single) {
 
         </div>
         <div className='leagues-table-data' id='ltTwo'>
-          {myLeague.league_name}
+          <NavLink to={`/leagues/${myLeague.id}`}>
+              <button>{myLeague.league_name}</button>
+            </NavLink>
         </div>
         <div className='leagues-table-data' id='ltThree'>
           temp commish

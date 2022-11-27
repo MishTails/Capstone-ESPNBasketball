@@ -1,0 +1,58 @@
+.players-title {
+  display: flex;
+  font-size: 36px;
+  position: relative;
+  /* right: 120px; */
+  min-width: 250px;
+  padding: 15px 6px 0px 25px;
+}
+
+
+.players-table-full {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(87, 84, 84);
+  border-radius: 5px;
+  margin: 20px;
+  width: 920px;
+}
+
+.players-table-headings-full {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(49, 44, 44);
+}
+
+.players-heading-name {
+  min-width: 200px;
+  width: 200px;
+  padding: 5px;
+}
+
+.players-heading-stat {
+  min-width: 50px;
+  width: 50px;
+  padding: 5px;
+}
+
+.players-body-full {
+  display: flex;
+  flex-direction: row;
+}
+
+.players-navlink {
+  color: white;
+  text-decoration: none;
+}
+
+.players-body-name {
+  min-width: 200px;
+  width: 200px;
+  padding: 5px;
+}
+
+.players-body-stat {
+  min-width: 50px;
+  width: 50px;
+  padding: 5px;
+}
