@@ -84,6 +84,7 @@ export const thunkUpdateLeague = (data) => async (dispatch) => {
 }
 
 export const thunkDeleteLeague = (id) => async (dispatch) => {
+  console.log("Starburst")
   const response = await fetch(`/api/leagues/${id}`, {
     method: 'delete'
   });

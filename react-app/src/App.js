@@ -14,6 +14,7 @@ import UpdateLeague from './components/UpdateLeague/UpdateLeague';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import DeleteLeague from './components/DeleteLeague/DeleteLeague';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -49,7 +50,7 @@ function App() {
           <UpdateLeague/>
         </Route>
         <Route path='/leagues/:leagueId/delete'>
-          Delete Page
+          <DeleteLeague/>
         </Route>
         <Route path='/leagues/:leagueId/join'>
           <CreateTeam/>

@@ -57,7 +57,7 @@ function UpdateLeague() {
     }
     console.log("PIZZA")
     await dispatch(thunkUpdateLeague(leagueData))
-    history.push('/leagues')
+    history.push(`/leagues/${parseInt(leagueId.leagueId)}`)
   }
   return (
     <div>

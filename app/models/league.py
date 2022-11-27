@@ -18,7 +18,7 @@ class League(db.Model):
     draft_timer = db.Column(db.Integer, nullable= False)
 
     #relationships
-    team = db.relationship("Team", back_populates="league")
+    team = db.relationship("Team", back_populates="league", cascade="all, delete-orphan")
     user = db.relationship("User", secondary="user_leagues",  back_populates="league")
     commishLeague = db.relationship("User", back_populates= "commishUser")
 
