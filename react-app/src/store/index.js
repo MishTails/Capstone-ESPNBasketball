@@ -4,12 +4,14 @@ import session from './session'
 import leagues from './league';
 import teams from './team';
 import players from './players';
+import rosters from './roster';
 
 const rootReducer = combineReducers({
   session,
   leagues,
   teams,
-  players
+  players,
+  rosters
 });
 
 
