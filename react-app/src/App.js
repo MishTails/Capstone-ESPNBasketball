@@ -10,6 +10,7 @@ import LeagueDetail from './components/LeagueDetail/LeagueDetail';
 import Players from './components/Players/Players';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Splash from './components/Splash/Splash';
+import TeamDetail from './components/TeamDetail/TeamDetail';
 import UpdateLeague from './components/UpdateLeague/UpdateLeague';
 import UsersList from './components/UsersList';
 import User from './components/User';
@@ -39,6 +40,9 @@ function App() {
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path='/teams/:teamId'>
+          <TeamDetail/>
         </Route>
         <Route path="/leagues" exact={true}>
           <Leagues/>
