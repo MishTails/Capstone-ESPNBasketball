@@ -5,19 +5,20 @@ from app.data import nbaPlayersStats
 def seed_players():
 
   for player in nbaPlayersStats:
+    print("THIS IS A PLAYER", nbaPlayersStats[player])
     db.session.add(Player(
-      name = nbaPlayersStats[player]['name'],
-      team = nbaPlayersStats[player]['team'],
-      minutes = nbaPlayersStats[player]['minutes'],
-      points = nbaPlayersStats[player]['points'],
-      field_goal_percent = nbaPlayersStats[player]['field_goal_percent'],
-      threes = nbaPlayersStats[player]['threes'],
-      free_throw_percent = nbaPlayersStats[player]['free_throw_percent'],
-      rebounds = nbaPlayersStats[player]['rebounds'],
-      assists = nbaPlayersStats[player]['assists'],
-      turnovers = nbaPlayersStats[player]['turnovers'],
-      steals = nbaPlayersStats[player]['steals'],
-      blocks = nbaPlayersStats[player]['blocks']
+      name = str(nbaPlayersStats[player]['name']),
+      team = str(nbaPlayersStats[player]['team']),
+      minutes = float(nbaPlayersStats[player]['minutes']),
+      points = float(nbaPlayersStats[player]['points']),
+      field_goal_percent = float(nbaPlayersStats[player]['field_goal_percent']),
+      threes = float(nbaPlayersStats[player]['threes']),
+      free_throw_percent = float(nbaPlayersStats[player]['free_throw_percent']),
+      rebounds = float(nbaPlayersStats[player]['rebounds']),
+      assists = float(nbaPlayersStats[player]['assists']),
+      turnovers = float(nbaPlayersStats[player]['turnovers']),
+      steals = float(nbaPlayersStats[player]['steals']),
+      blocks = float(nbaPlayersStats[player]['blocks'])
     ))
   db.session.commit()
 
@@ -34,3 +35,19 @@ def undo_players():
     else:
         db.session.execute("DELETE FROM players")
     db.session.commit()
+
+
+# p1 = Player(
+#     name = "luka",
+#     team = "DAL",
+#     minutes = 20.2,
+#     points = 20.2,
+#     field_goal_percent = 20.2,
+#     threes= 20.2,
+#     free_throw_percent = 20.2,
+#     rebounds= 20.2,
+#     assists = 20.2,
+#     turnovers = 20.2,
+#     steals= 20.2,
+#     blocks = 20.2
+#   )

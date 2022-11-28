@@ -59,7 +59,7 @@ export const thunkPostRoster = (data) => async (dispatch) => {
   }
 }
 
-export const thunkDeleteTeam = (roster) => async (dispatch) => {
+export const thunkDeleteRoster = (roster) => async (dispatch) => {
   const response = await fetch(`/api/rosters/${roster.id}`, {
     method: 'delete'
   });

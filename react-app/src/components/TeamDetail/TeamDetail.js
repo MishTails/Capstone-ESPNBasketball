@@ -49,6 +49,9 @@ function TeamDetail() {
           <NavLink to={`/teams/${teamId}/update`}>
             <button>Edit Team</button>
           </NavLink>
+          <NavLink to={`/teams/${teamId}/players`}>
+            <button>Add Players</button>
+          </NavLink>
         </div>}
         <div className='team-detail-roster'>
           <div className='team-detail-player'>

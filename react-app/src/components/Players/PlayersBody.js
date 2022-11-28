@@ -11,7 +11,7 @@ function PlayersBody(player) {
   const history = useHistory()
   const id = useParams()
   const [errors, setErrors] = useState([]);
-
+  const teamId = useParams()
   const [teamName, setTeamName] = useState('')
   const [teamLogo, setTeamLogo] = useState('')
 
@@ -28,6 +28,13 @@ function PlayersBody(player) {
 
   return (
     <div className='players-body-full'>
+      <div className='players-body-stat'>
+        {console.log('params',teamId.teamId)}
+        {console.log('player', player.player.id)}
+        <NavLink to={`/teams/${parseInt(teamId.teamId)}/players/${player.player.id}`}>
+          <button>+</button>
+        </NavLink>
+      </div>
       <div className='players-body-name'>
         <NavLink className="players-navlink" to={`/player_info/${player.player.id}`}>
           {player.player.name}

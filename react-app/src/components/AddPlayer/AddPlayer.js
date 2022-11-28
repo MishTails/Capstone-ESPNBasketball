@@ -1,50 +1,53 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import './DeleteTeam.css';
+import './AddPlayer.css';
 import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
-import { thunkDeleteTeam } from '../../store/team';
+import { thunkGetAllRosters, thunkPostRoster } from '../../store/roster';
+import { thunkGetAllPlayers, thunkGetOnePlayer } from '../../store/players';
 
-// THIS ONE IS NOT DONE
-
-
-function DeleteTeam() {
+function AddPlayer() {
   const dispatch = useDispatch()
   const history = useHistory()
-  const teamId = useParams()
+  const params = useParams()
 
   const user = useSelector(state => state?.session?.user?.id);
-  const league = useSelector(state => state.leagues.allLeagues)
+  const player = useSelector(state => state?.players?.onePlayer)
 
+  useEffect(() => {
+    dispatch(thunkGetAllPlayers())
+    dispatch(thunkGetAllRosters())
+    dispatch(thunkGetOnePlayer(params.playerId))
+  },[dispatch])
 
 
   const onSubmit = async (e) => {
     e.preventDefault()
 
-    await dispatch(thunkDeleteTeam(parseInt(teamId.teamId)))
-    history.push('/leagues')
+
+    history.push(`/teams/${params.teamId}`)
   }
   return (
     <div>
+      {console.log('params',params)}
       <NavBar/>
-      {console.log(teamId.teamId)}
       <form className='update-league-form-full' onSubmit={onSubmit}>
-        <div className='update-league-heading'>
-          Delete Team
-        </div>
+       {player&& <div className='update-league-heading'>
+          Add {player.name}?
+        </div>}
 
         <div className='update-league-form-instructions-bubble'>
           <div className='update-league-form-lightbulb'>
             <i class="fa fa-solid fa-lightbulb"></i>
           </div>
           <div className='update-league-form-instructions'>
-            Are you sure you want to leave this league?
+            Are you sure you want to add this player?
           </div>
         </div>
         <div className='update-league-form-submit-holder'>
-          <button className='update-league-form-submit' type='submit'>SUBMIT</button>
+          <button className='update-league-form-submit' type='submit'>ADD TO TEAM</button>
         </div>
       </form>
       <Footer/>
@@ -55,4 +58,4 @@ function DeleteTeam() {
 }
 
 
-export default DeleteTeam
+export default AddPlayer

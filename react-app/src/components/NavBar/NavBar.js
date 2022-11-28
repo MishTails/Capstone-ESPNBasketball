@@ -27,7 +27,7 @@ const NavBar = () => {
           <NavLink to='/' exact={true} activeClassName='active'>
             <img className='nav-logo' src={logo}></img>
           </NavLink>
-          <div>
+          {user &&<div>
             <button className='nav-my-leagues' onClick={() => leagueOpen == false ? setLeagueOpen(true): setLeagueOpen(false)}>
                My Leagues
             </button>
@@ -55,15 +55,10 @@ const NavBar = () => {
                 </div>
 
               </div>}
-          </div>
+          </div>}
           <div>
               <NavLink to={'/leagues'}>
                 <button className='nav-leagues'>Fantasy Leagues</button>
-              </NavLink>
-          </div>
-          <div>
-              <NavLink to={'/players'}>
-                <button className='nav-players'>Players</button>
               </NavLink>
           </div>
         </div>

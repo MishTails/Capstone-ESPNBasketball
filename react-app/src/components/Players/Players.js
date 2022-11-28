@@ -30,6 +30,9 @@ function Players() {
       </div>
       <div className='players-table-full'>
         <div className='players-table-headings-full'>
+          <div className='players-heading-stat'>
+
+          </div>
           <div className='players-heading-name'>
           Name
           </div>
@@ -77,7 +80,7 @@ function Players() {
         })}
       </div>
 
-      <Footer/>
+      {/* <Footer/> */}
     </div>
 
   )

@@ -13,11 +13,11 @@ def get_all_players():
   players = Player.query.all()
   return {'players': [player.to_dict() for player in players]}
 
-@player_routes.route('/:name')
+@player_routes.route('/<int:id>')
 @login_required
-def get_one_player(name):
+def get_one_player(id):
   """
   Query for getting one player and returning it as a dictionary
   """
-  player = Player.query.get(name)
+  player = Player.query.get(id)
   return player.to_dict()

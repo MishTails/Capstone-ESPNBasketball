@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .roster import rosters
 
 class Team(db.Model):
     __tablename__ = 'teams'
@@ -15,7 +16,7 @@ class Team(db.Model):
     #relationships
     user = db.relationship("User", back_populates='team')
     league = db.relationship("League", back_populates="team")
-    # player = db.relationship("Player", secondary="rosters", back_populates="team")
+    player = db.relationship("Player", secondary=rosters, back_populates="team")
 
     def to_dict(self):
         return {

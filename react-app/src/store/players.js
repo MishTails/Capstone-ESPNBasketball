@@ -12,11 +12,6 @@ const getOnePlayer = (payload) => ({
   payload
 })
 
-// const getPlayersByTeam = (payload) => ({
-//   type: GET_PLAYERS_BY_TEAM,
-//   payload
-// })
-
 export const thunkGetAllPlayers = () => async (dispatch) => {
   const response = await fetch(`/api/players`)
   if (response.ok) {
@@ -25,8 +20,8 @@ export const thunkGetAllPlayers = () => async (dispatch) => {
   }
 }
 
-export const thunkGetOnePlayer = (name) => async (dispatch) => {
-  const response = await fetch(`/api/players/${name}`);
+export const thunkGetOnePlayer = (id) => async (dispatch) => {
+  const response = await fetch(`/api/players/${id}`);
   if (response.ok){
     const player = await response.json();
     dispatch(getOnePlayer(player))
