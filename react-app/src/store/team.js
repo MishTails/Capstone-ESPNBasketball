@@ -98,7 +98,6 @@ export const thunkCleanTeam = () => async (dispatch) => {
   dispatch(cleanTeams())
 }
 
-
 const initialState = {};
 
 export default function teams(state = initialState, action) {

@@ -12,7 +12,8 @@ def get_all_rosters():
   Query for all rosters and return them in a list of league dictionaries
   """
   print("THIS IS THE DB",db)
-  rosters.query.all()
+  testvar = rosters.select()
+  print("TESTVAR", testvar)
   return {'rosters': [roster for roster in my_rosters]}
   # might need roster.to_dict to be made
 
