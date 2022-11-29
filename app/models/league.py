@@ -39,8 +39,6 @@ class League(db.Model):
         }
 
     def get_commish(self):
-        print(self.commishLeague.username)
-        print(self.commishLeague.username, "VALUESOESIOFPUOSDOIFU")
         return self.commishLeague.username
 
     def get_teams(self):

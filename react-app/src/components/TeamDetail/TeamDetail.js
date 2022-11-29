@@ -62,9 +62,9 @@ function TeamDetail() {
         {myLeague && <div className='team-detail-league-name'>
             {myLeague.league_name}
           </div>}
-          <div>
-            {user.username}
-          </div>
+         {myTeam && <div>
+            {myTeam.owner}
+          </div>}
         </div>
           {myTeam && <div className='team-detail-top'>
           <div className='team-detail-name'>
@@ -72,14 +72,17 @@ function TeamDetail() {
           </div>
           <div className='team-detail-logo-settings'>
             <img className='team-detail-logo' src={myTeam.logo}/>
-            <div className='team-detail-settings'>
+           {user.id == myTeam.user_id && <div className='team-detail-settings'>
+              <div className='team-detail-count'>
+                {myTeam.players.length}/5 Players
+              </div>
               <NavLink to={`/teams/${teamId}/update`}>
-                <button>Edit Team</button>
+                <button className='team-detail-button'>Edit Team</button>
               </NavLink>
-              <NavLink to={`/teams/${teamId}/players`}>
-                <button>Add Players</button>
-              </NavLink>
-            </div>
+              {myTeam.players.length !== 5 && <NavLink to={`/teams/${teamId}/players`}>
+                <button className='team-detail-button'>Add Players</button>
+              </NavLink>}
+            </div>}
           </div>
         </div>}
 
@@ -127,7 +130,7 @@ function TeamDetail() {
             {myRoster && myRoster.map(player => {
               return <div className='team-detail-player'>
                 <TeamRoster player = {player}/>
-                <button onClick={() => deleteRoster(player)}>X</button>
+                {user.id == myTeam.user_id && <button onClick={() => deleteRoster(player)}>X</button>}
               </div>
             })}
           </div>

@@ -1,6 +1,8 @@
 .team-detail-page {
   background-color: rgb(32, 44, 44);
-  padding: 30px;
+  padding: 60px;
+  position: fixed;
+  width: 100%;
 }
 
 
@@ -23,7 +25,8 @@
 .team-detail-top {
   display: flex;
   flex-direction: row;
-  justify-content: space-between
+  /* justify-content: space-between */
+
 }
 
 .team-detail-league {
@@ -38,6 +41,8 @@
 .team-detail-logo-settings {
   display: flex;
   flex-direction: column;
+  position: relative;
+  left: 750px;
 }
 
 .team-detail-settings {
@@ -57,7 +62,7 @@
   flex-direction: row;
   background-color: rgb(87, 84, 84);
   border-radius: 5px;
-  width: 880px;
+  width: 850px;
 }
 
 .team-roster-name {
@@ -76,5 +81,17 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  bottom: 100px;
+  bottom: 150px;
+  width: 75%;
+  max-width: 880px;
+}
+
+.team-detail-button {
+  margin: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.team-detail-count {
+  font-size: 20px;
 }

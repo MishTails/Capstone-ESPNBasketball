@@ -30,7 +30,7 @@ function LeagueBody(single) {
 
         </div>
         <div className='leagues-table-data' id='ltTwo'>
-          <NavLink to={`/leagues/${myLeague.id}`}>
+          <NavLink className="leaguse-navlink" to={`/leagues/${myLeague.id}`}>
               <div className="leagues-league-name">{myLeague.league_name}</div>
             </NavLink>
         </div>

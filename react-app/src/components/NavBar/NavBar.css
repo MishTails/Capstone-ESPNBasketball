@@ -122,11 +122,17 @@
 .my-leagues-card {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 
 .nav-bar-navlink {
   color: white;
   text-decoration: none;
+}
+
+.nav-bar-card-body {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
 }

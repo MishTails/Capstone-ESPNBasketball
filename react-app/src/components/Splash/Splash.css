@@ -33,3 +33,10 @@
   width: 300px;
   padding: 20px;
 }
+
+.splash-button {
+  padding: 10px;
+  background-color: rgba(37, 57, 57,.86) ;
+  color: rgb(204, 142, 48);
+  cursor: pointer;
+}
