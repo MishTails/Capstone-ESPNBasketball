@@ -1,6 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from .user_leagues import user_leagues
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -16,7 +17,7 @@ class User(db.Model, UserMixin):
 
     # #relationship attributes
     team = db.relationship("Team", back_populates="user", cascade="all, delete-orphan")
-    league = db.relationship("League", secondary="user_leagues",back_populates="user")
+    league = db.relationship("League", secondary=user_leagues, back_populates="user")
     commishUser= db.relationship("League", back_populates="commishLeague", cascade="all, delete-orphan")
 
 
@@ -36,5 +37,8 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'leagues': self.get_leagues()
         }
+    def get_leagues(self):
+        return [data for data in [league.to_dict() for league in self.league]]

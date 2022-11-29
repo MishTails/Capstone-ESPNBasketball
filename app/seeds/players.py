@@ -5,19 +5,20 @@ from app.data import nbaPlayersStats
 def seed_players():
 
   for player in nbaPlayersStats:
+    print("THIS IS A PLAYER", nbaPlayersStats[player])
     db.session.add(Player(
-      name = nbaPlayersStats[player]['name'],
-      team = nbaPlayersStats[player]['team'],
-      minutes = nbaPlayersStats[player]['minutes'],
-      points = nbaPlayersStats[player]['points'],
-      field_goal_percent = nbaPlayersStats[player]['field_goal_percent'],
-      threes = nbaPlayersStats[player]['threes'],
-      free_throw_percent = nbaPlayersStats[player]['free_throw_percent'],
-      rebounds = nbaPlayersStats[player]['rebounds'],
-      assists = nbaPlayersStats[player]['assists'],
-      turnovers = nbaPlayersStats[player]['turnovers'],
-      steals = nbaPlayersStats[player]['steals'],
-      blocks = nbaPlayersStats[player]['blocks']
+      name=nbaPlayersStats[player]['name'],
+      team=nbaPlayersStats[player]['team'],
+      minutes=nbaPlayersStats[player]['minutes'],
+      points=nbaPlayersStats[player]['points'],
+      field_goal_percent=nbaPlayersStats[player]['field_goal_percent'],
+      threes=nbaPlayersStats[player]['threes'],
+      free_throw_percent=nbaPlayersStats[player]['free_throw_percent'],
+      rebounds=nbaPlayersStats[player]['rebounds'],
+      assists=nbaPlayersStats[player]['assists'],
+      turnovers=nbaPlayersStats[player]['turnovers'],
+      steals=nbaPlayersStats[player]['steals'],
+      blocks=nbaPlayersStats[player]['blocks']
     ))
   db.session.commit()
 

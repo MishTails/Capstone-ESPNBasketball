@@ -6,6 +6,7 @@ import './CreateTeam.css';
 import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
 import { thunkPostTeam } from '../../store/team';
+import { thunkUpdateOccupancy } from '../../store/league';
 
 function CreateTeam() {
   const dispatch = useDispatch()
@@ -39,6 +40,7 @@ function CreateTeam() {
       league_id: parseInt(id.leagueId)
     }
     await dispatch(thunkPostTeam(teamData))
+    await dispatch(thunkUpdateOccupancy(id.leagueId))
     history.push('/leagues')
   }
   return (

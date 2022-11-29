@@ -1,5 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from datetime import datetime
+from .user_leagues import user_leagues
 
 
 class League(db.Model):
@@ -19,7 +20,7 @@ class League(db.Model):
 
     #relationships
     team = db.relationship("Team", back_populates="league", cascade="all, delete-orphan")
-    user = db.relationship("User", secondary="user_leagues",  back_populates="league")
+    user = db.relationship("User", secondary=user_leagues,  back_populates="league")
     commishLeague = db.relationship("User", back_populates= "commishUser")
 
 
@@ -32,5 +33,15 @@ class League(db.Model):
             'occupancy': self.occupancy,
             'description': self.description,
             'draft_date': self.draft_date,
-            'draft_timer': self.draft_timer
+            'draft_timer': self.draft_timer,
+            'commish': self.get_commish(),
+            'teams': self.get_teams()
         }
+
+    def get_commish(self):
+        print(self.commishLeague.username)
+        print(self.commishLeague.username, "VALUESOESIOFPUOSDOIFU")
+        return self.commishLeague.username
+
+    def get_teams(self):
+        return [data for data in [teams.to_dict() for teams in self.team]]

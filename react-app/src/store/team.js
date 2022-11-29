@@ -83,7 +83,8 @@ export const thunkUpdateTeam = (data) => async (dispatch) => {
 }
 
 export const thunkDeleteTeam = (team) => async (dispatch) => {
-  const response = await fetch(`/api/teams/${team.id}`, {
+  console.log('TEAM', team)
+  const response = await fetch(`/api/teams/${team}`, {
     method: 'delete'
   });
   if (response.ok) {
@@ -96,7 +97,6 @@ export const thunkDeleteTeam = (team) => async (dispatch) => {
 export const thunkCleanTeam = () => async (dispatch) => {
   dispatch(cleanTeams())
 }
-
 
 const initialState = {};
 

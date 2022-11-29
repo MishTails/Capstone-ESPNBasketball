@@ -3,8 +3,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
+import AddPlayer from './components/AddPlayer/AddPlayer';
 import CreateLeague from './components/CreateLeague/CreateLeague';
 import CreateTeam from './components/CreateTeam/CreateTeam';
+import DeleteLeague from './components/DeleteLeague/DeleteLeague';
+import DeleteTeam from './components/DeleteTeam/DeleteTeam';
 import Leagues from './components/Leagues/Leagues';
 import LeagueDetail from './components/LeagueDetail/LeagueDetail';
 import Players from './components/Players/Players';
@@ -15,7 +18,6 @@ import UpdateLeague from './components/UpdateLeague/UpdateLeague';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-import DeleteLeague from './components/DeleteLeague/DeleteLeague';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -40,6 +42,15 @@ function App() {
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path='/teams/:teamId/players/:playerId'>
+          <AddPlayer/>
+        </Route>
+        <Route path='/teams/:teamId/delete'>
+          <DeleteTeam/>
+        </Route>
+        <Route path='/teams/:teamId/players'>
+          <Players/>
         </Route>
         <Route path='/teams/:teamId'>
           <TeamDetail/>

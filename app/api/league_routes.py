@@ -29,9 +29,7 @@ def create_one_league():
   """
   Query to create one league and add it to the database
   """
-  print("ONEEEE")
   allLeagues = League.query.all()
-  print("TWOOOO")
   form = LeagueForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
@@ -44,10 +42,8 @@ def create_one_league():
       draft_date = form.data['draft_date'],
       draft_timer = form.data['draft_timer']
     )
-    print("ONNNN")
     db.session.add(new_league)
     db.session.commit()
-    print('POKE')
     return new_league.to_dict()
 
 @league_routes.route('/<int:id>', methods=["PUT"])
@@ -63,6 +59,28 @@ def update_league(id):
   league.description = data['description']
   league.draft_date = data['draft_date']
   league.draft_timer = data['draft_timer']
+  db.session.commit()
+  return league.to_dict()
+
+@league_routes.route('/<int:id>/up', methods=["PUT"])
+@login_required
+def update_occupancy(id):
+  """
+  Query to increase a league's occupancy when someone joins a league
+  """
+  league = League.query.get(id)
+  league.occupancy += 1
+  db.session.commit()
+  return league.to_dict()
+
+@league_routes.route('/<int:id>/down', methods=["PUT"])
+@login_required
+def lower_occupancy(id):
+  """
+  Query to increase a league's occupancy when someone joins a league
+  """
+  league = League.query.get(id)
+  league.occupancy -= 1
   db.session.commit()
   return league.to_dict()
 

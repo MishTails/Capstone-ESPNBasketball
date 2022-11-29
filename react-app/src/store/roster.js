@@ -4,16 +4,6 @@ const POST_ROSTER = "teams/POST_ROSTER"
 const DELETE_ROSTER = "teams/DELETE_ROSTER"
 const CLEAN_UP_ROSTERS = "teams/CLEAN_UP_ROSTER"
 
-const getAllRosters = (payload) => ({
-  type: GET_ALL_ROSTERS,
-  payload
-})
-
-const getOneRoster = (payload) => ({
-  type: GET_ONE_ROSTER,
-  payload
-})
-
 const postRoster = (payload) => ({
   type: POST_ROSTER,
   payload
@@ -28,24 +18,11 @@ const cleanRosters = () => ({
   type: CLEAN_UP_ROSTERS
 })
 
-export const thunkGetAllRosters = () => async (dispatch) => {
-  const response = await fetch(`/api/rosters`);
-  if (response.ok) {
-    const rosters= await response.json();
-    dispatch(getAllRosters(normalizeArr(rosters.rosters)))
-  }
-}
 
-export const thunkGetOneRoster = (rosterId) => async (dispatch) => {
-  const response = await fetch(`/api/rosters/${rosterId}`);
-  if (response.ok) {
-    const roster = await response.json();
-    dispatch(getOneRoster(roster))
-  }
-}
 
 export const thunkPostRoster = (data) => async (dispatch) => {
-  const response = await fetch(`/api/rosters`, {
+  console.log(data)
+  const response = await fetch(`/api/rosters/${data.playerId}/teams/${data.teamId}`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json'
@@ -59,8 +36,8 @@ export const thunkPostRoster = (data) => async (dispatch) => {
   }
 }
 
-export const thunkDeleteTeam = (roster) => async (dispatch) => {
-  const response = await fetch(`/api/rosters/${roster.id}`, {
+export const thunkDeleteRoster = (roster) => async (dispatch) => {
+  const response = await fetch(`/api/rosters/${roster.playerId}/teams/${roster.teamId}`, {
     method: 'delete'
   });
   if (response.ok) {
@@ -79,18 +56,11 @@ const initialState = {};
 
 export default function rosters(state = initialState, action) {
   switch (action.type) {
-    case GET_ALL_ROSTERS:
-      let newStateGetAll = {...state};
-      newStateGetAll.allRosters = {...action.payload}
-      return newStateGetAll
-    case GET_ONE_ROSTER:
-      let newStateGetOne = {...state};
-      newStateGetOne.oneRoster = {...action.payload}
-      return newStateGetOne
     case POST_ROSTER:
       let newStateCreate = {...state}
-      let id = action.payload.id;
-      newStateCreate.allRosters[id] = action.payload
+      console.log("im sleepy")
+      // let id = action.payload.id;
+      // newStateCreate.allRosters[id] = action.payload
       return newStateCreate
     case DELETE_ROSTER:
       let newStateDelete = {...state}

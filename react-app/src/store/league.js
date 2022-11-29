@@ -2,6 +2,8 @@ const GET_ALL_LEAGUES = "leagues/GET_ALL_LEAGUES"
 const GET_ONE_LEAGUE = "leagues/GET_ONE_LEAGUE"
 const POST_LEAGUE = "leagues/POST_LEAGUES"
 const UPDATE_LEAGUE = "leagues/UPDATE_LEAGUES"
+const UPDATE_OCCUPANCY = 'leagues/UPDATE_OCCUPANCY'
+const LOWER_OCCUPANCY = 'league/LOWER_OCCUPANCY'
 const DELETE_LEAGUE = "leagues/DELETE_LEAGUES"
 const CLEAN_UP_LEAGUES = "leagues/CLEAN_UP_LEAGUES"
 
@@ -22,6 +24,16 @@ const postLeague = (payload) => ({
 
 const updateLeague = (payload) => ({
   type: UPDATE_LEAGUE,
+  payload
+})
+
+const updateOccupancy = (payload) => ({
+  type: UPDATE_OCCUPANCY,
+  payload
+})
+
+const lowerOccupancy = (payload) => ({
+  type: LOWER_OCCUPANCY,
   payload
 })
 
@@ -52,7 +64,6 @@ export const thunkGetOneLeague = (id) => async (dispatch) => {
 }
 
 export const thunkPostLeague = (data) => async (dispatch) => {
-  console.log("mydata", data)
   const response = await fetch(`/api/leagues`, {
     method: 'post',
     headers: {
@@ -68,7 +79,7 @@ export const thunkPostLeague = (data) => async (dispatch) => {
 }
 
 export const thunkUpdateLeague = (data) => async (dispatch) => {
-  console.log('wings', data)
+
   const response = await fetch(`/api/leagues/${data.id}`, {
     method: 'put',
     headers: {
@@ -79,6 +90,38 @@ export const thunkUpdateLeague = (data) => async (dispatch) => {
   if (response.ok) {
     const league = await response.json();
     dispatch(updateLeague(league))
+    return league
+  }
+}
+
+export const thunkUpdateOccupancy = (id) => async (dispatch) => {
+  console.log("DATA",id)
+  const response = await fetch(`/api/leagues/${id}/up`, {
+    method:'put',
+    headers: {
+      "Content-Type": 'application/json'
+    },
+    body: JSON.stringify(id)
+  })
+  if (response.ok){
+    const league = await response.json();
+    dispatch(updateOccupancy(league))
+    return league
+  }
+}
+
+export const thunkLowerOccupancy = (id) => async (dispatch) => {
+  console.log("DATA",id)
+  const response = await fetch(`/api/leagues/${id}/down`, {
+    method:'put',
+    headers: {
+      "Content-Type": 'application/json'
+    },
+    body: JSON.stringify(id)
+  })
+  if (response.ok){
+    const league = await response.json();
+    dispatch(lowerOccupancy(league))
     return league
   }
 }
@@ -112,7 +155,6 @@ export default function leagues(state = initialState, action) {
       return newStateGetOne
     case POST_LEAGUE:
       let newStateCreate = {...state}
-      console.log("tacos")
       let id = action.payload.id;
       newStateCreate.allLeagues[id] = action.payload
       return newStateCreate
@@ -120,6 +162,14 @@ export default function leagues(state = initialState, action) {
       let newStateUpdate = {...state}
       newStateUpdate[action?.paylaod?.id] = action.payload
       return newStateUpdate;
+    case UPDATE_OCCUPANCY:
+      let newStateOccupancy = {...state}
+      newStateOccupancy[action?.paylaod?.id] = action.paylaod
+      return newStateOccupancy
+    // case LOWER_OCCUPANCY:
+    //   let newStateLower = {...state}
+    //   newStateLower[action?.paylaod?.id] = action.paylaod
+    //   return newStateLower;
     case DELETE_LEAGUE:
       let newStateDelete = {...state}
       delete newStateDelete[action.id]

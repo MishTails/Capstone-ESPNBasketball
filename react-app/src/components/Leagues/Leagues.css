@@ -49,6 +49,10 @@
   padding: 5px;
 }
 
+.leagues-league-name {
+  color: white;
+}
+
 #ltOne {
   width: 7%;
   min-width: 50px;

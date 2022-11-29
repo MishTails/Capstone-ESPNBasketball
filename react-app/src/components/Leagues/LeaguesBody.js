@@ -23,7 +23,6 @@ function LeagueBody(single) {
 
   return (
       <div className='leagues-table-body'>
-        {/* {console.log('id',id)} */}
         <div className='leagues-table-data' id='ltOne'>
           <NavLink to={`/leagues/${myLeague.id}/join`}>
             <button>+</button>
@@ -32,11 +31,11 @@ function LeagueBody(single) {
         </div>
         <div className='leagues-table-data' id='ltTwo'>
           <NavLink to={`/leagues/${myLeague.id}`}>
-              <button>{myLeague.league_name}</button>
+              <div className="leagues-league-name">{myLeague.league_name}</div>
             </NavLink>
         </div>
         <div className='leagues-table-data' id='ltThree'>
-          temp commish
+          {myLeague.commish}
         </div>
         <div className='leagues-table-data' id='ltFour'>
         {`${myLeague.occupancy}/${myLeague.size}`}
