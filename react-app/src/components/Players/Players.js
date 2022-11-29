@@ -75,7 +75,6 @@ function Players() {
         </div>
 
         {allPlayers && allPlayers.map(player => {
-          {console.log(player)}
           return <PlayersBody player ={player}/>
         })}
       </div>

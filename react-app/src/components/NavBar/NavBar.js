@@ -56,11 +56,11 @@ const NavBar = () => {
 
               </div>}
           </div>}
-          <div>
+          {user &&<div>
               <NavLink to={'/leagues'}>
                 <button className='nav-leagues'>Fantasy Leagues</button>
               </NavLink>
-          </div>
+          </div>}
         </div>
         <div className='nav-bar-right'>
           {user &&<div>

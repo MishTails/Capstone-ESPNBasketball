@@ -1,0 +1,80 @@
+.team-detail-page {
+  background-color: rgb(32, 44, 44);
+  padding: 30px;
+}
+
+
+.team-detail-name, .team-detail-league {
+  font-size: 28px
+}
+
+.team-detail-title {
+  font-size: 36px;
+}
+
+
+.team-detail-logo {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  bottom: 80px;
+}
+
+.team-detail-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+
+.team-detail-league {
+  display: flex;
+  flex-direction: row;
+}
+
+.team-detail-league-name {
+  margin-right: 150px;
+}
+
+.team-detail-logo-settings {
+  display: flex;
+  flex-direction: column;
+}
+
+.team-detail-settings {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  bottom: 80px;
+}
+
+.team-detail-player {
+  display: flex;
+  flex-direction: row;
+}
+
+.team-roster-full {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(87, 84, 84);
+  border-radius: 5px;
+  width: 880px;
+}
+
+.team-roster-name {
+  min-width: 200px;
+  width: 200px;
+  padding: 5px;
+}
+
+.team-roster-stat{
+  min-width: 50px;
+  width: 50px;
+  padding: 5px;
+}
+
+.team-roster {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  bottom: 100px;
+}

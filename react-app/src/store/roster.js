@@ -37,7 +37,7 @@ export const thunkPostRoster = (data) => async (dispatch) => {
 }
 
 export const thunkDeleteRoster = (roster) => async (dispatch) => {
-  const response = await fetch(`/api/rosters/${roster.id}`, {
+  const response = await fetch(`/api/rosters/${roster.playerId}/teams/${roster.teamId}`, {
     method: 'delete'
   });
   if (response.ok) {

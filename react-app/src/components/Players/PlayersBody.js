@@ -29,8 +29,6 @@ function PlayersBody(player) {
   return (
     <div className='players-body-full'>
       <div className='players-body-stat'>
-        {console.log('params',teamId.teamId)}
-        {console.log('player', player.player.id)}
         <NavLink to={`/teams/${parseInt(teamId.teamId)}/players/${player.player.id}`}>
           <button>+</button>
         </NavLink>

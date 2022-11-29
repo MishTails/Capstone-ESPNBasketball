@@ -4,23 +4,6 @@ from app.data import nbaPlayersStats
 # Adds seeded league data
 def seed_players():
 
-  # p1=Player(
-  #   name="luka",
-  #   team="DAL",
-  #   minutes=20.2,
-  #   points=20.2,
-  #   field_goal_percent=20.2,
-  #   threes=20.2,
-  #   free_throw_percent=20.2,
-  #   rebounds=20.2,
-  #   assists=20.2,
-  #   turnovers=20.2,
-  #   steals=20.2,
-  #   blocks=20.2
-  # )
-  # db.session.add(p1)
-  # db.session.commit()
-
   for player in nbaPlayersStats:
     print("THIS IS A PLAYER", nbaPlayersStats[player])
     db.session.add(Player(

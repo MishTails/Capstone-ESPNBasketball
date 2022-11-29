@@ -43,7 +43,7 @@ function AddPlayer() {
 
         <div className='update-league-form-instructions-bubble'>
           <div className='update-league-form-lightbulb'>
-            <i class="fa fa-solid fa-lightbulb"></i>
+            <i className="fa fa-solid fa-lightbulb"></i>
           </div>
           <div className='update-league-form-instructions'>
             Are you sure you want to add this player?

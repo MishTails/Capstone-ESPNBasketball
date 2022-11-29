@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request
 from flask_login import login_required
 from app.models import rosters, db
 from app.forms import RosterForm
+from sqlalchemy import delete
 
 roster_routes = Blueprint('rosters', __name__)
 
@@ -23,7 +24,9 @@ def delete_roster(playerId, teamId):
   """
   Query to delete a team from the website
   """
-  ros = rosters.delete().where(team_id==teamId, player_id==playerId)
-  db.session.execute(ros)
+  print("rosters",{rosters})
+  stmt = (rosters.delete().where(rosters.c.team_id == teamId, rosters.c.player_id == playerId))
+  # ros = rosters.delete().where(rosters.team_id==teamId, rosters.player_id==playerId)
+  db.session.execute(stmt)
   db.session.commit()
   return dict(message="Deleted")
