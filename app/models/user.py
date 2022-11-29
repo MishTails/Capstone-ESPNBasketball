@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
 
     # #relationship attributes
     team = db.relationship("Team", back_populates="user", cascade="all, delete-orphan")
-    # league = db.relationship("League", secondary=user_leagues, back_populates="user")
+    league = db.relationship("League", secondary=user_leagues, back_populates="user")
     commishUser= db.relationship("League", back_populates="commishLeague", cascade="all, delete-orphan")
 
 

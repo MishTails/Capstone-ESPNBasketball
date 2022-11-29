@@ -22,7 +22,7 @@ class Player(db.Model):
   blocks  = db.Column(db.Float)
 
   # relationships
-  team = db.relationship("Team", secondary=rosters, back_populates="player")
+  myteam = db.relationship("Team", secondary=rosters, back_populates="player")
 
   def to_dict(self):
     return {
@@ -40,3 +40,4 @@ class Player(db.Model):
       'steals': self.steals,
       'blocks': self.blocks
     }
+

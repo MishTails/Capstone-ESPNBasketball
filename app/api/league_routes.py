@@ -29,9 +29,7 @@ def create_one_league():
   """
   Query to create one league and add it to the database
   """
-  print("ONEEEE")
   allLeagues = League.query.all()
-  print("TWOOOO")
   form = LeagueForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
@@ -44,10 +42,8 @@ def create_one_league():
       draft_date = form.data['draft_date'],
       draft_timer = form.data['draft_timer']
     )
-    print("ONNNN")
     db.session.add(new_league)
     db.session.commit()
-    print('POKE')
     return new_league.to_dict()
 
 @league_routes.route('/<int:id>', methods=["PUT"])

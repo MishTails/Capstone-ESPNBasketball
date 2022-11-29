@@ -5,55 +5,25 @@ from app.forms import RosterForm
 
 roster_routes = Blueprint('rosters', __name__)
 
-@roster_routes.route('')
+@roster_routes.route('/<int:playerId>/teams/<int:teamId>', methods=["POST"])
 @login_required
-def get_all_rosters():
-  """
-  Query for all rosters and return them in a list of league dictionaries
-  """
-  print("THIS IS THE DB",db)
-  testvar = rosters.select()
-  print("TESTVAR", testvar)
-  return {'rosters': [roster for roster in my_rosters]}
-  # might need roster.to_dict to be made
-
-@roster_routes.route('/<int:id>')
-@login_required
-def get_one_roster(id):
-  """
-  Query for one team and return it as a dictionary
-  """
-  roster = rosters.query.get(id)
-  return roster
-  # might need roster.to_dict to be made
-
-@roster_routes.route('', methods=["POST"])
-@login_required
-def create_one_roster():
+def create_one_roster(playerId, teamId):
   """
   Query to create one team and add it to the database
   """
-  allRoster = rosters.query.all()
-  form = RosterForm()
-  form['csrf_token'].data = request.cookies['csrf_token']
-  if form.validate_on_submit():
-    new_roster = rosters.insert().values(team_id=form.data['team_id'], roster_id=form.data['roster_id'])
-    new_roster = rosters(
-      team_id = form.data['team_id'],
-      roster_id = form.data['roster_id']
-    )
-    db.session.add(new_roster)
-    db.session.commit()
-    return new_roster
+  ros = rosters.insert().values(team_id=teamId, player_id=playerId)
+  db.session.execute(ros)
+  db.session.commit()
+  return dict(message="added")
   #might neeed to turn each new roster into a dict
 
-@roster_routes.route('/<int:id>', methods=["DELETE"])
+@roster_routes.route('/<int:playerId>/teams/<int:teamId>', methods=["DELETE"])
 @login_required
-def delete_roster(id):
+def delete_roster(playerId, teamId):
   """
   Query to delete a team from the website
   """
-  roster = rosters.query.get(id)
-  db.session.delete(roster)
+  ros = rosters.delete().where(team_id==teamId, player_id==playerId)
+  db.session.execute(ros)
   db.session.commit()
   return dict(message="Deleted")

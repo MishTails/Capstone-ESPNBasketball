@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import './AddPlayer.css';
 import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
-import { thunkGetAllRosters, thunkPostRoster } from '../../store/roster';
+import {thunkPostRoster } from '../../store/roster';
 import { thunkGetAllPlayers, thunkGetOnePlayer } from '../../store/players';
 
 function AddPlayer() {
@@ -18,15 +18,18 @@ function AddPlayer() {
 
   useEffect(() => {
     dispatch(thunkGetAllPlayers())
-    dispatch(thunkGetAllRosters())
     dispatch(thunkGetOnePlayer(params.playerId))
   },[dispatch])
 
 
   const onSubmit = async (e) => {
     e.preventDefault()
+    let rosterData = {
+    playerId: parseInt(params.playerId),
+    teamId: params.teamId
+  }
 
-
+    await dispatch(thunkPostRoster(rosterData))
     history.push(`/teams/${params.teamId}`)
   }
   return (

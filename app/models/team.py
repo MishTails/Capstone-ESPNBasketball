@@ -16,7 +16,7 @@ class Team(db.Model):
     #relationships
     user = db.relationship("User", back_populates='team')
     league = db.relationship("League", back_populates="team")
-    player = db.relationship("Player", secondary=rosters, back_populates="team")
+    player = db.relationship("Player", secondary=rosters, back_populates="myteam")
 
     def to_dict(self):
         return {
@@ -24,5 +24,9 @@ class Team(db.Model):
             'name': self.name,
             'logo': self.logo,
             'user_id': self.user_id,
-            'league_id': self.league_id
+            'league_id': self.league_id,
+            'players': self.get_all_players()
         }
+
+    def get_all_players(self):
+        return [data for data in [player.to_dict() for player in self.player]]
