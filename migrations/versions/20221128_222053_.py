@@ -1,8 +1,9 @@
+from app.models import db, environment, SCHEMA
 """empty message
 
-Revision ID: 8cd22fa1b8b6
-Revises: 
-Create Date: 2022-11-28 15:17:11.564110
+Revision ID: ed41784fa241
+Revises:
+Create Date: 2022-11-28 22:20:53.480653
 
 """
 from alembic import op
@@ -10,7 +11,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '8cd22fa1b8b6'
+revision = 'ed41784fa241'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -25,6 +26,9 @@ def upgrade():
     sa.Column('draft_pick', sa.Integer(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE mockdrafts SET SCHEMA {SCHEMA};")
+
     op.create_table('players',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
@@ -41,6 +45,9 @@ def upgrade():
     sa.Column('blocks', sa.Float(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE players SET SCHEMA {SCHEMA};")
+
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(length=40), nullable=False),
@@ -51,6 +58,9 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+
     op.create_table('leagues',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('commissioner_id', sa.Integer(), nullable=False),
@@ -64,6 +74,9 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('league_name')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE leagues SET SCHEMA {SCHEMA};")
+
     op.create_table('teams',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=40), nullable=False),
@@ -75,6 +88,9 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE teams SET SCHEMA {SCHEMA};")
+
     op.create_table('user_leagues',
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('league_id', sa.Integer(), nullable=False),
@@ -82,6 +98,9 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('user_id', 'league_id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE user_leagues SET SCHEMA {SCHEMA};")
+
     op.create_table('rosters',
     sa.Column('player_id', sa.Integer(), nullable=False),
     sa.Column('team_id', sa.Integer(), nullable=False),
@@ -89,6 +108,9 @@ def upgrade():
     sa.ForeignKeyConstraint(['team_id'], ['teams.id'], ),
     sa.PrimaryKeyConstraint('player_id', 'team_id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE rosters SET SCHEMA {SCHEMA};")
+
     # ### end Alembic commands ###
 
 

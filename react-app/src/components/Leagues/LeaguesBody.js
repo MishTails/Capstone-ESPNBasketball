@@ -35,7 +35,7 @@ function LeagueBody(single) {
             </NavLink>
         </div>
         <div className='leagues-table-data' id='ltThree'>
-          temp commish
+          {myLeague.commish}
         </div>
         <div className='leagues-table-data' id='ltFour'>
         {`${myLeague.occupancy}/${myLeague.size}`}

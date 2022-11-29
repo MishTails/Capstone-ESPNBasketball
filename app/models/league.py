@@ -33,5 +33,15 @@ class League(db.Model):
             'occupancy': self.occupancy,
             'description': self.description,
             'draft_date': self.draft_date,
-            'draft_timer': self.draft_timer
+            'draft_timer': self.draft_timer,
+            'commish': self.get_commish(),
+            'teams': self.get_teams()
         }
+
+    def get_commish(self):
+        print(self.commishLeague.username)
+        print(self.commishLeague.username, "VALUESOESIOFPUOSDOIFU")
+        return self.commishLeague.username
+
+    def get_teams(self):
+        return [data for data in [teams.to_dict() for teams in self.team]]

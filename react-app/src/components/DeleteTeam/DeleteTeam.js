@@ -6,6 +6,7 @@ import './DeleteTeam.css';
 import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
 import { thunkDeleteTeam } from '../../store/team';
+import { thunkLowerOccupancy } from '../../store/league';
 
 // THIS ONE IS NOT DONE
 
@@ -17,6 +18,7 @@ function DeleteTeam() {
 
   const user = useSelector(state => state?.session?.user?.id);
   const league = useSelector(state => state.leagues.allLeagues)
+  const oneLeague = useSelector(state => state.leagues.oneLeague)
 
 
 
@@ -24,6 +26,7 @@ function DeleteTeam() {
     e.preventDefault()
 
     await dispatch(thunkDeleteTeam(parseInt(teamId.teamId)))
+    await dispatch(thunkLowerOccupancy(oneLeague.id))
     history.push('/leagues')
   }
   return (

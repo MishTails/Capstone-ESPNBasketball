@@ -14,6 +14,7 @@ const NavBar = () => {
   const [loginOpen, setLoginOpen] = useState(false)
   const [leagueOpen, setLeagueOpen] = useState(false)
   const user = useSelector((state) => state?.session?.user?.id)
+  const userLeagues = useSelector((state) => state?.session?.user?.leagues)
 
   useEffect(
 		() => {
@@ -37,22 +38,30 @@ const NavBar = () => {
                     NBA Commissioner
                   </div>
                   <div>
-                    <i class="fas fa-basketball-ball"></i>
+                    <i className="fas fa-basketball-ball"></i>
                   </div>
                 </div>
-                <div className='my-leagues-card'>
-                  <div className='my-leagues-logo'>
-                    Logo
-                  </div>
-                  <div className='my-leagues-card-text'>
-                    <div className='my-leagues-card-team'>
-                      Team Name
+                {userLeagues && userLeagues.map(league => {
+                  return <div className='my-leagues-card'>
+                    <div className='my-leagues-logo'>
+                      <i className="fas fa-basketball-ball"></i>
                     </div>
-                    <div className='my-leagues-card-league'>
-                      League Name
+                    <div className='my-leagues-card-text'>
+                      <div className='my-leagues-card-team'>
+                        {league.teams.map(team => {
+                          if(team.user_id == user) {
+                            return <NavLink className="nav-bar-navlink" to={`teams/${team.id}`}>
+                              {team.name}
+                            </NavLink>
+                          }
+                        })}
+                      </div>
+                      <div className='my-leagues-card-league'>
+                        {league.league_name}
                     </div>
                   </div>
                 </div>
+                })}
 
               </div>}
           </div>}

@@ -62,6 +62,28 @@ def update_league(id):
   db.session.commit()
   return league.to_dict()
 
+@league_routes.route('/<int:id>/up', methods=["PUT"])
+@login_required
+def update_occupancy(id):
+  """
+  Query to increase a league's occupancy when someone joins a league
+  """
+  league = League.query.get(id)
+  league.occupancy += 1
+  db.session.commit()
+  return league.to_dict()
+
+@league_routes.route('/<int:id>/down', methods=["PUT"])
+@login_required
+def lower_occupancy(id):
+  """
+  Query to increase a league's occupancy when someone joins a league
+  """
+  league = League.query.get(id)
+  league.occupancy -= 1
+  db.session.commit()
+  return league.to_dict()
+
 
 @league_routes.route('/<int:id>', methods=["DELETE"])
 @login_required

@@ -37,5 +37,8 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'leagues': self.get_leagues()
         }
+    def get_leagues(self):
+        return [data for data in [league.to_dict() for league in self.league]]
