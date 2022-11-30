@@ -7,6 +7,7 @@ import PlayersBody from './PlayersBody';
 import {thunkGetAllPlayers} from '../../store/players'
 import {thunkGetAllTeams} from '../../store/team'
 import { thunkGetOneTeam } from '../../store/team';
+import { thunkGetOneLeague } from '../../store/league';
 import { useParams } from 'react-router-dom'
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 
@@ -17,6 +18,7 @@ function Players() {
   const players = useSelector(state => state?.players);
   const myTeam = useSelector(state => state?.teams?.oneTeam)
   const allTeams = useSelector(state => state?.teams?.allTeams)
+  const myLeague = useSelector(state => state?.leagues?.oneLeague)
   let playerArr = []
   let pagecount = teamId.pageId
   let count = 0
@@ -26,11 +28,11 @@ function Players() {
 
   if(allTeams) {
     {Object.values(allTeams).forEach(teams => {
-      console.log('PIZZA', teams)
-        Object.values(teams.players).forEach(player => {
-
-          playerArr.push(player.id)
+        if (teams?.league_id === myLeague?.id) {
+          Object.values(teams.players).forEach(player => {
+            playerArr.push(player.id)
         })
+        }
       })
     }
   }
@@ -40,6 +42,7 @@ let allPlayers
     dispatch(thunkGetAllPlayers())
     dispatch(thunkGetOneTeam(teamId?.teamId))
     dispatch(thunkGetAllTeams(myTeam?.league_id))
+    dispatch(thunkGetOneLeague(myTeam?.league_id))
   },[dispatch])
 
 
