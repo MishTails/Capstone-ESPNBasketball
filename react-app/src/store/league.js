@@ -56,6 +56,7 @@ export const thunkGetAllLeagues = () => async (dispatch) => {
 }
 
 export const thunkGetOneLeague = (id) => async (dispatch) => {
+  console.log(id, "WIIIIINNNNN")
   const response = await fetch(`/api/leagues/${id}`);
   if (response.ok){
     const league = await response.json();

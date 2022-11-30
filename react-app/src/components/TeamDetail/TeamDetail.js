@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, NavLink , useParams} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './TeamDetail.css';
 import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
 import TeamRoster from './TeamRoster';
-import { thunkGetOneLeague} from '../../store/league';
+import { thunkGetAllLeagues, thunkGetOneLeague} from '../../store/league';
 import { thunkGetAllTeams, thunkGetOneTeam } from '../../store/team'
 import { thunkDeleteRoster } from '../../store/roster';
 
@@ -36,10 +36,12 @@ function TeamDetail() {
 }
 
   useEffect(() => {
+    console.log(teamId, "WON")
+    dispatch(thunkGetAllLeagues())
+    dispatch(thunkGetAllTeams())
     dispatch(thunkGetOneTeam(teamId))
-    dispatch(thunkGetOneLeague(myTeam?.league_id))
+    // dispatch(thunkGetOneLeague(myTeam?.league_id))
   },[dispatch])
-
 
 
   if(myLeague?.oneLeague) {
@@ -71,7 +73,11 @@ function TeamDetail() {
             {myTeam.name}
           </div>
           <div className='team-detail-logo-settings'>
-            <img className='team-detail-logo' src={myTeam.logo}/>
+
+            <img className='team-detail-logo' src={myTeam.logo}  onError={event => {
+          event.target.src = "https://www.shutterstock.com/image-photo/young-basketball-latin-player-man-260nw-1914509464.jpg"
+          event.onerror = null
+        }}/>
            {user.id == myTeam.user_id && <div className='team-detail-settings'>
               <div className='team-detail-count'>
                 {myTeam.players.length}/5 Players

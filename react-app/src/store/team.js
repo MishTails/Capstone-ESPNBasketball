@@ -73,6 +73,7 @@ export const thunkPostTeam = (data) => async (dispatch) => {
 }
 
 export const thunkUpdateTeam = (data) => async (dispatch) => {
+  console.log(data, "THE DATA")
   const response = await fetch(`/api/teams/${data.id}`, {
     method: 'put',
     headers: {
@@ -87,6 +88,7 @@ export const thunkUpdateTeam = (data) => async (dispatch) => {
   }  else if (response.status < 500) {
     const data = await response.json();
     if (data.errors) {
+      console.log("HERE!!!", data)
       return data
     }
   }
