@@ -35,16 +35,19 @@ function CreateTeam() {
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    console.log(teamName, teamLogo, user, parseInt(id.leagueId))
     let teamData = {
       name: teamName,
       logo: teamLogo,
       user_id: user,
       league_id: parseInt(id.leagueId)
     }
-    await dispatch(thunkPostTeam(teamData))
-    await dispatch(thunkUpdateOccupancy(id.leagueId))
-    history.push('/leagues')
+    const newTeam = await dispatch(thunkPostTeam(teamData))
+    if (newTeam.errors) {
+      setErrors(newTeam.errors)
+    } else {
+      await dispatch(thunkUpdateOccupancy(id.leagueId))
+      history.push('/leagues')
+    }
   }
   return (
     <div>
@@ -63,11 +66,7 @@ function CreateTeam() {
             Create Your Team!
           </div>
         </div>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
-        </div>
+        {errors.name && <div>{errors.name}</div>}
         <div className='create-team-form-label-input'>
           <div className="create-team-form-league-name">
             <label className='create-team-form-label' htmlFor='email'>Team Name</label>
@@ -80,6 +79,7 @@ function CreateTeam() {
                 onChange={updateTeamName}
               />
           </div>
+          {errors.logo && <div>{errors.logo}</div>}
           <div className='create-team-form-league-desc'>
           <label className='create-team-form-label' htmlFor='email'>Team Logo</label>
               <input

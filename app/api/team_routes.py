@@ -6,6 +6,16 @@ from app.forms import TeamForm
 
 team_routes = Blueprint('teams', __name__)
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = dict()
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages[f'{field}'] = f'{error}'
+    return errorMessages
+
 @team_routes.route('')
 @login_required
 def get_all_teams():
@@ -43,6 +53,7 @@ def create_one_team():
     db.session.add(new_team)
     db.session.commit()
     return new_team.to_dict()
+  return {'errors': validation_errors_to_error_messages(form.errors)},401
 
 @team_routes.route('/<int:id>', methods=["PUT"])
 @login_required
@@ -50,12 +61,14 @@ def update_team(id):
   """
   Query to update the information of a team
   """
-  data = request.get_json()
+  form = TeamForm()
   team = Team.query.get(id)
-  team.name = data['name']
-  team.logo = data['logo']
-  db.session.commit()
-  return team.to_dict()
+  if form.validate_on_submit():
+    team.name = form.data['name']
+    team.logo = form.data['logo']
+    db.session.commit()
+    return team.to_dict()
+  return {'errors': validation_errors_to_error_messages(form.errors)},401
 
 @team_routes.route('/<int:id>', methods=["DELETE"])
 @login_required

@@ -64,6 +64,11 @@ export const thunkPostTeam = (data) => async (dispatch) => {
     const team = await response.json();
     dispatch(postTeam(team));
     return team
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data
+    }
   }
 }
 
@@ -79,6 +84,11 @@ export const thunkUpdateTeam = (data) => async (dispatch) => {
     const team = await response.json();
     dispatch(updateTeam(team))
     return team
+  }  else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data
+    }
   }
 }
 

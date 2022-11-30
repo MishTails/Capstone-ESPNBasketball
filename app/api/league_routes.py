@@ -5,6 +5,16 @@ from app.forms import LeagueForm
 
 league_routes = Blueprint('leagues', __name__)
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = dict()
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages[f'{field}'] = f'{error}'
+    return errorMessages
+
 @league_routes.route('')
 @login_required
 def get_all_leagues():
@@ -45,6 +55,7 @@ def create_one_league():
     db.session.add(new_league)
     db.session.commit()
     return new_league.to_dict()
+  return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @league_routes.route('/<int:id>', methods=["PUT"])
 @login_required
@@ -52,15 +63,19 @@ def update_league(id):
   """
   Query to update the information of a league
   """
-  data = request.get_json()
   league = League.query.get(id)
-  league.league_name = data['league_name']
-  league.size = data['size']
-  league.description = data['description']
-  league.draft_date = data['draft_date']
-  league.draft_timer = data['draft_timer']
-  db.session.commit()
-  return league.to_dict()
+  form = LeagueForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  if form.validate_on_submit():
+    league.league_name = form.data['league_name']
+    league.size = form.data['size']
+    league.description = form.data['description']
+    league.draft_date = form.data['draft_date']
+    league.draft_timer = form.data['draft_timer']
+    db.session.commit()
+    return league.to_dict()
+  return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
 
 @league_routes.route('/<int:id>/up', methods=["PUT"])
 @login_required

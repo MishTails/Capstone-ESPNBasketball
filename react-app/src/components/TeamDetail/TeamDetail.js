@@ -79,7 +79,7 @@ function TeamDetail() {
               <NavLink to={`/teams/${teamId}/update`}>
                 <button className='team-detail-button'>Edit Team</button>
               </NavLink>
-              {myTeam.players.length !== 5 && <NavLink to={`/teams/${teamId}/players`}>
+              {myTeam.players.length !== 5 && <NavLink to={`/teams/${teamId}/players/page/1`}>
                 <button className='team-detail-button'>Add Players</button>
               </NavLink>}
             </div>}

@@ -21,3 +21,9 @@
   font-size: 14px;
   color: rgb(9, 8, 8);
 }
+
+
+.git, .linkedin {
+  width: 14px;
+  margin-right: 7px;
+}
