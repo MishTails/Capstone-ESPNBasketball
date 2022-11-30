@@ -44,6 +44,9 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+        <Route path='/teams/:teamId/players/page/:pageId'>
+          <Players/>
+        </Route>
         <Route path='/teams/:teamId/players/:playerId'>
           <AddPlayer/>
         </Route>
@@ -52,9 +55,6 @@ function App() {
         </Route>
         <Route path='/teams/:teamId/delete'>
           <DeleteTeam/>
-        </Route>
-        <Route path='/teams/:teamId/players'>
-          <Players/>
         </Route>
         <Route path='/teams/:teamId'>
           <TeamDetail/>
@@ -76,12 +76,6 @@ function App() {
         </Route>
         <Route path='/leagues/:leagueId'>
           <LeagueDetail/>
-        </Route>
-        <Route path='/players/:playerId'>
-          Player Detail Page
-        </Route>
-        <Route path='/players'>
-          <Players/>
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>

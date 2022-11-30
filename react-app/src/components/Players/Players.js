@@ -17,6 +17,11 @@ function Players() {
   const myTeam = useSelector(state => state?.teams?.oneTeam)
   const allTeams = useSelector(state => state?.teams?.allTeams)
   let playerArr = []
+  let pagecount = teamId.pageId
+  let count = 0
+  let max = parseInt(pagecount)*10
+  let min = parseInt(pagecount-1)*10
+
   if(allTeams) {
     {Object.values(allTeams).forEach(teams => {
       console.log('PIZZA', teams)
@@ -41,7 +46,7 @@ let allPlayers
   }
   return (
     <div>
-      {console.log(playerArr)}
+      {console.log(teamId, "USEPARAM")}
       <NavBar/>
       <div className='players-title'>
         Players
@@ -94,7 +99,14 @@ let allPlayers
 
         {allPlayers && allPlayers.map(player => {
           if (!(playerArr.includes(player.id))) {
-            return <PlayersBody player ={player}/>
+            count++
+            if(count < max) {
+              if (count < min) {
+                return
+              }
+              return <PlayersBody player ={player}/>
+            }
+
           }
 
         })}
