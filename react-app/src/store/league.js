@@ -75,6 +75,11 @@ export const thunkPostLeague = (data) => async (dispatch) => {
     const league = await response.json();
     dispatch(postLeague(league));
     return league
+  } else if (response.status < 500) {
+    const league = await response.json()
+      if (league.errors) {
+        return league
+      }
   }
 }
 
@@ -91,6 +96,11 @@ export const thunkUpdateLeague = (data) => async (dispatch) => {
     const league = await response.json();
     dispatch(updateLeague(league))
     return league
+  } else if (response.status < 500) {
+    const league = await response.json()
+      if (league.errors) {
+        return league
+      }
   }
 }
 

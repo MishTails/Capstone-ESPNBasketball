@@ -55,9 +55,13 @@ function UpdateLeague() {
       draft_date: leagueDraftDate,
       draft_timer: leagueDraftTimer
     }
-    console.log("PIZZA")
-    await dispatch(thunkUpdateLeague(leagueData))
-    history.push(`/leagues/${parseInt(leagueId.leagueId)}`)
+    const updatedLeague = await dispatch(thunkUpdateLeague(leagueData))
+    if (updatedLeague.errors) {
+      setErrors(updatedLeague.errors)
+    } else {
+      history.push(`/leagues/${parseInt(leagueId.leagueId)}`)
+    }
+
   }
   return (
     <div>
@@ -76,11 +80,7 @@ function UpdateLeague() {
             Change the settings of your League!
           </div>
         </div>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
-        </div>
+        {errors.league_name && <div>{errors.league_name}</div>}
         <div className='update-league-form-label-input'>
           <div className="update-league-form-league-name">
             <label className='update-league-form-label' htmlFor='email'>League Name</label>
@@ -93,6 +93,7 @@ function UpdateLeague() {
                 onChange={updateLeagueName}
               />
           </div>
+          {errors.size && <div>{errors.size}</div>}
           <div className='update-league-form-league-desc'>
           <label className='update-league-form-label' htmlFor='email'>League Size</label>
               <input
@@ -104,6 +105,7 @@ function UpdateLeague() {
                 onChange={updateLeagueSize}
               />
           </div>
+          {errors.draft_date && <div>{errors.draft_date}</div>}
           <div className='update-league-form-league-desc'>
           <label className='update-league-form-label' htmlFor='email'>League Draft Date</label>
               <input
@@ -114,6 +116,7 @@ function UpdateLeague() {
                 onChange={updateLeagueDraftDate}
               />
           </div>
+          {errors.draft_timer && <div>{errors.draft_timer}</div>}
           <div className='update-league-form-league-desc'>
           <label className='update-league-form-label' htmlFor='email'>League Draft Timer (Seconds)</label>
               <input
@@ -125,6 +128,7 @@ function UpdateLeague() {
                 onChange={updateLeagueDraftTimer}
               />
           </div>
+          {errors.description && <div>{errors.description}</div>}
           <div className='update-league-form-league-desc'>
           <label className='update-league-form-label' htmlFor='email'>League Description</label>
               <input

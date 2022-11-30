@@ -34,8 +34,14 @@ function EditTeam() {
       logo: teamLogo
 
     }
-    await dispatch(thunkUpdateTeam(teamData))
-    history.push(`/teams/${parseInt(teamId.teamId)}`)
+    const editTeam = await dispatch(thunkUpdateTeam(teamData))
+    console.log("EDIT", editTeam)
+    if (editTeam.errors) {
+      setErrors(editTeam.errors)
+    } else {
+      history.push(`/teams/${parseInt(teamId.teamId)}`)
+    }
+
   }
   return (
     <div>
@@ -54,11 +60,7 @@ function EditTeam() {
             Change the settings of your Team!
           </div>
         </div>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
-        </div>
+        {errors.name && <div>{errors.name}</div>}
         <div className='update-league-form-label-input'>
           <div className="update-league-form-league-name">
             <label className='update-league-form-label' htmlFor='email'>Team Name</label>
@@ -71,6 +73,7 @@ function EditTeam() {
                 onChange={updateTeamName}
               />
           </div>
+          {errors.logo && <div>{errors.logo}</div>}
           <div className='update-league-form-league-desc'>
           <label className='update-league-form-label' htmlFor='email'>Team Logo</label>
               <input

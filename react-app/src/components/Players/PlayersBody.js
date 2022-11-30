@@ -34,9 +34,10 @@ function PlayersBody(player) {
         </NavLink>
       </div>
       <div className='players-body-name'>
-        <NavLink className="players-navlink" to={`/player_info/${player.player.id}`}>
+        {player.player.name}
+        {/* <NavLink className="players-navlink" to={`/player_info/${player.player.id}`}>
           {player.player.name}
-        </NavLink>
+        </NavLink> */}
       </div>
       <div className='players-body-stat'>
         {PlayerLogo(teamPlayer)}

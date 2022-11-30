@@ -20,3 +20,7 @@ button {
   color: rgb(204, 142, 48);;
   cursor: pointer;
 }
+
+.error {
+  color: red;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import './Footer.css';
-
+import github from '../../assets/gitLogo.png'
+import linkedin from '../../assets/linkedinLogo.png'
 
 
 function Footer() {
@@ -21,6 +22,12 @@ function Footer() {
           </div>
           <div className='splash-footer-light'>
             Jarrod Mishima
+           <a href="https://github.com/MishTails">
+            <img className='git' src={github}></img>
+            </a>
+            <a href="https://www.linkedin.com/in/jarrod-mishima-50abb0172/">
+            <img className='linkedin' src={linkedin}></img>
+            </a>
           </div>
         </div>
         <div className='splash-footer-features'>

@@ -8,6 +8,7 @@ import {thunkGetAllPlayers} from '../../store/players'
 import {thunkGetAllTeams} from '../../store/team'
 import { thunkGetOneTeam } from '../../store/team';
 import { useParams } from 'react-router-dom'
+import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 
 function Players() {
   const dispatch = useDispatch()
@@ -19,6 +20,7 @@ function Players() {
   let playerArr = []
   let pagecount = teamId.pageId
   let count = 0
+  let emptyCount = 0
   let max = parseInt(pagecount)*10
   let min = parseInt(pagecount-1)*10
 
@@ -48,9 +50,20 @@ let allPlayers
     <div>
       {console.log(teamId, "USEPARAM")}
       <NavBar/>
-      <div className='players-title'>
-        Players
+      <div className='players-title-arrows'>
+        <div className='players-title'>
+          Players
+        </div>
+        <div className='players-arrows'>
+          {pagecount && pagecount !== '1' &&<NavLink to={`/teams/${teamId.teamId}/players/page/${parseInt(teamId.pageId)-1}`}>
+            <i className="fa-solid fa-arrow-left"></i>
+          </NavLink>}
+          {pagecount && pagecount !== '46' && <NavLink to={`/teams/${teamId.teamId}/players/page/${parseInt(teamId.pageId)+1}`}>
+            <i className="fa-solid fa-arrow-right"></i>
+          </NavLink>}
+        </div>
       </div>
+
       <div className='players-table-full'>
         <div className='players-table-headings-full'>
           <div className='players-heading-stat'>
@@ -104,12 +117,12 @@ let allPlayers
               if (count < min) {
                 return
               }
+              emptyCount++
               return <PlayersBody player ={player}/>
             }
-
           }
-
         })}
+        {emptyCount === 0 && <div>No Players Here </div>}
       </div>
 
       {/* <Footer/> */}
