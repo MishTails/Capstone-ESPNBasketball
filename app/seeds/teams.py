@@ -18,9 +18,40 @@ def seed_teams():
         logo="https://t3.ftcdn.net/jpg/00/00/71/10/360_F_711081_WvnJyU9WBLUegBLVfghDN2YZjFuQ5b.jpg",
         user_id=1,
         league_id=1)
+    t4 = Team(
+        name='Dyluuuu',
+        logo="https://t3.ftcdn.net/jpg/00/00/71/10/360_F_711081_WvnJyU9WBLUegBLVfghDN2YZjFuQ5b.jpg",
+        user_id=4,
+        league_id=2)
+    t5 = Team(
+        name='profNhut',
+        logo="https://t3.ftcdn.net/jpg/00/00/71/10/360_F_711081_WvnJyU9WBLUegBLVfghDN2YZjFuQ5b.jpg",
+        user_id=5,
+        league_id=2)
+    t6 = Team(
+        name='Paradises',
+        logo="https://t3.ftcdn.net/jpg/00/00/71/10/360_F_711081_WvnJyU9WBLUegBLVfghDN2YZjFuQ5b.jpg",
+        user_id=6,
+        league_id=2)
+    t7 = Team(
+        name='WillStonks',
+        logo="https://t3.ftcdn.net/jpg/00/00/71/10/360_F_711081_WvnJyU9WBLUegBLVfghDN2YZjFuQ5b.jpg",
+        user_id=7,
+        league_id=2)
+    t8 = Team(
+        name='Boba Team',
+        logo="https://t3.ftcdn.net/jpg/00/00/71/10/360_F_711081_WvnJyU9WBLUegBLVfghDN2YZjFuQ5b.jpg",
+        user_id=2,
+        league_id=2)
     db.session.add(t1)
     db.session.add(t2)
     db.session.add(t3)
+    db.session.add(t4)
+    db.session.add(t5)
+    db.session.add(t6)
+    db.session.add(t7)
+    db.session.add(t8)
+
     db.session.commit()
 
 

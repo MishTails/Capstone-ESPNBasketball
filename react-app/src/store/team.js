@@ -113,13 +113,12 @@ export default function teams(state = initialState, action) {
     case POST_TEAM:
       let newStateCreate = {...state}
       let id = action.payload.id;
-      console.log(id, "IDDDDDDDD")
-      console.log(newStateCreate.allTeams, "POPPPP")
       newStateCreate.allTeams[id] = action.payload
       return newStateCreate
     case UPDATE_TEAM:
       let newStateUpdate = {...state}
-      newStateUpdate[action.paylaod.id] = action.payload
+      console.log(action.payload)
+      newStateUpdate[action?.paylaod?.id] = action.payload
       return newStateUpdate;
     case DELETE_TEAM:
       let newStateDelete = {...state}

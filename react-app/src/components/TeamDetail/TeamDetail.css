@@ -5,6 +5,10 @@
   width: 100%;
 }
 
+.team-detail-name {
+  width: 250px;
+  max-width: 250px;
+}
 
 .team-detail-name, .team-detail-league {
   font-size: 28px

@@ -20,11 +20,35 @@ def seed_users():
         email='icebird@gmail.com',
         password='password',
         profile_pic="https://static.vecteezy.com/system/resources/previews/007/557/861/original/hacker-mascot-illustration-for-sports-and-esports-logo-free-vector.jpg")
+    u4 = User(
+        username='dyluuu',
+        email='dyluuu@gmail.com',
+        password='password',
+        profile_pic="https://static.vecteezy.com/system/resources/previews/007/557/861/original/hacker-mascot-illustration-for-sports-and-esports-logo-free-vector.jpg")
+    u5 = User(
+        username='profnhut',
+        email='profnhut@gmail.com',
+        password='password',
+        profile_pic="https://static.vecteezy.com/system/resources/previews/007/557/861/original/hacker-mascot-illustration-for-sports-and-esports-logo-free-vector.jpg")
+    u6 = User(
+        username='itsCC',
+        email='itsCC@gmail.com',
+        password='password',
+        profile_pic="https://static.vecteezy.com/system/resources/previews/007/557/861/original/hacker-mascot-illustration-for-sports-and-esports-logo-free-vector.jpg")
+    u7 = User(
+        username='willNgo',
+        email='willNgo@gmail.com',
+        password='password',
+        profile_pic="https://static.vecteezy.com/system/resources/previews/007/557/861/original/hacker-mascot-illustration-for-sports-and-esports-logo-free-vector.jpg")
 
 
     db.session.add(u1)
     db.session.add(u2)
     db.session.add(u3)
+    db.session.add(u4)
+    db.session.add(u5)
+    db.session.add(u6)
+    db.session.add(u7)
     db.session.commit()
 
 

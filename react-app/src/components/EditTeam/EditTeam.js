@@ -30,11 +30,11 @@ function EditTeam() {
     e.preventDefault()
     let teamData = {
       id: parseInt(teamId.teamId),
-      name: teamName
-
+      name: teamName,
+      logo: teamLogo
 
     }
-    await dispatch(thunkUpdatTeam(teamData))
+    await dispatch(thunkUpdateTeam(teamData))
     history.push(`/teams/${parseInt(teamId.teamId)}`)
   }
   return (
@@ -61,25 +61,25 @@ function EditTeam() {
         </div>
         <div className='update-league-form-label-input'>
           <div className="update-league-form-league-name">
-            <label className='update-league-form-label' htmlFor='email'>League Name</label>
+            <label className='update-league-form-label' htmlFor='email'>Team Name</label>
               <input
                 className='update-league-form-input'
-                name='leagueName'
+                name='teameName'
                 type='text'
-                placeholder='League Name'
-                value={leagueName}
-                onChange={updateLeagueName}
+                placeholder='team Name'
+                value={teamName}
+                onChange={updateTeamName}
               />
           </div>
           <div className='update-league-form-league-desc'>
-          <label className='update-league-form-label' htmlFor='email'>League Size</label>
+          <label className='update-league-form-label' htmlFor='email'>Team Logo</label>
               <input
                 className='update-league-form-input'
-                name='leagueSize'
-                type='number'
-                placeholder='League Size'
-                value={leagueSize}
-                onChange={updateLeagueSize}
+                name='teamLogo'
+                type='TEXT'
+                placeholder='Team Logo'
+                value={teamLogo}
+                onChange={updateTeamLogo}
               />
           </div>
         </div>

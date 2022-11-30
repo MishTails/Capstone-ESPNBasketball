@@ -166,10 +166,6 @@ export default function leagues(state = initialState, action) {
       let newStateOccupancy = {...state}
       newStateOccupancy[action?.paylaod?.id] = action.paylaod
       return newStateOccupancy
-    // case LOWER_OCCUPANCY:
-    //   let newStateLower = {...state}
-    //   newStateLower[action?.paylaod?.id] = action.paylaod
-    //   return newStateLower;
     case DELETE_LEAGUE:
       let newStateDelete = {...state}
       delete newStateDelete[action.id]
