@@ -43,22 +43,26 @@ const NavBar = () => {
                 </div>
                 {userLeagues && userLeagues.map(league => {
                   return <div className='my-leagues-card'>
-                    <div className='my-leagues-logo'>
-                      <i className="fas fa-basketball-ball"></i>
-                    </div>
                     <div className='my-leagues-card-text'>
                       <div className='my-leagues-card-team'>
                         {league.teams.map(team => {
+                          console.log(league.teams, "LEAAGUE TESSM")
                           if(team.user_id == user) {
-                            return <NavLink className="nav-bar-navlink" to={`teams/${team.id}`}>
-                              {team.name}
-                            </NavLink>
+                            return <div className='nav-bar-card-body'>
+                              <i className="fas fa-basketball-ball inner-bball"></i>
+                              <div>
+                              <NavLink className="nav-bar-navlink" to={`teams/${team.id}`}>
+                                {team.name}
+                              </NavLink>
+                              <div className='my-leagues-card-league'>
+                              {league.league_name}
+                            </div>
+                           </div>
+                         </div>
                           }
                         })}
                       </div>
-                      <div className='my-leagues-card-league'>
-                        {league.league_name}
-                    </div>
+
                   </div>
                 </div>
                 })}

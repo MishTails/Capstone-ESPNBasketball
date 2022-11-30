@@ -8,6 +8,7 @@ import CreateLeague from './components/CreateLeague/CreateLeague';
 import CreateTeam from './components/CreateTeam/CreateTeam';
 import DeleteLeague from './components/DeleteLeague/DeleteLeague';
 import DeleteTeam from './components/DeleteTeam/DeleteTeam';
+import EditTeam from './components/EditTeam/EditTeam';
 import Leagues from './components/Leagues/Leagues';
 import LeagueDetail from './components/LeagueDetail/LeagueDetail';
 import Players from './components/Players/Players';
@@ -45,6 +46,9 @@ function App() {
         </Route>
         <Route path='/teams/:teamId/players/:playerId'>
           <AddPlayer/>
+        </Route>
+        <Route path='/teams/:teamId/update'>
+          <EditTeam/>
         </Route>
         <Route path='/teams/:teamId/delete'>
           <DeleteTeam/>

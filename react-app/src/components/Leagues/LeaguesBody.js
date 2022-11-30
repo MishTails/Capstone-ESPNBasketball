@@ -11,6 +11,16 @@ function LeagueBody(single) {
   const leagues = useSelector((state) => state.leagues)
   let allLeagues
   let myLeague = single.single
+  let teamsArr = []
+
+  if(myLeague.teams) {
+    Object.values(myLeague.teams).forEach(team => {
+      if (team.user_id == user_id) {
+        teamsArr.push(team.league_id)
+      }
+
+    })
+  }
 
 
   useEffect(() => {
@@ -24,13 +34,13 @@ function LeagueBody(single) {
   return (
       <div className='leagues-table-body'>
         <div className='leagues-table-data' id='ltOne'>
-          <NavLink to={`/leagues/${myLeague.id}/join`}>
+          {!teamsArr.includes(myLeague.id) && myLeague.size > myLeague.occupancy &&<NavLink to={`/leagues/${myLeague.id}/join`}>
             <button>+</button>
-          </NavLink>
+          </NavLink>}
 
         </div>
         <div className='leagues-table-data' id='ltTwo'>
-          <NavLink to={`/leagues/${myLeague.id}`}>
+          <NavLink className="leaguse-navlink" to={`/leagues/${myLeague.id}`}>
               <div className="leagues-league-name">{myLeague.league_name}</div>
             </NavLink>
         </div>

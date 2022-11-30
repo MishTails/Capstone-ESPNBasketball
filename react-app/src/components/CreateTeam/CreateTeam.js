@@ -1,11 +1,11 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory, NavLink , useParams} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './CreateTeam.css';
 import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
-import { thunkPostTeam } from '../../store/team';
+import { thunkGetAllTeams, thunkPostTeam } from '../../store/team';
 import { thunkUpdateOccupancy } from '../../store/league';
 
 function CreateTeam() {
@@ -29,6 +29,9 @@ function CreateTeam() {
     setTeamLogo(e.target.value);
   };
 
+  useEffect(() => {
+    dispatch(thunkGetAllTeams())
+  }, [dispatch])
 
   const onSubmit = async (e) => {
     e.preventDefault()

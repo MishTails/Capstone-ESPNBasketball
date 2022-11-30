@@ -5,17 +5,34 @@ import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
 import PlayersBody from './PlayersBody';
 import {thunkGetAllPlayers} from '../../store/players'
-
+import {thunkGetAllTeams} from '../../store/team'
+import { thunkGetOneTeam } from '../../store/team';
+import { useParams } from 'react-router-dom'
 
 function Players() {
   const dispatch = useDispatch()
-
+  const teamId= useParams()
   const user = useSelector(state => state?.session?.user?.id);
-  const players = useSelector(state => state.players);
-  let allPlayers
+  const players = useSelector(state => state?.players);
+  const myTeam = useSelector(state => state?.teams?.oneTeam)
+  const allTeams = useSelector(state => state?.teams?.allTeams)
+  let playerArr = []
+  if(allTeams) {
+    {Object.values(allTeams).forEach(teams => {
+      console.log('PIZZA', teams)
+        Object.values(teams.players).forEach(player => {
 
+          playerArr.push(player.id)
+        })
+      })
+    }
+  }
+
+let allPlayers
   useEffect(() => {
     dispatch(thunkGetAllPlayers())
+    dispatch(thunkGetOneTeam(teamId?.teamId))
+    dispatch(thunkGetAllTeams(myTeam?.league_id))
   },[dispatch])
 
 
@@ -24,6 +41,7 @@ function Players() {
   }
   return (
     <div>
+      {console.log(playerArr)}
       <NavBar/>
       <div className='players-title'>
         Players
@@ -75,7 +93,10 @@ function Players() {
         </div>
 
         {allPlayers && allPlayers.map(player => {
-          return <PlayersBody player ={player}/>
+          if (!(playerArr.includes(player.id))) {
+            return <PlayersBody player ={player}/>
+          }
+
         })}
       </div>
 

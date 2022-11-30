@@ -21,7 +21,7 @@ def seed_leagues():
         league_name='Grand Showdown Association',
         commissioner_id=3,
         size=10,
-        occupancy=3,
+        occupancy=0,
         description="The crew",
         draft_timer=30)
     db.session.add(l1)

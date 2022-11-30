@@ -73,12 +73,12 @@ function LeagueDetail() {
                   </div>
                   <div className='league-detail-standings-team'>
                     <NavLink to={`/teams/${team.id}`}>
-                      <button>{team.name}</button>
+                      <button className='league-detail-button'>{team.name}</button>
                     </NavLink>
                   </div>
                  { user ==team.user_id &&
                  <NavLink to={`/teams/${team.id}/delete`}>
-                  <button> X </button>
+                  <button className='league-detail-delete-button'> X </button>
                  </NavLink>
 
                  }
@@ -86,9 +86,7 @@ function LeagueDetail() {
               }
             })}
           </div>
-          <div className='league-detail-blank-space'>
 
-          </div>
           <div className='league-detail-rules-full'>
             <div className='league-detail-rules-header'>
               Rules
@@ -112,7 +110,7 @@ function LeagueDetail() {
                 Draft Date: {oneLeague.draft_date}
               </div>
               <div className='league-detail-rules-text'>
-                Draft Timer: {oneLeague.draft_timer}
+                Draft Timer: {oneLeague.draft_timer} seconds
               </div>
               <div className='league-detail-description'>
                 <div className='league-detail-description-heading'>

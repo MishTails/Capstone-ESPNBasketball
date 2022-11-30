@@ -22,7 +22,7 @@ function Splash() {
           HOME OF FANTASY BASKETBALL
         </div>
         {user && <NavLink to="/leagues/create">
-          <button> Create a League</button>
+          <button className='splash-button'> Create a League</button>
         </NavLink>}
       </div>
       <Footer/>

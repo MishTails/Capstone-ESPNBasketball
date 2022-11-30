@@ -25,8 +25,12 @@ class Team(db.Model):
             'logo': self.logo,
             'user_id': self.user_id,
             'league_id': self.league_id,
-            'players': self.get_all_players()
+            'players': self.get_all_players(),
+            'owner':self.get_team_owner()
         }
 
     def get_all_players(self):
         return [data for data in [player.to_dict() for player in self.player]]
+
+    def get_team_owner(self):
+        return self.user.username

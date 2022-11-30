@@ -103,7 +103,8 @@
   background-color: rgb(39,41,43);
   border-radius: 5px;
   padding: 15px;
-  left: 40px
+  left: 40px;
+  z-index: 1;
 }
 
 .my-leagues-heading{
@@ -122,11 +123,26 @@
 .my-leagues-card {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+}
+
+.my-leagues-card-league {
+  max-width: 300px;
 }
 
 
 .nav-bar-navlink {
   color: white;
   text-decoration: none;
+  max-width: 200px;
+}
+
+.nav-bar-card-body {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+}
+
+.inner-bball {
+  margin-right: 30px;
 }

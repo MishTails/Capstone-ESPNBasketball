@@ -53,6 +53,10 @@
   color: white;
 }
 
+.leagues-navlink {
+  text-decoration: none;
+}
+
 #ltOne {
   width: 7%;
   min-width: 50px;
