@@ -48,15 +48,12 @@ const SignUpForm = () => {
     <div className='sign-up-page'>
       <NavBar/>
       <form className='sign-up-form' onSubmit={onSignUp}>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
-        </div>
         <div className='sign-up-heading'>
             Sign Up
         </div>
+
         <div>
+        {errors.username && <div className='error'>{errors.username}</div>}
           <input
             className='sign-up-input'
             type='text'
@@ -66,6 +63,7 @@ const SignUpForm = () => {
             value={username}
           ></input>
         </div>
+        {errors.email && <div>{errors.email}</div>}
         <div>
           <input
             className='sign-up-input'
@@ -76,6 +74,7 @@ const SignUpForm = () => {
             value={email}
           ></input>
         </div>
+        {errors.password && <div>{errors.password}</div>}
         <div>
           <input
             className='sign-up-input'

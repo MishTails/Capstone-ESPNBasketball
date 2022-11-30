@@ -73,6 +73,16 @@ def sign_up():
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+@auth_routes.route('/<int:id>')
+def get_one_user(id):
+    """
+    Query for one user and return it as a dictionary
+    """
+    if id:
+        user = User.query.get(id)
+        return user.to_dict()
+    return {'noUser': 'none'}
+
 
 @auth_routes.route('/unauthorized')
 def unauthorized():
