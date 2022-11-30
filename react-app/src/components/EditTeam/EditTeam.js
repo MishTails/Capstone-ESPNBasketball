@@ -1,22 +1,25 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './EditTeam.css';
 import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
 import { thunkUpdateTeam } from '../../store/team';
+import { thunkGetOneTeam } from '../../store/team';
 
 function EditTeam() {
   const dispatch = useDispatch()
   const history = useHistory()
-  const [errors, setErrors] = useState([]);
-  const [teamName, setTeamName] = useState('')
-  const [teamLogo, setTeamLogo] = useState('')
-  const teamId = useParams()
-
   const user = useSelector(state => state?.session?.user?.id);
   const league = useSelector(state => state.leagues.allLeagues)
+  const team = useSelector(state => state?.teams.oneTeam)
+  const [errors, setErrors] = useState([]);
+  const [teamName, setTeamName] = useState(team.name)
+  const [teamLogo, setTeamLogo] = useState(team.logo)
+  const teamId = useParams()
+
+
 
   const updateTeamName = (e) => {
     setTeamName(e.target.value);
@@ -35,7 +38,6 @@ function EditTeam() {
 
     }
     const editTeam = await dispatch(thunkUpdateTeam(teamData))
-    console.log("EDIT", editTeam)
     if (editTeam.errors) {
       setErrors(editTeam.errors)
     } else {
@@ -43,6 +45,10 @@ function EditTeam() {
     }
 
   }
+
+  useEffect(() => {
+    dispatch(thunkGetOneTeam(teamId.teamId))
+  },[dispatch])
   return (
     <div>
       <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>

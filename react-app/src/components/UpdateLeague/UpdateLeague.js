@@ -1,25 +1,25 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './UpdateLeague.css';
 import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
 import {thunkUpdateLeague } from '../../store/league';
+import { thunkGetOneLeague } from '../../store/league';
 
 function UpdateLeague() {
   const dispatch = useDispatch()
   const history = useHistory()
-  const [errors, setErrors] = useState([]);
-  const [leagueName, setLeagueName] = useState('')
-  const [leagueDesc, setLeagueDesc] = useState('')
-  const [leagueSize, setLeagueSize] = useState('8')
-  const [leagueDraftDate, setLeagueDraftDate] = useState('')
-  const [leagueDraftTimer, setLeagueDraftTimer] = useState(30)
-  const leagueId = useParams()
-
   const user = useSelector(state => state?.session?.user?.id);
-  const league = useSelector(state => state.leagues.allLeagues)
+  const league = useSelector(state => state?.leagues?.oneLeague)
+  const [errors, setErrors] = useState([]);
+  const [leagueName, setLeagueName] = useState(league.league_name)
+  const [leagueDesc, setLeagueDesc] = useState(league.description)
+  const [leagueSize, setLeagueSize] = useState(league.size)
+  const [leagueDraftDate, setLeagueDraftDate] = useState(league.draft_date)
+  const [leagueDraftTimer, setLeagueDraftTimer] = useState(league.draft_timer)
+  const leagueId = useParams()
 
   const updateLeagueName = (e) => {
     setLeagueName(e.target.value);
@@ -63,6 +63,11 @@ function UpdateLeague() {
     }
 
   }
+
+  useEffect(() => {
+    dispatch(thunkGetOneLeague(leagueId.leagueId))
+  },[dispatch])
+
   return (
     <div>
       <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
