@@ -8,6 +8,7 @@ import "./NavBar.css"
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetAllLeagues } from '../../store/league';
+import { thunkGetUser } from '../../store/session';
 
 const NavBar = () => {
   const dispatch = useDispatch()
@@ -15,15 +16,30 @@ const NavBar = () => {
   const [leagueOpen, setLeagueOpen] = useState(false)
   const user = useSelector((state) => state?.session?.user?.id)
   const userLeagues = useSelector((state) => state?.session?.user?.leagues)
+  const myLeagues = useSelector((state) => state.leagues.allLeagues)
+
+  let  myTeams = []
+  if (myLeagues) {
+    Object.values(myLeagues).forEach(leagues => {
+      leagues.teams.forEach(teams => {
+        if(teams.user_id == user) {
+          myTeams.push(teams)
+        }
+      })
+    })
+  }
+
 
   useEffect(
 		() => {
       dispatch(thunkGetAllLeagues(user))
+      // dispatch(thunkGetUser(user))
 		},
 		[dispatch],
 	);
   return (
       <div className='nav-bar'>
+        {console.log(myTeams)}
         <div className='nav-bar-left'>
           <NavLink to='/' exact={true} activeClassName='active'>
             <img className='nav-logo' src={logo}></img>
@@ -45,8 +61,7 @@ const NavBar = () => {
                   return <div className='my-leagues-card'>
                     <div className='my-leagues-card-text'>
                       <div className='my-leagues-card-team'>
-                        {league.teams.map(team => {
-                          console.log(league.teams, "LEAAGUE TESSM")
+                        {myTeams.map(team => {
                           if(team.user_id == user) {
                             return <div className='nav-bar-card-body'>
                               <i className="fas fa-basketball-ball inner-bball"></i>

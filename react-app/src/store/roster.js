@@ -58,7 +58,6 @@ export default function rosters(state = initialState, action) {
   switch (action.type) {
     case POST_ROSTER:
       let newStateCreate = {...state}
-      console.log("im sleepy")
       // let id = action.payload.id;
       // newStateCreate.allRosters[id] = action.payload
       return newStateCreate
