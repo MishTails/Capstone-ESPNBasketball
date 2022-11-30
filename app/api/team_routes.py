@@ -61,14 +61,16 @@ def update_team(id):
   """
   Query to update the information of a team
   """
-  form = TeamForm()
   team = Team.query.get(id)
+  form = TeamForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     team.name = form.data['name']
     team.logo = form.data['logo']
     db.session.commit()
     return team.to_dict()
-  return {'errors': validation_errors_to_error_messages(form.errors)},401
+  print('errorsgere', validation_errors_to_error_messages(form.errors))
+  return {'errors': validation_errors_to_error_messages(form.errors)},402
 
 @team_routes.route('/<int:id>', methods=["DELETE"])
 @login_required

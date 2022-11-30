@@ -11,5 +11,5 @@ def validate_image(form, field):
 class TeamForm(FlaskForm):
     name = StringField('name', validators=[DataRequired("Team Name is required"), Length(3, 18, "Team Name must be between 3 and 18 pictures.")])
     logo = StringField('logo', validators=[DataRequired("Team Logo is required"), validate_image])
-    league_id = IntegerField('league_id', validators=[DataRequired()])
-    user_id = IntegerField('user_id', validators=[DataRequired()])
+    league_id = IntegerField('league_id')
+    user_id = IntegerField('user_id')
