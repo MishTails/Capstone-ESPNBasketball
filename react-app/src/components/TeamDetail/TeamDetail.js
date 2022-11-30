@@ -36,11 +36,9 @@ function TeamDetail() {
 }
 
   useEffect(() => {
-    console.log(teamId, "WON")
     dispatch(thunkGetAllLeagues())
     dispatch(thunkGetAllTeams())
     dispatch(thunkGetOneTeam(teamId))
-    // dispatch(thunkGetOneLeague(myTeam?.league_id))
   },[dispatch])
 
 
@@ -68,10 +66,10 @@ function TeamDetail() {
             {myTeam.owner}
           </div>}
         </div>
-          {myTeam && <div className='team-detail-top'>
-          <div className='team-detail-name'>
-            {myTeam.name}
+        <div className='team-detail-name'>
+            {myTeam?.name}
           </div>
+          {myTeam && <div className='team-detail-top'>
           <div className='team-detail-logo-settings'>
 
             <img className='team-detail-logo' src={myTeam.logo}  onError={event => {
