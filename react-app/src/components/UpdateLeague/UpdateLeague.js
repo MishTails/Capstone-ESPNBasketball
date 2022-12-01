@@ -14,11 +14,11 @@ function UpdateLeague() {
   const user = useSelector(state => state?.session?.user?.id);
   const league = useSelector(state => state?.leagues?.oneLeague)
   const [errors, setErrors] = useState([]);
-  const [leagueName, setLeagueName] = useState(league.league_name)
-  const [leagueDesc, setLeagueDesc] = useState(league.description)
-  const [leagueSize, setLeagueSize] = useState(league.size)
-  const [leagueDraftDate, setLeagueDraftDate] = useState(league.draft_date)
-  const [leagueDraftTimer, setLeagueDraftTimer] = useState(league.draft_timer)
+  const [leagueName, setLeagueName] = useState(league?.league_name)
+  const [leagueDesc, setLeagueDesc] = useState(league?.description)
+  const [leagueSize, setLeagueSize] = useState(league?.size)
+  const [leagueDraftDate, setLeagueDraftDate] = useState(league?.draft_date)
+  const [leagueDraftTimer, setLeagueDraftTimer] = useState(league?.draft_timer)
   const leagueId = useParams()
 
   const updateLeagueName = (e) => {
@@ -41,8 +41,6 @@ function UpdateLeague() {
   const updateLeagueDraftTimer = (e) => {
     setLeagueDraftTimer(e.target.value);
   };
-
-
 
   const onSubmit = async (e) => {
     e.preventDefault()

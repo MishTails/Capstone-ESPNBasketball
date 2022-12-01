@@ -53,90 +53,92 @@ function TeamDetail() {
   return (
     <div>
       <NavBar/>
-      <div className='team-detail-page'>
-        <div className='team-detail-title'>
-          <div>
-            Team Roster
-          </div>
-          <div className='team-detail-league'>
-        {myLeague && <div className='team-detail-league-name'>
-            {myLeague.league_name}
-          </div>}
-         {myTeam && <div>
-            {myTeam.owner}
-          </div>}
-        </div>
-        <div className='team-detail-name'>
-            {myTeam?.name}
-          </div>
-          {myTeam && <div className='team-detail-top'>
-          <div className='team-detail-logo-settings'>
-
-            <img className='team-detail-logo' src={myTeam.logo}  onError={event => {
-          event.target.src = "https://www.shutterstock.com/image-photo/young-basketball-latin-player-man-260nw-1914509464.jpg"
-          event.onerror = null
-        }}/>
-           {user.id == myTeam.user_id && <div className='team-detail-settings'>
-              <div className='team-detail-count'>
-                {myTeam.players.length}/5 Players
-              </div>
-              <NavLink to={`/teams/${teamId}/update`}>
-                <button className='team-detail-button'>Edit Team</button>
-              </NavLink>
-              {myTeam.players.length !== 5 && <NavLink to={`/teams/${teamId}/players/page/1`}>
-                <button className='team-detail-button'>Add Players</button>
-              </NavLink>}
+      <div className='team-detail-background'>
+        <div className='team-detail-page'>
+          <div className='team-detail-title'>
+            <div>
+              Team Roster
+            </div>
+            <div className='team-detail-league'>
+          {myLeague && <div className='team-detail-league-name'>
+              {myLeague.league_name}
+            </div>}
+          {myTeam && <div>
+              {myTeam.owner}
             </div>}
           </div>
-        </div>}
+          <div className='team-detail-name'>
+              {myTeam?.name}
+            </div>
+            {myTeam && <div className='team-detail-top'>
+            <div className='team-detail-logo-settings'>
 
-        </div>
-        <div className='team-roster'>
-          <div className='team-roster-full'>
-            <div className='team-roster-name'>
-              Player
+              <img className='team-detail-logo' src={myTeam.logo}  onError={event => {
+            event.target.src = "https://www.shutterstock.com/image-photo/young-basketball-latin-player-man-260nw-1914509464.jpg"
+            event.onerror = null
+          }}/>
+            {user.id == myTeam.user_id && <div className='team-detail-settings'>
+                <div className='team-detail-count'>
+                  {myTeam.players.length}/5 Players
+                </div>
+                <NavLink to={`/teams/${teamId}/update`}>
+                  <button className='team-detail-button'>Edit Team</button>
+                </NavLink>
+                {myTeam.players.length !== 5 && <NavLink to={`/teams/${teamId}/players/page/1`}>
+                  <button className='team-detail-button'>Add Players</button>
+                </NavLink>}
+              </div>}
             </div>
-            <div className='team-roster-stat'>
-              Team
-            </div>
-            <div className='team-roster-stat'>
-              MIN
-            </div>
-            <div className='team-roster-stat'>
-              PTS
-            </div>
-            <div className='team-roster-stat'>
-              FGP
-            </div>
-            <div className='team-roster-stat'>
-              3PTS
-            </div>
-            <div className='team-roster-stat'>
-              FTP
-            </div>
-            <div className='team-roster-stat'>
-              RBS
-            </div>
-            <div className='team-roster-stat'>
-              AST
-            </div>
-            <div className='team-roster-stat'>
-              TO
-            </div>
-            <div className='team-roster-stat'>
-              STL
-            </div>
-            <div className='team-roster-stat'>
-              BLK
-            </div>
+          </div>}
+
           </div>
-          <div className='team-detail-roster'>
-            {myRoster && myRoster.map(player => {
-              return <div className='team-detail-player'>
-                <TeamRoster player = {player}/>
-                {user.id == myTeam.user_id && <button onClick={() => deleteRoster(player)}>X</button>}
+          <div className='team-roster'>
+            <div className='team-roster-full'>
+              <div className='team-roster-name'>
+                Player
               </div>
-            })}
+              <div className='team-roster-stat'>
+                Team
+              </div>
+              <div className='team-roster-stat'>
+                MIN
+              </div>
+              <div className='team-roster-stat'>
+                PTS
+              </div>
+              <div className='team-roster-stat'>
+                FGP
+              </div>
+              <div className='team-roster-stat'>
+                3PTS
+              </div>
+              <div className='team-roster-stat'>
+                FTP
+              </div>
+              <div className='team-roster-stat'>
+                RBS
+              </div>
+              <div className='team-roster-stat'>
+                AST
+              </div>
+              <div className='team-roster-stat'>
+                TO
+              </div>
+              <div className='team-roster-stat'>
+                STL
+              </div>
+              <div className='team-roster-stat'>
+                BLK
+              </div>
+            </div>
+            <div className='team-detail-roster'>
+              {myRoster && myRoster.map(player => {
+                return <div className='team-detail-player'>
+                  <TeamRoster player = {player}/>
+                  {user.id == myTeam.user_id && <button className='team-detail-delete' onClick={() => deleteRoster(player)}>X</button>}
+                </div>
+              })}
+            </div>
           </div>
         </div>
       </div>

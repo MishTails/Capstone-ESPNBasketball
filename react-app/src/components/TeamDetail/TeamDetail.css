@@ -1,8 +1,9 @@
 .team-detail-page {
-  background-color: rgb(32, 44, 44);
-  padding: 60px;
-  position: fixed;
-  width: 100%;
+  padding: 20px;
+  position: relative;
+  width: 100vh;
+  left: 100px;
+  height: 80vh;
 }
 
 .team-detail-name {
@@ -11,24 +12,32 @@
 }
 
 .team-detail-name, .team-detail-league {
-  font-size: 28px
+  font-size: 16px
 }
 
 .team-detail-title {
-  font-size: 36px;
+  font-size: 24px;
 }
 
+.team-detail-background {
+  background-color: rgb(32, 44, 44);
+  opacity: 90%;
+  width: 100vl;
+  height: 80vh;
+}
 
 .team-detail-logo {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   position: relative;
   bottom: 80px;
+  padding: 10px;
 }
 
 .team-detail-top {
   display: flex;
   flex-direction: row;
+  height: 250px;
   /* justify-content: space-between */
 
 }
@@ -46,7 +55,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  left: 900px;
+  left: 600px;
 }
 
 .team-detail-settings {
@@ -61,24 +70,29 @@
   flex-direction: row;
 }
 
+
 .team-roster-full {
   display: flex;
+  position: relative;
   flex-direction: row;
   background-color: rgb(87, 84, 84);
-  border-radius: 5px;
-  width: 850px;
+  /* border-radius: 5px; */
+  width: 550px;
+  bottom: 50px;
 }
 
 .team-roster-name {
-  min-width: 200px;
-  width: 200px;
+  min-width: 100px;
+  width: 100px;
   padding: 5px;
+  font-size: 10px
 }
 
 .team-roster-stat{
-  min-width: 50px;
-  width: 50px;
+  min-width: 30px;
+  width: 30px;
   padding: 5px;
+  font-size: 10px
 }
 
 .team-roster {
@@ -97,5 +111,12 @@
 }
 
 .team-detail-count {
-  font-size: 20px;
+  position: relative;
+  padding: 0px 10px;
+  font-size: 12px;
+}
+
+.team-detail-delete {
+  position: relative;
+  bottom: 50px;
 }
