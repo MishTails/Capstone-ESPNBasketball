@@ -23,6 +23,7 @@ function TeamDetail() {
   const myTeam = useSelector(state => state?.teams?.oneTeam)
   const myRoster = useSelector(state => state?.teams?.oneTeam?.players)
   const myLeague = useSelector(state => state?.leagues?.oneLeague)
+  const allLeagues = useSelector(state => state?.leagues.allLeagues)
   // const players = useSelector(state => state.players);
   // let allPlayers
 
@@ -39,6 +40,7 @@ function TeamDetail() {
     dispatch(thunkGetAllLeagues())
     dispatch(thunkGetAllTeams())
     dispatch(thunkGetOneTeam(teamId))
+    dispatch(thunkGetOneLeague(myTeam?.league_id))
   },[dispatch])
 
 
@@ -59,8 +61,11 @@ function TeamDetail() {
             Team Roster
           </div>
           <div className='team-detail-league'>
-        {myLeague && <div className='team-detail-league-name'>
-            {myLeague.league_name}
+        {myTeam && allLeagues && <div className='team-detail-league-name'>
+          {console.log(allLeagues)}
+          <NavLink className='team-detail-navlink' to={`/leagues/${allLeagues[myTeam.league_id]}`}>
+            {allLeagues[myTeam.league_id].league_name}
+          </NavLink>
           </div>}
          {myTeam && <div>
             {myTeam.owner}

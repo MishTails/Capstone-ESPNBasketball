@@ -1,0 +1,29 @@
+.player-info-body {
+  border: solid orange 3px;
+  background-color: rgb(39,41,43)
+}
+
+.player-info-image {
+  width: 100px;
+  border-radius: 80%;
+}
+
+.player-info-header-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.player-info-name {
+  font-size: 24px;
+  color: rgb(43,133,212)
+}
+
+.player-info-stats-headings {
+  display: flex;
+  flex-direction: row;
+}
+
+.players-info-stats-body {
+  display: flex;
+  flex-direction: row;
+}

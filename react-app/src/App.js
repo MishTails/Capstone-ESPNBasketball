@@ -12,6 +12,7 @@ import EditTeam from './components/EditTeam/EditTeam';
 import Leagues from './components/Leagues/Leagues';
 import LeagueDetail from './components/LeagueDetail/LeagueDetail';
 import Players from './components/Players/Players';
+import PlayerInfo from './components/PlayerInfo/PlayerInfo';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Splash from './components/Splash/Splash';
 import TeamDetail from './components/TeamDetail/TeamDetail';
@@ -76,6 +77,9 @@ function App() {
         </Route>
         <Route path='/leagues/:leagueId'>
           <LeagueDetail/>
+        </Route>
+        <Route path='/player_info/:playerId'>
+          <PlayerInfo/>
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
