@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetAllLeagues } from '../../store/league';
 import { thunkGetUser } from '../../store/session';
+import { thunkGetOneTeam } from '../../store/team';
 
 const NavBar = () => {
   const dispatch = useDispatch()
@@ -66,8 +67,8 @@ const NavBar = () => {
                             return <div className='nav-bar-card-body'>
                               <i className="fas fa-basketball-ball inner-bball"></i>
                               <div>
-                              <NavLink className="nav-bar-navlink" to={`teams/${team.id}`}>
-                                {team.name}
+                              <NavLink className="nav-bar-navlink" to={`/teams/${team.id}`}>
+                                <button onClick={() => dispatch(thunkGetOneTeam(team.id))}>{team.name}</button>
                               </NavLink>
                               <div className='my-leagues-card-league'>
                               {league.league_name}
