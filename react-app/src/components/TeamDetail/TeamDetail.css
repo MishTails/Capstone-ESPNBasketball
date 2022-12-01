@@ -21,7 +21,7 @@
 
 .team-detail-background {
   background-color: rgb(32, 44, 44);
-  opacity: 90%;
+  /* opacity: 90%; */
   width: 100vl;
   height: 80vh;
 }
