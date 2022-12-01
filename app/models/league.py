@@ -15,7 +15,7 @@ class League(db.Model):
     size = db.Column(db.Integer, nullable=False)
     occupancy =  db.Column(db.Integer)
     description = db.Column(db.String(1000), nullable=False)
-    draft_date = db.Column(db.String, nullable=False, default='3/15/2023')
+    draft_date = db.Column(db.String, nullable=False, default='2023-12-12')
     draft_timer = db.Column(db.Integer, nullable= False)
 
     #relationships

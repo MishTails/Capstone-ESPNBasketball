@@ -71,7 +71,8 @@ const NavBar = () => {
                                 <button onClick={() => dispatch(thunkGetOneTeam(team.id))}>{team.name}</button>
                               </NavLink>
                               <div className='my-leagues-card-league'>
-                              {league.league_name}
+
+                              {team.league}
                             </div>
                            </div>
                          </div>

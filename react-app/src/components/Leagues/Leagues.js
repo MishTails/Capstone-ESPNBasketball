@@ -31,7 +31,7 @@ function Leagues() {
           </div>
           <div className='leagues-full-table'>
             <div className='leagues-listed-leagues'>
-              Listed Leagues
+              Listed Leagues (Click + to create your team for a league)
             </div>
             <div className='leagues-table-headings'>
               <div className='leagues-table-head' id='ltOne'>

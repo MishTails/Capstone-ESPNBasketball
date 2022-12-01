@@ -35,7 +35,7 @@ function LeagueBody(single) {
       <div className='leagues-table-body'>
         <div className='leagues-table-data' id='ltOne'>
           {!teamsArr.includes(myLeague.id) && myLeague.size > myLeague.occupancy &&<NavLink to={`/leagues/${myLeague.id}/join`}>
-            <button>+</button>
+            <button className="leagues-add-button">+</button>
           </NavLink>}
 
         </div>

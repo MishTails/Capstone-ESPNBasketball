@@ -22,10 +22,10 @@ function Footer() {
           </div>
           <div className='splash-footer-light'>
             Jarrod Mishima
-           <a href="https://github.com/MishTails">
+           <a target="_blank" href="https://github.com/MishTails">
             <img className='git' src={github}></img>
             </a>
-            <a href="https://www.linkedin.com/in/jarrod-mishima-50abb0172/">
+            <a target="_blank" href="https://www.linkedin.com/in/jarrod-mishima-50abb0172/">
             <img className='linkedin' src={linkedin}></img>
             </a>
           </div>
@@ -47,15 +47,7 @@ function Footer() {
               English
            </div>
           </div>
-          <div className='splash-footer-country'>
-            <div className='splash-footer-bold'>
-              Country
-            </div>
-            <div className='splash-footer-light'>
-              United States
-            </div>
 
-          </div>
         </div>
       </div>
   )

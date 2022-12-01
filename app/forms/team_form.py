@@ -4,7 +4,6 @@ from wtforms.validators import DataRequired, Length, ValidationError
 from app.models import User
 
 def validate_image(form, field):
-    print(field.data, "FIELD DATA!!!")
     if(field.data[-4:] != '.jpg' and field.data[-4:] != '.png' and field.data[-5:] !='.jpeg'):
         raise ValidationError("Your image url must end with .jpg, .png, or .jpeg")
 

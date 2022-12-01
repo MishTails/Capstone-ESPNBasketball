@@ -26,7 +26,8 @@ class Team(db.Model):
             'user_id': self.user_id,
             'league_id': self.league_id,
             'players': self.get_all_players(),
-            'owner':self.get_team_owner()
+            'owner':self.get_team_owner(),
+            'league': self.league.league_name
         }
 
     def get_all_players(self):
