@@ -1,6 +1,9 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from datetime import datetime
 from .user_leagues import user_leagues
+time_data = "25/05/23"
+format_data = "%d/%m/%y"
+
 
 
 class League(db.Model):
@@ -15,7 +18,7 @@ class League(db.Model):
     size = db.Column(db.Integer, nullable=False)
     occupancy =  db.Column(db.Integer)
     description = db.Column(db.String(1000), nullable=False)
-    draft_date = db.Column(db.String, nullable=False, default='2023-12-12')
+    draft_date = db.Column(db.String, nullable=False, default=datetime.strptime(time_data, format_data))
     draft_timer = db.Column(db.Integer, nullable= False)
 
     #relationships

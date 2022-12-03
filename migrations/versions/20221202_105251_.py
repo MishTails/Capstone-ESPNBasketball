@@ -67,7 +67,7 @@ def upgrade():
     sa.Column('size', sa.Integer(), nullable=False),
     sa.Column('occupancy', sa.Integer(), nullable=True),
     sa.Column('description', sa.String(length=1000), nullable=False),
-    sa.Column('draft_date', sa.String(), nullable=False),
+    sa.Column('draft_date', sa.Date(), nullable=False),
     sa.Column('draft_timer', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['commissioner_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id'),

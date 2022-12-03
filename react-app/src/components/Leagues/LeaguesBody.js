@@ -51,7 +51,7 @@ function LeagueBody(single) {
         {`${myLeague.occupancy}/${myLeague.size}`}
         </div>
         <div className='leagues-table-data' id="ltSeven">
-        {myLeague.draft_date}
+        {myLeague.draft_date.slice(0, 10)}
         </div>
         <div className='leagues-table-data' id="ltEight">
         {myLeague.description}

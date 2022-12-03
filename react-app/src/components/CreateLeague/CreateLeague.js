@@ -110,7 +110,10 @@ function CreateLeague() {
               <input
                 className='create-league-form-input'
                 name='leagueDraftDate'
-                type='date'
+                type='text'
+                placeholder='Format: dd/mm/yy'
+                maxLength={8}
+                minLength={8}
                 value={leagueDraftDate}
                 onChange={updateLeagueDraftDate}
               />
