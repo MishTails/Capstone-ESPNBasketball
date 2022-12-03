@@ -63,7 +63,6 @@ function Leagues() {
 
           </div>
         </div>
-      <Footer/>
     </div>
   )
 }

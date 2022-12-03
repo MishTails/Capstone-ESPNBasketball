@@ -7,39 +7,39 @@ def seed_users():
         username='Demo',
         email='demo@aa.io',
         password='password',
-        profile_pic="https://static.vecteezy.com/system/resources/previews/007/557/861/original/hacker-mascot-illustration-for-sports-and-esports-logo-free-vector.jpg")
+       )
 
     u2 = User(
         username='Tails',
         email='tails@gmail.com',
         password='password',
-        profile_pic="https://static.vecteezy.com/system/resources/previews/007/557/861/original/hacker-mascot-illustration-for-sports-and-esports-logo-free-vector.jpg")
+       )
 
     u3 = User(
         username='icebird',
         email='icebird@gmail.com',
         password='password',
-        profile_pic="https://static.vecteezy.com/system/resources/previews/007/557/861/original/hacker-mascot-illustration-for-sports-and-esports-logo-free-vector.jpg")
+       )
     u4 = User(
         username='dyluuu',
         email='dyluuu@gmail.com',
         password='password',
-        profile_pic="https://static.vecteezy.com/system/resources/previews/007/557/861/original/hacker-mascot-illustration-for-sports-and-esports-logo-free-vector.jpg")
+       )
     u5 = User(
         username='profnhut',
         email='profnhut@gmail.com',
         password='password',
-        profile_pic="https://static.vecteezy.com/system/resources/previews/007/557/861/original/hacker-mascot-illustration-for-sports-and-esports-logo-free-vector.jpg")
+       )
     u6 = User(
         username='itsCC',
         email='itsCC@gmail.com',
         password='password',
-        profile_pic="https://static.vecteezy.com/system/resources/previews/007/557/861/original/hacker-mascot-illustration-for-sports-and-esports-logo-free-vector.jpg")
+       )
     u7 = User(
         username='willNgo',
         email='willNgo@gmail.com',
         password='password',
-        profile_pic="https://static.vecteezy.com/system/resources/previews/007/557/861/original/hacker-mascot-illustration-for-sports-and-esports-logo-free-vector.jpg")
+       )
 
 
     db.session.add(u1)

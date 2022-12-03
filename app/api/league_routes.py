@@ -2,6 +2,9 @@ from flask import Blueprint, render_template, request
 from flask_login import login_required
 from app.models import League, db
 from app.forms import LeagueForm
+from datetime import datetime
+
+format_data = "%d/%m/%y"
 
 league_routes = Blueprint('leagues', __name__)
 
@@ -49,12 +52,13 @@ def create_one_league():
       size = form.data['size'],
       occupancy = 0,
       description = form.data['description'],
-      draft_date = form.data['draft_date'],
+      draft_date = datetime.strptime(form.data['draft_date'], format_data),
       draft_timer = form.data['draft_timer']
     )
     db.session.add(new_league)
     db.session.commit()
     return new_league.to_dict()
+  print(form.errors, "ERRORS HERE")
   return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @league_routes.route('/<int:id>', methods=["PUT"])
