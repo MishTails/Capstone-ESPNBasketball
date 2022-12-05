@@ -69,17 +69,17 @@ function CreateLeague() {
         <div className='create-league-heading'>
           Create League
         </div>
-        <div className='create-league-form-instructions-bubble'>
+        {/* {errors &&<div className='create-league-form-instructions-bubble'>
           <div className='create-league-form-lightbulb'>
             <i class="fa fa-solid fa-lightbulb"></i>
           </div>
           <div className='create-league-form-instructions'>
             Fill out this form for simple and easy league creation!
           </div>
-        </div>
+        </div>} */}
         <div>
         </div>
-        {errors.league_name && <div>{errors.league_name}</div>}
+        {errors.league_name && <div className='error-message'>{errors.league_name}</div>}
         <div className='create-league-form-label-input'>
           <div className="create-league-form-league-name">
             <label className='create-league-form-label' htmlFor='email'>League Name</label>
@@ -92,7 +92,7 @@ function CreateLeague() {
                 onChange={updateLeagueName}
               />
           </div>
-          {errors.size && <div>{errors.size}</div>}
+          {errors.size && <div className='error-message'>{errors.size}</div>}
           <div className='create-league-form-league-desc'>
           <label className='create-league-form-label' htmlFor='email'>League Size</label>
               <input
@@ -104,7 +104,7 @@ function CreateLeague() {
                 onChange={updateLeagueSize}
               />
           </div>
-          {errors.draft_date && <div>{errors.draft_date}</div>}
+          {errors.draft_date && <div className='error-message'>{errors.draft_date}</div>}
           <div className='create-league-form-league-desc'>
           <label className='create-league-form-label' htmlFor='email'>League Draft Date</label>
               <input
@@ -118,7 +118,7 @@ function CreateLeague() {
                 onChange={updateLeagueDraftDate}
               />
           </div>
-          {errors.draft_timer && <div>{errors.draft_timer}</div>}
+          {errors.draft_timer && <div className='error-message'>{errors.draft_timer}</div>}
           <div className='create-league-form-league-desc'>
           <label className='create-league-form-label' htmlFor='email'>League Draft Timer (Seconds)</label>
               <input
@@ -130,7 +130,7 @@ function CreateLeague() {
                 onChange={updateLeagueDraftTimer}
               />
           </div>
-          {errors.description && <div>{errors.description}</div>}
+          {errors.description && <div className='error-message'>{errors.description}</div>}
           <div className='create-league-form-league-desc'>
           <label className='create-league-form-label' htmlFor='email'>League Description</label>
               <input

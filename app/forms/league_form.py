@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, TextAreaField, DateTimeField
 from wtforms.validators import DataRequired, Length, NumberRange, ValidationError
-from app.models import User
+from app.models import User, League
 from datetime import date
 
 today = date.today()
@@ -12,6 +12,8 @@ def draft_date_valid(form, field):
     date = field.data
     if date[2] != '/' and date[5] != '/':
         raise ValidationError('Draft date is invalid')
+    if int(date[0:2]) > 12 or int(date[3:5]) > 31:
+        raise ValidationError("Draft Date is invalid")
     if date[6:8] < curr[6:8]:
         raise ValidationError('Can not put a date in the past')
     if date[6:8] == curr[6:8] and date[3:5] < curr[3:5]:
@@ -19,10 +21,14 @@ def draft_date_valid(form, field):
     if date[6:8] == curr[6:8] and date[3:5] == curr[3:5] and date[0:2] < curr[0:2]:
         raise ValidationError('Can not put a date in the past')
 
-
+def league_exists(form, field):
+    name = field.data
+    league = League.query.filter(League.league_name == name).first()
+    if league:
+        raise ValidationError('League already exists with that name')
 
 class LeagueForm(FlaskForm):
-    league_name = StringField('league_name', validators=[DataRequired('League Name is required'), Length(3, 18, 'League Name must be between 3 and 18 characters ')])
+    league_name = StringField('league_name', validators=[DataRequired('League Name is required'), Length(3, 18, 'League Name must be between 3 and 18 characters '), league_exists])
     commissioner_id = IntegerField('commissioner_id', validators=[DataRequired()])
     size = IntegerField('size', validators=[DataRequired('League Size is required'), NumberRange(4, 12, 'Your League may have between 4 and 12 teams')])
     description = TextAreaField('description', validators=[DataRequired('League Description is required'), Length(3, 200, 'Your League Description may be between 3 and 200 characters')])
