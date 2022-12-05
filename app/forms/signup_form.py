@@ -28,6 +28,6 @@ def email_valid(form, field):
 
 class SignUpForm(FlaskForm):
     username = StringField(
-        'username', validators=[DataRequired("Username is required"), username_exists])
+        'username', validators=[DataRequired("Username is required"), username_exists, Length(3, 25, "Username must be between 3 and 25 characters")])
     email = StringField('email', validators=[DataRequired("Email is required"), user_exists, email_valid])
     password = StringField('password', validators=[DataRequired("Password is required"), Length(8, 30, "Password should be between 8 and 30 characters")])

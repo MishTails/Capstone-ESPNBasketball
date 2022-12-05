@@ -7,6 +7,7 @@
   position: absolute;
   width: 100%;
   bottom: 67px;
+  z-index: -1;
 }
 
 .update-league-form-label {

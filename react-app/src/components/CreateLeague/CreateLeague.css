@@ -7,6 +7,7 @@
   position: absolute;
   width: 100%;
   bottom: 67px;
+  z-index: -1;
 }
 
 .create-league-form-label {
@@ -100,4 +101,10 @@
 .fa-lightbulb {
   font-size: 24px;
   padding: 5px;
+}
+
+.error-message {
+  display: flex;
+  font-size: 12px;
+  justify-content: center;
 }
