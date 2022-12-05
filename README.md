@@ -111,7 +111,20 @@ Cloud Application Hosting
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Features
 
+Leagues
+Teams
+Team Rosters
+Players
+
+## Coming Soon:
+
+Player Detail Cards
+Live Drafting (with Webhooks)
+Stats based standings
+Messaging between players
+Yahoo Fantasy API for live stats
 
 <!-- GETTING STARTED -->
 ## Getting Started
