@@ -32,9 +32,9 @@ function User() {
         <div className='user-profile-title'>
           User Profile
         </div>
-        <div className='user-profile-smaller-title'>
+        {/* <div className='user-profile-smaller-title'>
           Profile Picture
-        </div>
+        </div> */}
         <div className='user-profile-picture-holder'>
           <img></img>
         </div>
