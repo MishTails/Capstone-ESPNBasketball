@@ -50,17 +50,15 @@ export const thunkGetOneTeam = (teamId) => async (dispatch) => {
   }
 }
 
-export const thunkPostTeam = (data) => async (dispatch) => {
-  console.log('hi')
-  const response = await fetch(`/api/teams`, {
+export const thunkPostTeam = (data, id) => async (dispatch) => {
+  const response = await fetch(`/api/teams/${id.leagueId}`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data)
+    body: data
   });
   if (response.ok) {
-    console.log('hi2')
     const team = await response.json();
     dispatch(postTeam(team));
     return team
@@ -73,7 +71,6 @@ export const thunkPostTeam = (data) => async (dispatch) => {
 }
 
 export const thunkUpdateTeam = (data) => async (dispatch) => {
-  console.log(data, "THE DATA")
   const response = await fetch(`/api/teams/${data.id}`, {
     method: 'put',
     headers: {

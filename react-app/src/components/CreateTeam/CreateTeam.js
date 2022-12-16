@@ -15,7 +15,8 @@ function CreateTeam() {
   const [errors, setErrors] = useState([]);
 
   const [teamName, setTeamName] = useState('')
-  const [teamLogo, setTeamLogo] = useState('')
+  const [teamLogo, setTeamLogo] = useState(null)
+  const [imageLoading, setImageLoading] = useState(false);
 
 
   const user = useSelector(state => state?.session?.user?.id);
@@ -24,9 +25,12 @@ function CreateTeam() {
 
   const updateTeamName = (e) => {
     setTeamName(e.target.value);
+    console.log(teamName)
   };
   const updateTeamLogo = (e) => {
-    setTeamLogo(e.target.value);
+    const file = e.target.files[0]
+    setTeamLogo(file);
+    // console.log("TEAMLOGO",teamLogo)
   };
 
   useEffect(() => {
@@ -35,25 +39,45 @@ function CreateTeam() {
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    let teamData = {
-      name: teamName,
-      logo: teamLogo,
-      user_id: user,
-      league_id: parseInt(id.leagueId)
-    }
-    const newTeam = await dispatch(thunkPostTeam(teamData))
-    if (newTeam.errors) {
-      setErrors(newTeam.errors)
-    } else {
-      await dispatch(thunkUpdateOccupancy(id.leagueId))
-      history.push('/leagues')
-    }
+    const form = document.getElementById('form')
+    console.log(form,"Pizza")
+    const formData = new FormData(form)
+    // formData.append("name", teamName)
+    formData.append("teamLogo", teamLogo)
+    // let teamData = {
+    //   name: teamName,
+    //   logo: formData,
+    //   user_id: user,
+    //   league_id: parseInt(id.leagueId)
+    // }
+    const res = await fetch(`/api/teams/${id.leagueId}`, {
+      method: "POST",
+      body: formData,
+  });
+    if (res.ok) {
+      await res.json();
+      setImageLoading(false);
+      history.push("/leagues");
+  }
+    else {
+      setImageLoading(false);
+      // a real app would probably use more advanced
+      // error handling
+      console.log("error");
+  }
+    // const newTeam = await dispatch(thunkPostTeam(formData, id))
+    // if (newTeam.errors) {
+    //   setErrors(newTeam.errors)
+    // } else {
+    //   await dispatch(thunkUpdateOccupancy(id.leagueId))
+    //   history.push('/leagues')
+    // }
   }
   return (
     <div>
       <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
       <NavBar/>
-      <form className='create-team-form-full' onSubmit={onSubmit}>
+      <form className='create-team-form-full' id='form' onSubmit={onSubmit}>
         {<div className='create-team-heading'>
           Join a League!
         </div>}
@@ -69,7 +93,7 @@ function CreateTeam() {
         {errors.name && <div>{errors.name}</div>}
         <div className='create-team-form-label-input'>
           <div className="create-team-form-league-name">
-            <label className='create-team-form-label' htmlFor='email'>Team Name</label>
+            <label className='create-team-form-label' htmlFor='teamName'>Team Name</label>
               <input
                 className='create-team-form-input'
                 name='teamName'
@@ -81,19 +105,21 @@ function CreateTeam() {
           </div>
           {errors.logo && <div>{errors.logo}</div>}
           <div className='create-team-form-league-desc'>
-          <label className='create-team-form-label' htmlFor='email'>Team Logo</label>
+          <label className='create-team-form-label' htmlFor='logo'>Team Logo</label>
               <input
                 className='create-team-form-input'
                 name='teamLogo'
-                type='text'
+                type='file'
+                accept="image/*"
                 placeholder='Team Logo'
-                value={teamLogo}
+                // value={teamLogo}
                 onChange={updateTeamLogo}
               />
           </div>
         </div>
         <div className='create-team-form-submit-holder'>
           <button className='create-team-form-submit' type='submit'>SUBMIT</button>
+          {/* {(imageLoading)&& <p>Loading...</p>} */}
         </div>
       </form>
       <Footer/>

@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired, Length, ValidationError
 from app.models import User, Team
 
 def validate_image(form, field):
-    if(field.data[-4:] != '.jpg' and field.data[-4:] != '.png' and field.data[-5:] !='.jpeg'):
+    if(field.data[-4:] != '.jpg' and field.data[-4:] != '.png' and field.data[-5:] !='.jpeg' and field.data[-4:] != '.PNG' and field.data[-4:] != '.JPG' and field.data[-5:] != '.JPEG'):
         raise ValidationError("Your image url must end with .jpg, .png, or .jpeg")
 
 def team_exists(form, field):

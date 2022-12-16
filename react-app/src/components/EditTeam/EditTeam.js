@@ -85,7 +85,7 @@ function EditTeam() {
               <input
                 className='update-league-form-input'
                 name='teamLogo'
-                type='TEXT'
+                type='file'
                 placeholder='Team Logo'
                 value={teamLogo}
                 onChange={updateTeamLogo}
