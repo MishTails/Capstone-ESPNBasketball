@@ -37,6 +37,16 @@ function CreateTeam() {
     dispatch(thunkGetAllTeams())
   }, [dispatch])
 
+  const logoValidator = (teamLogo) => {
+    let name = teamLogo?.name
+    let lastChars3 = name?.slice(name.length-3)
+    let lastChars4 = name?.slice(name.length-4)
+    if (lastChars3 !== 'jpg' && lastChars3 !== "JPG" && lastChars3 !== "png" && lastChars3 !== 'PNG' && lastChars4 !== "jpeg" ) {
+      return true
+    }
+    return false
+  }
+
   const onSubmit = async (e) => {
     e.preventDefault()
     const form = document.getElementById('form')
@@ -63,7 +73,8 @@ function CreateTeam() {
       setImageLoading(false);
       // a real app would probably use more advanced
       // error handling
-      console.log("error");
+      console.log(res);
+      console.log(teamLogo)
   }
     // const newTeam = await dispatch(thunkPostTeam(formData, id))
     // if (newTeam.errors) {
@@ -103,7 +114,7 @@ function CreateTeam() {
                 onChange={updateTeamName}
               />
           </div>
-          {errors.logo && <div>{errors.logo}</div>}
+          {logoValidator(teamLogo) && teamLogo !== null &&<div>Your Logo must be a jpg, jpeg, or png.</div>}
           <div className='create-team-form-league-desc'>
           <label className='create-team-form-label' htmlFor='logo'>Team Logo</label>
               <input
